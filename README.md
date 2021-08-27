@@ -14,12 +14,12 @@ https://github.com/spawnmarvel/azure-arm
 
 ### Folders
 1. AZ-104 S.D
-2. Compute
-3. Storage
-4. Network
-5. Security
-6. Powershell
-7. [Microsoft-Certified-Azure-Administrator-Associate] https://docs.microsoft.com/en-us/learn/certifications/azure-administrator/
+2. [Microsoft-Certified-Azure-Administrator-Associate] https://docs.microsoft.com/en-us/learn/certifications/azure-administrator/
+3. Compute
+4. Storage
+5. Network
+6. Security
+7. Powershell
 8. [More-labs] https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/
 
 ### MS Learn 7
@@ -48,3 +48,4 @@ https://github.com/spawnmarvel/azure-arm
 * Module 09 - Serverless Computing 	09c - Implement Azure Kubernetes Service
 * Module 10 - Data Protection 	10 - Implement Data Protection
 * Module 11 - Monitoring 	11 - Implement Monitoring
+
