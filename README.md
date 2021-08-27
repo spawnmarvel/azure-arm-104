@@ -11,7 +11,7 @@ https://github.com/spawnmarvel/azure-arm
 
 [Azure CLI] https://docs.microsoft.com/en-us/cli/azure/
 
-###
+### Structure
 
 ### Folders
 1. AZ-104 S.D
