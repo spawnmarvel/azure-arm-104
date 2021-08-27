@@ -5,6 +5,11 @@
 https://github.com/spawnmarvel/azure-arm
 
 ## JSON, Powershell, ARM template, Bash.
+### Wireshark, TCP viewer, Beartail.
+
+[Azure Powershell] https://docs.microsoft.com/en-us/powershell/azure/?view=azps-6.3.0&viewFallbackFrom=azps-5.2.0
+
+[Azure CLI] https://docs.microsoft.com/en-us/cli/azure/
 
 ### Folders
 1. AZ-104 S.D
