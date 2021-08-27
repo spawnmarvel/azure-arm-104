@@ -4,6 +4,8 @@
 
 https://github.com/spawnmarvel/azure-arm
 
+## JSON, Powershell, ARM template, Bash.
+
 ### Folders
 1. AZ-104 S.D
 2. Compute
