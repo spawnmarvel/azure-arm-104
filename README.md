@@ -6,8 +6,8 @@ https://github.com/spawnmarvel/azure-arm
 
 ### Folders
 1. AZ-104 S.D
-2. Powershell
-3. Compute
-4. Storage
-5. Network
-6. Security
+2. Compute
+3. Storage
+4. Network
+5. Security
+6. Powershell
