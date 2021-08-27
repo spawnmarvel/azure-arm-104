@@ -22,7 +22,13 @@ https://github.com/spawnmarvel/azure-arm
 7. [Microsoft-Certified-Azure-Administrator-Associate] https://docs.microsoft.com/en-us/learn/certifications/azure-administrator/
 8. [More-labs] https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/
 
-### MS Learn 7 
+### MS Learn 7
+* Pre for administrators
+* Manage identities and governance
+* Implement and manage storage
+* Deploy and manage compute resources
+* Configure and manage virtual networks for administrators
+* Monitor and back up resources
 
 ### MS Github labs 8
 * Module 01 - Identity 	01 - Manage Azure Active Directory Identities
