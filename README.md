@@ -19,10 +19,12 @@ https://github.com/spawnmarvel/azure-arm
 4. Network
 5. Security
 6. Powershell
-7. Extra labs from 8
-8. https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/
+7. [Microsoft-Certified-Azure-Administrator-Associate] https://docs.microsoft.com/en-us/learn/certifications/azure-administrator/
+8. [More-labs] https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/
 
-### Labs 8
+### MS Learn 7 
+
+### MS Github labs 8
 * Module 01 - Identity 	01 - Manage Azure Active Directory Identities
 * Module 02 - Governance and Compliance 	02a - Manage Subscriptions and RBAC
 * Module 02 - Governance and Compliance 	02b - Manage Governance via Azure Policy
