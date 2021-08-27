@@ -11,3 +11,5 @@ https://github.com/spawnmarvel/azure-arm
 4. Network
 5. Security
 6. Powershell
+7. Extra labs from 8
+8. https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/
