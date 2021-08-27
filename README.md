@@ -1,6 +1,10 @@
 # azure-arm-104
 
-## Folders
+## Stuff about Azure,ARM, Powershell and more. Continued from 
+
+https://github.com/spawnmarvel/azure-arm
+
+### Folders
 1. AZ-104 S.D
 2. Powershell
 3. Compute
