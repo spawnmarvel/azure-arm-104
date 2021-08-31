@@ -7,7 +7,7 @@ Add company user or invite guest user.
 
 Section 6: Manage role-based access control (RBAC)
 When you have user or group, you can restricted the access on vm, vnet, rg with access control (IAM) on the blade for the vm, vnet or rg.
-
+Add role assignment to user, group or service principal
 
 
 
