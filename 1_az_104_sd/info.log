@@ -3,11 +3,19 @@ https://www.udemy.com/course/70533-azure/
 View it
 Section 5: Manage Azure AD objects
 Users and groups, add roles in Azure active directory, many built in.
-Add company user or invite guest user.
+Add company user or invite guest user or register device.
 
 Section 6: Manage role-based access control (RBAC)
 When you have user or group, you can restricted the access on vm, vnet, rg with access control (IAM) on the blade for the vm, vnet or rg.
-Add role assignment to user, group or service principal
+Add role assignment to user, group or service principal.
+
+* Rule, give the least permission.
+
+We can create custom role (AD) also, if the built in is not enough, for example on the rg.
+IAM->Create a custom role
+Add permissions
+Exclude permissions
+
 
 
 
