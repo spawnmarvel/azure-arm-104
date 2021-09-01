@@ -16,6 +16,7 @@ IAM->Create a custom role
 Add permissions
 Exclude permissions
 
+Lab:
 Add users and groups, give them access to different resources, test it in the portal.
 
 
