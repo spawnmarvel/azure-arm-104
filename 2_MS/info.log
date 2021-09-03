@@ -1,0 +1,19 @@
+ Describe core Azure architectural components
+
+ https://docs.microsoft.com/en-us/learn/modules/azure-architecture-fundamentals/
+
+A region is a geographical area on the planet that contains at least one but potentially multiple datacenters that are nearby and networked together with a low-latency network
+
+Availability zones are physically separate datacenters within an Azure region. (If one zone goes down, the other continues working), minimum 3 zones per region.
+
+Region pairs if need more than just one region (big disaster in one region). Example: West US paired with East US,SouthEast Asia paired with East Asia.
+
+Azure resources and Azure Resource Manager, role-based access control (RBAC) permissions.
+
+Azure subscriptions,authenticated and authorized access to Azure products and services. 
+
+Azure management groups, many subscriptions, you might need a way to efficiently manage access, policies, and compliance for those subscriptions. 
+Azure management groups provide a level of scope above subscriptions.
+
+Exercise - Create a website hosted in Azure
+
