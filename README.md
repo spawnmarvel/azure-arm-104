@@ -53,4 +53,4 @@ https://github.com/spawnmarvel/azure-arm
 #### Good to know
 
 Measure network activety for one .exe file:
-[![Screenshot](x-measure-network-activety-for-one-exe-file.jpg)
+[![Screenshot](x1-measure-network-activety-for-one-exe-file.jpg)
