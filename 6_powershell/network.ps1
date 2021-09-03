@@ -38,7 +38,7 @@ Resolve-DnsName -Name "Hostname"
 
 # 6. View current TCP connections
 Get-NetTCPConnection
-# ust like netstat before it, the Get-NetTCPConnection cmdlet allows for viewing of the current TCP connections that have been made to/from a device
+#  Just like netstat before it, the Get-NetTCPConnection cmdlet allows for viewing of the current TCP connections that have been made to/from a device
 
 # 7. View & Set DNS information
 Get-DnsClient
