@@ -16,3 +16,11 @@ tracert www.goggle.com
 # over a maximum of 30 hops:
 # 1    <1 ms    <1 ms    <1 ms  xx.xx.x.x.x
 # 2     3 ms     1 ms     1 ms  somedomain.no [x.x.x.x..x]
+
+# Test bandwidth network speed test
+# There's an old command line tool call iperf.exe that can be used to test the bandwidth between two endpoints. 
+# Run 
+iperf -s on the endpoint, iperf -c computername from Powershell.
+
+# https://iperf.fr/
+# https://www.dell.com/support/kbdoc/no-no/000139427/hvordan-du-tester-tilgjengelig-nettverks-b%C3%A5nd-bredde-ved-hjelp-av-iperf
