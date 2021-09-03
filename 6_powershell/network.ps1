@@ -55,13 +55,7 @@ Clear-DnsClientCache
 # this could lead to poor network performance, denial of service, or security issues that seek to exploit incorrect records that point user 
 # requests to the wrong server/service.
 
-
-
-
-
-
-
-# Test bandwidth network speed test
+# 9. Test bandwidth network speed test
 # There's an old command line tool call iperf.exe that can be used to test the bandwidth between two endpoints. 
 # Run 
 iperf -s on the endpoint, iperf -c computername from Powershell.
