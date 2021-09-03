@@ -49,3 +49,8 @@ https://github.com/spawnmarvel/azure-arm
 * Module 10 - Data Protection 	10 - Implement Data Protection
 * Module 11 - Monitoring 	11 - Implement Monitoring
 
+
+#### Good to know
+
+Measure network activety for one .exe file:
+[![Screenshot](x-measure-network-activety-for-one-exe-file.jpg)
