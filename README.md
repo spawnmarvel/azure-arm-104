@@ -52,5 +52,11 @@ https://github.com/spawnmarvel/azure-arm
 
 #### Good to know
 
+[typeperf] https://follow-e-lo.com/2021/02/10/disk-and-typeperf/
+
+
+[netsh]https://follow-e-lo.com/2021/05/28/capture-traffic-wireshark/
+
+
 Measure network activety for one .exe file:
 [![Screenshot](x1-measure-network-activety-for-one-exe-file.jpg)
