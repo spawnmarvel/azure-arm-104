@@ -24,8 +24,6 @@ iperf -s on the endpoint, iperf -c computername from Powershell.
 
 # https://iperf.fr/
 # https://www.dell.com/support/kbdoc/no-no/000139427/hvordan-du-tester-tilgjengelig-nettverks-b%C3%A5nd-bredde-ved-hjelp-av-iperf
-
-
 # 1. Last ned Iperf-verktøyet.  Du kan finne en kopi på Iperf.fr, https://iperf.fr/
 # 2. Åpne et hevet kommando vindu på serveren som skal motta data, og Kjør følgende kommando: "Iperf. exe – s – w 2 MB".
 # 3. Åpne et hevet kommando vindu på serveren som skal sende data, og Kjør følgende kommando: "Iperf-c x. x-. x-w 2 MB-t 30s-i 1s".  Bytt ut x. x. x med IP-adressen til serveren fra trinn 2.
