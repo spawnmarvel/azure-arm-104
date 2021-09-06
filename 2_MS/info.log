@@ -1,3 +1,5 @@
+https://docs.microsoft.com/en-us/learn/paths/az-104-administrator-prerequisites/
+
 Describe core Azure architectural components
 
 https://docs.microsoft.com/en-us/learn/modules/azure-architecture-fundamentals/
@@ -16,4 +18,28 @@ Azure management groups, many subscriptions, you might need a way to efficiently
 Azure management groups provide a level of scope above subscriptions.
 
 Exercise - Create a website hosted in Azure
+
+App Service is an HTTP-based service that enables you to build and host many types of web-based solutions without managing infrastructure. 
+
+Azure Marketplace
+A tutorial on get wordpress from Marketplace
+
+https://docs.microsoft.com/en-us/learn/modules/azure-architecture-fundamentals/exercise-create-website
+
+
+
+AZ-104: Prerequisites for Azure administrators
+
+AZ-104: Manage identities and governance in Azure
+
+AZ-104: Implement and manage storage in Azure
+
+AZ-104: Deploy and manage Azure compute resources
+
+AZ-104: Configure and manage virtual networks for Azure administrators
+
+AZ-104: Monitor and back up Azure resources
+
+
+
 
