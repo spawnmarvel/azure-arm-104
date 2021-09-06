@@ -29,14 +29,17 @@ Fundamental of the cloud, place to store files in azure.
 2 Managed storage backend for VM's (C,D, HD etc)
 
 Create storage account:
+Basic:
 Performance
 Standard, most scenarios.
-Premium, (SSD, but more cost)
+Premium, (SSD, but more cost) for low latency.
 Redundancy:
 GRS, Geo-redundancy storage, in region and a copy of files in secondary region. 6 Copies
 LRS, 1 file in region, 2 copy of files in same region. 3 Copies. Low cost
-ZRS, similar LRS, but separate datacenters power, water etc.
-GZRS, combines GRS and ZRS
+ZRS, similar LRS, but separate datacenters power, water etc. That is zones.
+GZRS, combines GRS and ZRS.
+
+Adavanced:
 
 
 
