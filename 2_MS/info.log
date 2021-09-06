@@ -1,6 +1,6 @@
- Describe core Azure architectural components
+Describe core Azure architectural components
 
- https://docs.microsoft.com/en-us/learn/modules/azure-architecture-fundamentals/
+https://docs.microsoft.com/en-us/learn/modules/azure-architecture-fundamentals/
 
 A region is a geographical area on the planet that contains at least one but potentially multiple datacenters that are nearby and networked together with a low-latency network
 
