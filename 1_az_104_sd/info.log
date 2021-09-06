@@ -24,6 +24,18 @@ https://follow-e-lo.com/2021/09/01/5-min-azure-active-directory-and-iam/
 
 Section 8: Create and configure storage accounts
 
+Fundamental of the cloud, place to store files in azure.
+1 Container storage for files, blobs.
+2 Managed storage backend for VM's (C,D, HD etc)
+
+Create:
+Performance
+Standard, most scenarios.
+Premium, (SSD, but more cost)
+
+
+
+
 
 
 
