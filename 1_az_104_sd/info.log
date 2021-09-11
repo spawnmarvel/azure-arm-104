@@ -39,7 +39,46 @@ LRS, 1 file in region, 2 copy of files in same region. 3 Copies. Low cost
 ZRS, similar LRS, but separate datacenters power, water etc. That is zones.
 GZRS, combines GRS and ZRS.
 
-Adavanced:
+Advanced:
+Security, https.
+Encrypted, they are by default, but can encrypt at rest.
+Public acces, ACL, No public access (then use IAM or RBAC)
+Enable key access
+TLS, keep
+Data lake gen2, big data.
+Blob, table, queue and azure files.
+NFS, network file share (mount, T or F drive for example)
+Access tier:
+Hot,
+Cool,
+Cannot set archive default, but move after.
+Large files, 100 TB.
+Tables and Queue (FIFO), control the security key's for that.
+
+Networking:
+Public endpoint (is is secure, but have to protect the key's
+Public selected networks
+Private.
+Routing
+Example account in Canada, Client in Japan.
+MS,Travel through MS global network as long as possible (small charge)
+Internet, the pops out of account as close as possible to st account then public internet to Japan. (no charge)
+
+Data protection
+Recovery, straight forward, keep for x days etc.
+Tracking and version and notification on change.
+
+Tags, review and create.
+
+
+
+
+
+
+
+
+
+
 
 
 
