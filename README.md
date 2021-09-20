@@ -1,5 +1,11 @@
 # azure-arm-104
 
+## Repos switched to SSH:
+
+https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories
+
+Switching remote URLs from HTTPS to SSH
+
 ## Stuff about Azure, ARM, Powershell and more. Continued from 
 
 https://github.com/spawnmarvel/azure-arm
