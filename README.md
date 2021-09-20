@@ -52,12 +52,13 @@ https://github.com/spawnmarvel/azure-arm
 
 #### Good to know
 
-[typeperf] https://follow-e-lo.com/2021/02/10/disk-and-typeperf/
 
+
+[typeperf] https://follow-e-lo.com/2021/02/10/disk-and-typeperf/
 
 [netsh] https://follow-e-lo.com/2021/05/28/capture-traffic-wireshark/
 
-[network-commands] https://github.com/spawnmarvel/azure-arm-104/blob/master/6_powershell/network.ps1
+[network-commands] https://github.com/spawnmarvel/azure-arm-104/blob/master/6_powershell/network_ps1_and_cmd.ps1
 
 AppNetworkCounter is a simple tool for Windows that counts and displays the number of TCP/UDP bytes and packets sent and received by every application on your system
 
