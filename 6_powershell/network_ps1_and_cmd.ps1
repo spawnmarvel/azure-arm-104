@@ -15,6 +15,10 @@ ping www.google.com -t # CMD
 # 2 Check connectivity based on port or service
 Test-NetConnection -ComputerName xxx.xx.xxx.xx -Port 1000
 
+# netstat
+netstat [-a] [-b] [-e] [-n] [-o] [-p <Protocol>] [-r] [-s] [<interval>] #CMD
+netstat -s #  Displays statistics by protocol. By default, statistics are shown for the TCP, UDP, ICMP, and IP protocols
+
 # 3. Trace route communications
 # Traceroute ensures each hop on the way to a destination device drops a packet and sends back an ICMP error message. 
 # This means traceroute can measure the duration of time between when the data is sent and when the ICMP message is received back for each hop—giving you the RTT value for each hop
