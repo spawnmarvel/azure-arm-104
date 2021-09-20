@@ -10,6 +10,37 @@ Switching remote URLs from HTTPS to SSH
 3. git remote set-url origin git@github.com:USERNAME/REPOSITORY.git
 4. $ git remote -v (verify that is has changed)
 
+Generating a new SSH key
+Paste the text below, substituting in your GitHub email address.
+
+```sh
+$ ssh-keygen -t ed25519 -C "your_email@example.com"
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (/c/Users/admin/.ssh/id_ed25519):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /c/Users/admin/.ssh/id_ed25519
+Your public key has been saved in /c/Users/admin/.ssh/id_ed25519.pub
+The key fingerprint is:
+```
+Copy the SSH public key content to your clipboard from:
+* id_ed25519.pub
+
+If you are on Linux, access the SSH folder like this
+* cd ~/.ssh
+* cat id_ed25519.pub
+
+Go to Github->Profile->Settings->SSH and GPG keys
+* SSH Key add new
+* Title = a name
+* Key = ctrl-v (the content in id_ed25519.pub)
+
+Test connection to Github again and enter passphrase:
+```sh
+$ ssh -T git@github.com
+Enter passphrase for key '/c/Users/admin/.ssh/id_ed25519':
+Hi spawnmarvel! You've successfully authenticated, but GitHub does not provide shell access.
+```
 
 https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
 
