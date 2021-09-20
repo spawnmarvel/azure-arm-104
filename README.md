@@ -59,6 +59,10 @@ https://github.com/spawnmarvel/azure-arm
 
 [network-commands] https://github.com/spawnmarvel/azure-arm-104/blob/master/6_powershell/network.ps1
 
+Measure network activety for all .exe files
+
+[AppNetworkCounter] https://www.nirsoft.net/utils/app_network_counter.html
+
 Measure network activety for one .exe file:
 
 [![Screenshot](x1-measure-network-activety-for-one-exe-file.jpg)
