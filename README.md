@@ -1,10 +1,14 @@
 # azure-arm-104
 
-## Repos switched to SSH:
+### Repos switched to SSH:
 
 https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories
 
 Switching remote URLs from HTTPS to SSH
+1. $ git remote -v (get urls)
+2. Change your remote's URL from HTTPS to SSH with the git remote set-url command.
+3. git remote set-url origin git@github.com:USERNAME/REPOSITORY.git
+4. $ git remote -v (verify that is has changed)
 
 ## Stuff about Azure, ARM, Powershell and more. Continued from 
 
