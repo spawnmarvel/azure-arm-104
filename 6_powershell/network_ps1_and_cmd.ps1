@@ -18,6 +18,8 @@ Test-NetConnection -ComputerName xxx.xx.xxx.xx -Port 1000
 # netstat
 netstat [-a] [-b] [-e] [-n] [-o] [-p <Protocol>] [-r] [-s] [<interval>] #CMD
 netstat -s #  Displays statistics by protocol. By default, statistics are shown for the TCP, UDP, ICMP, and IP protocols
+netstat -s -p tcp > t10.txt
+
 
 # 3. Trace route communications
 # Traceroute ensures each hop on the way to a destination device drops a packet and sends back an ICMP error message. 
