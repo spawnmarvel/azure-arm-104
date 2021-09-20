@@ -10,6 +10,9 @@ Switching remote URLs from HTTPS to SSH
 3. git remote set-url origin git@github.com:USERNAME/REPOSITORY.git
 4. $ git remote -v (verify that is has changed)
 
+
+https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+
 ## Stuff about Azure, ARM, Powershell and more. Continued from 
 
 https://github.com/spawnmarvel/azure-arm
