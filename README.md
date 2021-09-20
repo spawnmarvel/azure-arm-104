@@ -16,11 +16,11 @@ Paste the text below, substituting in your GitHub email address.
 ```sh
 $ ssh-keygen -t ed25519 -C "your_email@example.com"
 Generating public/private ed25519 key pair.
-Enter file in which to save the key (/c/Users/admin/.ssh/id_ed25519):
+Enter file in which to save the key (/c/Users/johndoe/.ssh/id_ed25519):
 Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
-Your identification has been saved in /c/Users/admin/.ssh/id_ed25519
-Your public key has been saved in /c/Users/admin/.ssh/id_ed25519.pub
+Your identification has been saved in /c/Users/johndoe/.ssh/id_ed25519
+Your public key has been saved in /c/Users/johndoe/.ssh/id_ed25519.pub
 The key fingerprint is:
 ```
 Copy the SSH public key content to your clipboard from:
@@ -38,7 +38,7 @@ Go to Github->Profile->Settings->SSH and GPG keys
 Test connection to Github again and enter passphrase:
 ```sh
 $ ssh -T git@github.com
-Enter passphrase for key '/c/Users/admin/.ssh/id_ed25519':
+Enter passphrase for key '/c/Users/johndoe/.ssh/id_ed25519':
 Hi spawnmarvel! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 
