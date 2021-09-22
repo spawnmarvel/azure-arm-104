@@ -104,6 +104,10 @@ https://github.com/spawnmarvel/azure-arm
 
 [network-commands] https://github.com/spawnmarvel/azure-arm-104/blob/master/6_powershell/network_ps1_and_cmd.ps1
 
+TCPView is a Windows program that will show you detailed listings of all TCP and UDP endpoints on your system, including the local and remote addresses and state of TCP connections.
+
+[TCPView] https://docs.microsoft.com/en-us/sysinternals/downloads/tcpview
+
 AppNetworkCounter is a simple tool for Windows that counts and displays the number of TCP/UDP bytes and packets sent and received by every application on your system
 
 [AppNetworkCounter] https://www.nirsoft.net/utils/app_network_counter.html
