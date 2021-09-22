@@ -26,7 +26,7 @@ The key fingerprint is:
 Copy the SSH public key content to your clipboard from:
 * id_ed25519.pub
 
-If you are on Linux, access the SSH folder like this
+Access the SSH folder like this
 * cd ~/.ssh
 * cat id_ed25519.pub
 
