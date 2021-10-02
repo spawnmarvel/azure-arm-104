@@ -70,7 +70,33 @@ Tracking and version and notification on change.
 
 Tags, review and create.
 
-Access keys and SAS
+Access keys and SAS (for third parties)
+
+A quick look at the storage account:
+properties tab: features
+monitoring, egress (leaving from azure) ingress (in to azure)
+capabilities: upgrade and more, static website, data protection, lifecycle,
+CDN, custom domain etc
+advisor:
+tutorials:
+developer coder:
+
+Can access it through access key, 2 keys, for security and deploy key and not break apps or other.
+key1, keep it secure!! If it exposed we muste generate a new key and use the other in the mean time.
+
+Shared access signature SAS (a URI, HTTP/HTTPS), delegate access to application or individuals without giving key.
+for example just read on a , just access to a file, date limit, filter by ip and so on.
+Then we sign with key1 and generate a SAS and connection string.
+
+If you generate a new key 1 or 2, then the SAS that used that key must also be generated again.
+
+Storage explorer.
+
+
+
+
+
+
 
 
 
