@@ -193,7 +193,36 @@ Final Job Status: Completed
 
 
 Access tiers:
+Hot or Cool, hot is default.
+So depending on tier,
+you can get charged less for storage or more for access 
+or more for storage and less for access 
+or in-between state, which is the hot. (Most will be hot)
+Cool, 50% cheaper than hot, but access cost is double.
+Can change hot or cool (storage account configuration), and can do it pr file also. (Container-> file->change tier)
+two more tiers:
+archive cheaper, but way more cost to access, only for emergency, backup from 1 year ago. This tier can take several hours to retrive....slow or ask for high priority.
+
+Pricing $:
+First 50 terabyte (TB) / month
+Premium, 0.15 per gb
+Hot, 0.0184 per gb
+Cool, 0.01 per gb
+archive, 0.002 per gb
+
+Cool, minimum of 30 days charge per file
+Archive, minimum 100 days charge per file
+
+Most expensive is Premium.
+When you create the storage account->performance, premium or Standard
+Premium 10x faster then Standard and better latency.
+
+Use calculator, and check read, write etc
+So if hundred's of reads per second, you can save money on the premium tier vs the hot because the access cost is so much lower.
+
+
 Lifecycle management:
+
 AD Access control for storage:
 Object replication:
 
