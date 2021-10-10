@@ -90,7 +90,11 @@ Then we sign with key1 and generate a SAS and connection string.
 
 If you generate a new key 1 or 2, then the SAS that used that key must also be generated again.
 
-Storage explorer.
+Storage explorer:
+The best way to interact is if you download storage explorer or programmatic ways, API's or SDK.
+Log analytics
+Redundant storage
+Copy files with AzCopy
 
 Section 9
 Section 10
@@ -99,16 +103,6 @@ Section 12
 Section 13
 Section [...]
 Section 25
-
-
-
-
-
-
-
-
-
-
 
 
 

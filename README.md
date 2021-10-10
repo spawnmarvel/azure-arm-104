@@ -1,6 +1,6 @@
 # azure-arm-104
 
-### Repos switched to SSH:
+### Repos switch to SSH:
 
 https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories
 
