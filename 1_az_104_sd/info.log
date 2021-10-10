@@ -92,9 +92,115 @@ If you generate a new key 1 or 2, then the SAS that used that key must also be g
 
 Storage explorer:
 The best way to interact is if you download storage explorer or programmatic ways, API's or SDK.
-Log analytics
-Redundant storage
-Copy files with AzCopy
+
+Log analytics: 
+Monitoring on the storage account
+Insight, overvire, failures, performance etc.
+Alerts, if 100gb then alert etc. Set up action group (cost) a mail if limit is reached.
+Metrics, create our own graphs.
+Workbook, predefined view of storage account.
+Diagnostics, is not turned on by default. View logs, how does access, read, write, transaction. 
+Where should it go, a log file or Azure analytics, aarchive, stream to event hub (trigger other actions) or send to partner.
+Logs, logs analytics, pre written query or write custom query in then language KUSTO
+
+Redundant storage:
+LRS, (canda central example) for every file there are additional two copies, total three copies.
+GRS (same as LRS, but two regions), storage account configuration, can change it there.
+Geo replication, can view both regions and do a fail over. Prepare for failover button (swap manually from primary to secondary)
+
+
+Copy files with AzCopy:
+https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10
+
+AzCopy is a command-line utility that you can use to copy blobs or files to or from a storage account. 
+This article helps you download AzCopy, connect to your storage account, and then transfer files.
+
+Example, copy a file from one container to another.
+It does not need to download the files to your local and then upload, it does all inside Azure.
+
+Available Commands:
+  bench       Performs a performance benchmark
+  completion  generate the autocompletion script for the specified shell
+  copy        Copies source data to a destination location
+  doc         Generates documentation for the tool in Markdown format
+  env         Shows the environment variables that you can use to configure the behavior of AzCopy.
+  help        Help about any command
+  jobs        Sub-commands related to managing jobs
+  list        List the entities in a given resource
+  login       Log in to Azure Active Directory (AD) to access Azure Storage resources.
+  logout      Log out to terminate access to Azure Storage resources.
+  make        Create a container or file share.
+  remove      Delete blobs or files from an Azure storage account
+  sync        Replicate source to the destination location
+
+It does not support keys, but accees from Azure AD or SAS token
+
+
+azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path>'
+
+Mini lab:
+Basic:
+Create a storage account
+rg:testit2-rg
+storage account name: testit2storage
+region: we
+performance: Standard
+Redundancy:lrs
+Advanced:
+Keep default, Require secure transfer for REST API,tlf 1.2 access tiers, hot
+Networking: Public endpoint (all networks), it is secure but we must protect the keys
+Data protection, tags; defaultReview + create
+
+Now go inside testit2storage->Data storage->container
+create testit2container, public access level private.
+(the size is what we use, no matter what it it rounded up to nearest 1 gb for charge)
+
+Upload a file to testit2container, Lorem Ipsum.txt
+
+create another testit3container, public access level private.
+
+Now generate SAS on the file, and copy the Blob SAS URL.
+
+On the testit3container, go to generate sas and on permissions, all (read, write, since we need to write the file, etc) on that container.
+Now get the SAS URL and copy it to the script.
+
+Run cmd as admin and navigate to the file downloaded and run:
+azcopy login --tenant-id "[TenantID]"
+
+azcopy login --tenant-id "MY-SECRET-TENANT-ID"
+To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code MY-SECRET-CODE to authenticate.
+
+The run: (on windows use "", not '')
+azcopy copy "source" "destination"
+
+Result:
+Job 32f2137f-6126-574f-5cc4-acd4bad12c57 has started
+Log file is located at: C:\Users\admin\.azcopy\32f2137f-6126-574f-5cc4-acd4bad12c57.log
+
+0.0 %, 0 Done, 0 Failed, 1 Pending, 0 Skipped, 1 Total,
+
+
+Job 32f2137f-6126-574f-5cc4-acd4bad12c57 summary
+Elapsed Time (Minutes): 0.0335
+Number of File Transfers: 1
+Number of Folder Property Transfers: 0
+Total Number of Transfers: 1
+Number of Transfers Completed: 1
+Number of Transfers Failed: 0
+Number of Transfers Skipped: 0
+TotalBytesTransferred: 586
+Final Job Status: Completed
+
+
+Access tiers:
+Lifecycle management:
+AD Access control for storage:
+Object replication:
+
+Lab:
+
+
+
 
 Section 9
 Section 10
