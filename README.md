@@ -106,6 +106,8 @@ https://github.com/spawnmarvel/azure-arm
 
 TCPView is a Windows program that will show you detailed listings of all TCP and UDP endpoints on your system, including the local and remote addresses and state of TCP connections.
 
+If you cannot connect to a port, check if it is in use with TCPView and or telnet IP Port
+
 [TCPView] https://docs.microsoft.com/en-us/sysinternals/downloads/tcpview
 
 AppNetworkCounter is a simple tool for Windows that counts and displays the number of TCP/UDP bytes and packets sent and received by every application on your system
