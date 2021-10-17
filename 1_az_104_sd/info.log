@@ -379,7 +379,7 @@ Location: az10407container
 
 
 Task 5: Create and configure an Azure Files shares
-In this task, you will create and configure Azure Files shares and use a VM to store it.
+In this task, you will create and configure Azure Files shares and use a VM to store them
 
 Note: Before you start this task, verify that the virtual machine you provisioned in the first task of this lab is running.
 Will just use the portal and create a VM:
