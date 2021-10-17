@@ -222,6 +222,9 @@ So if hundred's of reads per second, you can save money on the premium tier vs t
 
 
 Lifecycle management:
+Transistion to appropriate access tiers, hot,cool based on rules.
+For example 30 days after modification move to cool, 100 d move to archive.
+200 days, delete it.
 
 AD Access control for storage:
 Object replication:

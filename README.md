@@ -117,3 +117,5 @@ AppNetworkCounter is a simple tool for Windows that counts and displays the numb
 Measure network activety for one .exe file:
 
 [![Screenshot](x1-measure-network-activety-for-one-exe-file.jpg)
+
+
