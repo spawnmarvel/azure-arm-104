@@ -552,7 +552,8 @@ Clean up resources, delete all rg'selected
 
 Get-AzResourceGroup -Name 'az104-07*' | Remove-AzResourceGroup -Force -AsJob
 
-Section 9
+Section 9 Import and export data to Azure
+
 Section 10
 Section 11
 Section 12
