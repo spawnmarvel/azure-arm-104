@@ -93,3 +93,4 @@ iperf -s on the endpoint, iperf -c computername from Powershell.
 # [156] 28.0-29.0 sek 113 MB 945 Mbit/sek
 # [156] 29.0-30.0 sek 112 MB 944 Mbit/sek
 # [156] 0.0-30.3 sek 3,30 GBytes 945 Mbps 
+#
