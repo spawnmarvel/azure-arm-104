@@ -41,6 +41,8 @@ Foreach ($t in $test)
   Write-Host "Connected`n"
 }
 
+
+
 # netstat
 # netstat [-a] [-b] [-e] [-n] [-o] [-p <Protocol>] [-r] [-s] [<interval>] #CMD
 netstat -s # Displays statistics by protocol. By default, statistics are shown for the TCP, UDP, ICMP, and IP protocols

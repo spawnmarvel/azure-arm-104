@@ -554,12 +554,54 @@ Get-AzResourceGroup -Name 'az104-07*' | Remove-AzResourceGroup -Force -AsJob
 
 Section 9 Import and export data to Azure
 
+Storage explorer browser and software to download to place
+az copy, cmd
+
+What if much data, terra byte? (time, band width)
+
+Moving large files:
+Azure portal type: import/export jobs
+Export:
+Shipping, send the disk FDEX, UPS etc.
+Import:
+Shipping, get a disk, ship it FDEX, UPS etc.
+
+100 TB data box, 1 PB data box heavy or 8 TB SSD disk up to 40TB
+
+Blob storage:
+Account style:
+Blobstorage:
+create a new container with access levels and IAM.
+(for uploading files and copy the URL and access it, embed, for example images, js, pdf, video, static files etc. for website)
+But not the best solution / or cheap for static files.
+
+CDN:
+CDN better optimizations for static files.
+Azure Content Delivery Network (CDN) is a global CDN solution for delivering high-bandwidth content. 
+It can be hosted in Azure or any other location. With Azure CDN, you can cache static objects loaded from Azure Blob storage, 
+a web application, or any publicly accessible web server, by using the closest point of presence (POP) server. 
+Azure CDN can also accelerate dynamic content, which cannot be cached, by leveraging various network and routing optimizations.
+
+4 differnt service options:
+Compare CDN product features
+(Own domain, certificate, HTTPS etc)
+
+
+
+
+
+
+
+
+
+
 Section 10
 Section 11
 Section 12
 Section 13
 Section [...]
 Section 25
+
 
 
 
