@@ -586,6 +586,14 @@ Azure CDN can also accelerate dynamic content, which cannot be cached, by levera
 Compare CDN product features
 (Own domain, certificate, HTTPS etc)
 
+Use an endpoint URL and cache it to the CDN.
+How to update cache? 
+Scott Duffy:
+"Purge CDN"
+and Caching rules.
+
+
+
 
 
 

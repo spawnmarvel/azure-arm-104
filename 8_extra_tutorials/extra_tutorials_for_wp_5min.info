@@ -1,3 +1,16 @@
 Quickstart: Manage blobs with Python v12 SDK
 
 https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-python
+
+
+Create an Azure file share
+
+https://docs.microsoft.com/en-us/azure/storage/files/storage-how-to-create-file-share?tabs=azure-portal
+
+Deploy:
+Create an SMB file share
+How to create an NFS share (preview)
+
+Mount:
+Mount SMB Azure file share on Windows = done
+Mount SMB Azure file share on Linux
