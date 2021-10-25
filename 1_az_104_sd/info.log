@@ -575,7 +575,7 @@ create a new container with access levels and IAM.
 (for uploading files and copy the URL and access it, embed, for example images, js, pdf, video, static files etc. for website)
 But not the best solution / or cheap for static files.
 
-CDN:
+CDN: Content delivery network
 CDN better optimizations for static files.
 Azure Content Delivery Network (CDN) is a global CDN solution for delivering high-bandwidth content. 
 It can be hosted in Azure or any other location. With Azure CDN, you can cache static objects loaded from Azure Blob storage, 
@@ -585,6 +585,8 @@ Azure CDN can also accelerate dynamic content, which cannot be cached, by levera
 4 differnt service options:
 Compare CDN product features
 (Own domain, certificate, HTTPS etc)
+
+
 
 
 
