@@ -582,6 +582,9 @@ It can be hosted in Azure or any other location. With Azure CDN, you can cache s
 a web application, or any publicly accessible web server, by using the closest point of presence (POP) server. 
 Azure CDN can also accelerate dynamic content, which cannot be cached, by leveraging various network and routing optimizations.
 
+CDN works globally, does not belong to a rg in particular.
+It allows for reduced traffic coming into webserves for static files.
+
 4 differnt service options:
 Compare CDN product features
 (Own domain, certificate, HTTPS etc)
@@ -593,19 +596,20 @@ Scott Duffy:
 and Caching rules.
 
 
+Section 10 Configure Azure Files
+Azure File share.
+Connect to it like mounted drive, drive letter, finished commands available.
+(Many ISP, block port 445 (SMB), reason for blocked is for security reason
+(If a home computer has the C drive open,easy to hack it.)
+
+Scenario:
+10 VM in a LB cluster that needs to share a set of files,
+then you create a file mount.
+Mount all of these in those servers and they can for example write their logs there.
+ 
 
 
 
-
-
-
-
-
-
-
-
-
-Section 10
 Section 11
 Section 12
 Section 13
