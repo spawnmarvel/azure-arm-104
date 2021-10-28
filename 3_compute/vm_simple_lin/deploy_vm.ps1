@@ -4,6 +4,7 @@ Write-Host "Get it from subscription and feed it to virtualNetworkId if you need
 Write-Host "Must also use a random generator for -Name on deploy"
 $ran = Get-Random -Maximum 100
 $deployName = "buildTestVm1" + $ran
+Write-Host "Running deploy: " $deployName
 # connect to azure first
 # Connect-AzAccount
 $sub = Get-AzSubscription

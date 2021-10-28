@@ -64,10 +64,12 @@ $templateFile = ".\vm_template.json"
 # parameter file
 # [...]
 $paramterFile = ".\vm_paramters.json"
-New-AzResourceGroupDeployment -Name buildTestVm `
+# [...]
+
+New-AzResourceGroupDeployment -Name $deployName `
   -ResourceGroupName $resourceGr.ResourceGroupName `
-  -TemplateFile $templateFile -TemplateParameterFile $paramterFile `
-  -adminUsername $userName -adminPassword $passWordSecure -WhatIf
+  -virtualNetworkId $vnetId `
+  -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -WhatIf
 ```
 ### 4.1 Secure the password if not using keyvault
 ```ps1
