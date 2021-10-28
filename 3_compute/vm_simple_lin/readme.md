@@ -16,8 +16,8 @@ If you have a rg and a vnet, here is how to make a vm and include it the vnet wi
 
 * Virtual machine name test-vm8080
 * Availability zone, 1
-* Ubuntu Server 18.04 LTS - GEN1
-* Standard_BS1s - 1 vpcu, 1 gb memory A$12/mon
+* Ubuntu Server 20_04-lts-gen2
+* Standard_BS2s - 2 vpcu, 4 gb memory A$48/mon ?
 * Administrator account + password
 * Public inbound ports, allow SSH 22
 * Disk standard, HDD

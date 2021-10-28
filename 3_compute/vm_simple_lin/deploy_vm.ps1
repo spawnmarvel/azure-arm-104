@@ -57,3 +57,5 @@ New-AzResourceGroupDeployment -Name $deployName `
 # -ResourceGroupName $resourceGr.ResourceGroupName `
 # -virtualNetworkId $vnetId `
 # -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -Verbose
+
+Write-Host "todo get vm name from file and use it in the parameters file for publicIpAddressName, virtualMachineName etc."
