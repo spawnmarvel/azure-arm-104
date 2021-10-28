@@ -1,7 +1,7 @@
 # Simple vm with username and password from script
 
 If you have a rg and a vnet, here is how to make a vm and include it the vnet with below mentioned installed and connect it to the vnet
-(Make it in the portal first, without creating it, just get to the finish step and download for automation.)
+(Make the vm type it in the portal first, stop at review + create and  download for automation.)
 
 ### 1 Resource group and vnet used: 
 * testit2-rg
