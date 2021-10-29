@@ -1,6 +1,6 @@
 # Simple vm with username and password from script
 
-If you have a rg and a vnet, here is how to make a vm and include it the vnet with below mentioned installed and connect it to the vnet
+If you have a rg and a vnet, here is how to make a vm and include it in the vnet with below mentioned SKU, settings and connect it to the vnet
 (Make the vm type it in the portal first, stop at review + create and  download for automation.)
 
 ### 1 Resource group and vnet used: 
