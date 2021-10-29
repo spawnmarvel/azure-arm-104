@@ -87,5 +87,10 @@ Write-Host $arr[1]
 Write-Host $passWordSecure
 ```
 
-### 5 use SSH/Putty to login
+### 5 Use SSH/Putty to login
 Get the IP from Azure VM
+
+### 6 Check resources/remove (change rg) if needed
+Use the scripts:
+get_rg_resources.
+remove_rg.ps1
