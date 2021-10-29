@@ -1,8 +1,7 @@
 $str =  Get-Date
-$resourceGr = "testit-rg"
+$resourceGr = "testit2-rg"
 Write-Host "List resources " $str " in " $resourceGr
 
-$resourceGr = "testit-rg"
 $group = Get-AzResource -ResourceGroupName $resourceGr
 
 foreach ($g in $group) {
