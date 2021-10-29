@@ -4,9 +4,13 @@ If you have a rg and a vnet, here is how to make a vm and include it in the vnet
 (Make the vm type it in the portal first, stop at review + create and  download for automation.)
 
 ### 1 Resource group and vnet used: 
-* testit2-rg
+* testit2-rg 
 * testit2-vnet
 
+```ps1
+$vnet = "testit2-vnet"
+$rgName = "testit2-rg"
+```
 ### 1.1  A note about vnet:
 
 #### When you create or update a virtual network in your subscription, Network Watcher will be enabled automatically in your Virtual Network's region. There is no impact to your resources or associated charge for automatically enabling Network Watcher. 
@@ -82,3 +86,6 @@ Write-Host $userName
 Write-Host $arr[1]
 Write-Host $passWordSecure
 ```
+
+### 5 use SSH/Putty to login
+Get the IP from Azure VM

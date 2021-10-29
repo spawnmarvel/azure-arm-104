@@ -47,15 +47,15 @@ Write-Host $arr[1]
 Write-Host $passWordSecure
 
 # test it
-New-AzResourceGroupDeployment -Name $deployName `
-  -ResourceGroupName $resourceGr.ResourceGroupName `
-  -virtualNetworkId $vnetId `
-  -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -WhatIf
+#New-AzResourceGroupDeployment -Name $deployName `
+#  -ResourceGroupName $resourceGr.ResourceGroupName `
+#  -virtualNetworkId $vnetId `
+#  -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -WhatIf
 
 # verbose or debug for actually deploying it
-# New-AzResourceGroupDeployment -Name $deployName `
-# -ResourceGroupName $resourceGr.ResourceGroupName `
-# -virtualNetworkId $vnetId `
-# -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -Verbose
+New-AzResourceGroupDeployment -Name $deployName `
+ -ResourceGroupName $resourceGr.ResourceGroupName `
+ -virtualNetworkId $vnetId `
+ -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -Verbose
 
 Write-Host "todo get vm name from file and use it in the parameters file for publicIpAddressName, virtualMachineName etc."
