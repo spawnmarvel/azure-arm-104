@@ -96,7 +96,7 @@ https://github.com/spawnmarvel/azure-arm
 
 #### Good to know
 
-
+[system-administrator] https://follow-e-lo.com/2021/10/29/system-administrator/
 
 [typeperf] https://follow-e-lo.com/2021/02/10/disk-and-typeperf/
 
