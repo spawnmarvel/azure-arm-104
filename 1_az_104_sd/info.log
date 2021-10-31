@@ -604,14 +604,35 @@ Connect to it like mounted drive, drive letter, finished commands available.
 
 Scenario:
 10 VM in a LB cluster that needs to share a set of files,
-then you create a file mount.
+then you create one file mount.
 Mount all of these in those servers and they can for example write their logs there.
- 
 
+Azure File sync
+Use file sync agent, download.
+Then run on your local server and it lets your files be in sync with Azure File share.
 
+Create azure file sync
+1 sync group is the file share you want to sync with.
+2 Configure the agent or register the server (445 port)
+3 Azure will sync it
 
-Section 11
-Section 12
+Troubleshoot Azure File sync
+
+follow the article:
+
+https://docs.microsoft.com/en-us/azure/storage/file-sync/file-sync-troubleshoot?tabs=portal1%2Cazure-portal
+
+Strong point:
+sync is delayed or not working? = recreate sync group or register the server again? = No, MS says no.
+Turn on logging, more verbose
+
+questions:
+The SMB protocol requires TCP port 445 to be open; connections will fail if port 445 is blocked.
+
+The Azure File Sync service is used as a file distribution service. The ideal solution to use here is the Content Delivery service. For more information on the File Sync Service, one can go to: https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-planning
+
+Section 11 Implement backup and recovery
+Section 12 Azure Virtual Machines
 Section 13
 Section [...]
 Section 25

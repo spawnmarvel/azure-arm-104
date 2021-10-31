@@ -1,0 +1,168 @@
+1:
+1
+Manage Azure Active Directory:
+Your company wants to implement Multi-factor authentication by using conditional access policies?
+*
+Upgrade the Azure AD license to premium P1
+The first pre-requisite for using conditional access policies is to ensure that Premium licenses are in place.
+2
+Add custom domain names, which record needs to be added to cusotm domian registrar?
+*
+TXT record
+3
+You have:
+Azure AD connect for Azure AD and seamless SSO for on-prem.
+Users report:
+visit to theapps.microsoft.com then prompted x amount of times to sign in and forced to use account that ends with onmicrosoft.com.
+Hm, there is an UPN mismatch between Azure AD and and on-prem AD.
+What is the first thing to do to ensure users can use SSO to access Azure resouces?
+*
+From Azure AD, add and verify a custom domain name
+
+2:
+Manage AD objects:
+1
+What type of account to allow external organization easy access?
+*
+A guest user (restricted to just what they need)
+2
+What is default domain before custom domain?
+*
+companyname.onmicrosoft.com
+*
+3
+SSPR is enabled for your Azure organization means?
+*
+Users can reset pass when not signed in.
+if the user passes the authentication tests, then they can reset their password.
+4
+When is user considered registered for SSPR?
+*
+Registered at least the number of methods that you've required to reset a password. 
+This number can be set in the Azure portal.
+
+3
+Manage RBAC
+1
+Company has:
+Subscription and tenant, and want to ensure that only particular SKU for VM can be launched on account.
+The implement RBAC, role based access to do the job, is this enough?
+*
+No, must apply policy....
+Role-based access control (RBAC) helps you manage who has access to Azure resources, what they can do with those resources, and what areas they have access to.
+2
+Company has:
+Subscription and tenant and virtual net named mysoftware-network with:
+User1, owner
+User2, security admin
+user3, network contributor
+Who would be able to add subnet to the vnet?
+*
+User1 and 3
+If you look at the Network Contributor Role, they have access to manage Virtual Networks. And then by default the Owner will have all privileges over Azure resources.
+3
+Company has:
+Subscription and tenant and virtual net named mysoftware-network.
+a dev group mysoftware-dev in tenant, this group will AD users with developer role to manage logic apps.
+You add logic app contributor to group, is this enough?
+*
+Yes, 
+If you look at the permissions for the in-built roles for Logic Apps, you can see that the role has the permissions for managing Logic App resources
+
+4
+Subscription:
+1
+Company has:
+account and subscription, how to ensure that only IT admin can make vm's?
+*
+Azure policy and assign it to the subscription.
+Azure policies are used for governance purposes.
+2
+Company has:
+Subscription and tenant.
+a dev group mysoftware-dev in tenant, this group will AD users with developer role to manage logic apps.
+You add logic app contributor to group, is this enough?
+* 
+Yes, 
+If you look at the permissions for the in-built roles for Logic Apps, you can see that the role has the permissions for managing Logic App resources
+3
+CLI cmd for create own unique policy?
+*
+az policy defintion create
+4
+How to organize resouces for cost reporting?
+*
+Subscription, rg's and tags.
+
+5
+Storage:
+How to grant access to single container in azure storage account without using keys?
+*
+SAS
+Storage accounts are access by keys. Using SAS will let them have very granular access without exposing any other part of your storage account.
+2
+2 pb (much data), not many use it. If you do not fill it up, what would be the likey reason to create more then 1 unmanged storage account?
+*
+Exceeding the max 20 k IO operations a second.
+The main reason for creating separate storage accounts is when you are having a lot of IO operations per second.
+3
+Company need:
+storage account name named whatever-arc
+key req:
+store virtual disk files for vm's
+cost must be minimized
+replication cost also minimized
+*
+LRS, locally redundant storage
+Since replication costs need to be minimized, you can choose the Locally redundant storage replication option. 
+LRS is the lowest-cost redundancy option and offers the least durability compared to other options.  (MS)
+LRS protects your data against server rack and drive failures.
+
+6
+CDN and Files
+1
+Requested to move some docs to azure, size 500 mb.
+Requirements:
+move to blob storage
+copy over internet to azure
+*
+Azure storage explorer to cp the Files
+2
+Benefit of CDN to users?
+*
+reduce traffic to webserves for staic, unchanged files (images, video, pdf's)
+Content Delivery Network - allows you to improve performance by removing the burden of serving static, 
+unchanging files from the main server to a network of servers around the globe; 
+a CDN can reduce traffic to a server by 50% or more, which means you can serve more users or serve the same users faster
+
+3
+CDN is used to accelarate static files (img, vid, pdf, scripts), but if website is custom to each user (personal content +++)
+How can CDN help dynamic websites server data faster?
+*
+CDN can read the HTML as it passes through and automatically fetch the next files to be delivered without the client needing to ask.
+
+7 
+File
+1
+you have storage account named whatever, you create fileshare with file service.
+Must ensure users can connect to share from home?
+What port to open?
+*
+445, SMB
+The SMB protocol requires TCP port 445 to be open; connections will fail if port 445 is blocked.
+2
+Company deploy blogging solution:
+Requirements:
+connec to blob storage
+users for all world must have same performance when access website
+You deploy Azure File sync,doed this meet Requirements?
+*
+nooooooo
+The Azure File Sync service is used as a file distribution service. The ideal solution to use here is the Content Delivery service. 
+
+
+
+
+
+
+
