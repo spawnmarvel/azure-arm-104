@@ -14,3 +14,13 @@ How to create an NFS share (preview)
 Mount:
 Mount SMB Azure file share on Windows = done
 Mount SMB Azure file share on Linux
+
+
+New to event hub:
+
+https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-about
+
+Send events to or receive events from event hubs by using Python (azure-eventhub):
+
+https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-python-get-started-send
+
