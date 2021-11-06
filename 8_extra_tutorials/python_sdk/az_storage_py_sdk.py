@@ -1,45 +1,70 @@
 # python -m pip install --upgrade pip
 # pip install azure-storage-file-share
 # Create a storage account
+# Types of credentials
+# https://docs.microsoft.com/en-us/azure/storage/common/authorize-data-access
 
 from azure.storage.fileshare import ShareServiceClient
 from azure.storage.fileshare import ShareFileClient
 from azure.storage.fileshare import ShareDirectoryClient
 
 
-def get_connectionstring():
-    row = None
-    with open("az_storage_py_con_str.txt", "r") as r:
-        row = r.readline()
-    return str(row)
-# Types of credentials
-# https://docs.microsoft.com/en-us/azure/storage/common/authorize-data-access
-connection_string = get_connectionstring()
-service = ShareServiceClient.from_connection_string(conn_str=connection_string)
+class FilShareUtilityWorker:
 
-# Listing contents of a directory
-parent_dir = ShareDirectoryClient.from_connection_string(conn_str=connection_string, share_name="testit3fs", directory_path="testdir")
+    def __init__(self) -> None:
+        self.connection_string = None
+        self.fs_share = "testit3fs" 
+        with open("az_storage_py_con_str.txt", "r") as r:
+            row = r.readline()
+            self.connection_string = row
 
-my_list = list(parent_dir.list_directories_and_files())
-size = str(len(my_list))
-print("Items: " + size)
-ty = type(my_list[0])
-print(ty)
+    #def get_connection_string(self):
+    #    row = None
+    #    with open("az_storage_py_con_str.txt", "r") as r:
+    #        row = r.readline()
+    #    return str(row)
 
-# Iterate over list items
-for l in my_list:
-# get key, value for item
-    for k, v in l.items():
-        if k.lower() == "name" or k.lower() == "size":
-            print(str(k) + ", " + str(v))
+    def connect_to_file_share(self):
+        connection_string = self.connection_string
+        service = ShareServiceClient.from_connection_string(conn_str=connection_string)
+
+    def fs_list_directory(self, dir_path="testdir"):
+        """ Listing contents of a directory """
+        self.connect_to_file_share()
+        parent_dir = ShareDirectoryClient.from_connection_string(conn_str=self.connection_string, share_name=self.fs_share, directory_path=dir_path)
+        my_list = list(parent_dir.list_directories_and_files())
+        size = str(len(my_list))
+        print("Items: " + size)
+        ty = type(my_list[0])
+        print(ty)
+        # Iterate over list items
+        for l in my_list:
+        # get key, value for item
+            for k, v in l.items():
+                if k.lower() == "name" or k.lower() == "size":
+                    print(str(k) + ", " + str(v))
+
+    def fs_get_files_meta(self,dir_path="testdir"):
+        """ Iterate over list items """
+        self.connect_to_file_share()
+        # Uploading a file
+        file_client = ShareFileClient.from_connection_string(conn_str=self.connection_string, share_name="testit3fs", file_path="testdir/az_local_file.txt")
+        with open("az_local_file.txt", "rb") as source_file:
+            rv = file_client.upload_file(source_file)
+            print(rv)
+        
+
+def main():
+    worker = FilShareUtilityWorker()
+    worker.fs_list_directory()
+    worker.fs_get_files_meta()
+        
+
+if __name__ == "__main__":
+    main()
 
 
-# Uploading a file
-file_client = ShareFileClient.from_connection_string(conn_str=connection_string, share_name="testit3fs", file_path="testdir/az_local_file.txt")
 
-with open("az_local_file.txt", "rb") as source_file:
-    rv = file_client.upload_file(source_file)
-    print(rv)
 
 
 
