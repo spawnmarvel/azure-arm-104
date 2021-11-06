@@ -4,7 +4,6 @@
 # Types of credentials
 # https://docs.microsoft.com/en-us/azure/storage/common/authorize-data-access
 
-from logging import fatal
 from azure.storage.fileshare import ShareServiceClient
 from azure.storage.fileshare import ShareFileClient
 from azure.storage.fileshare import ShareDirectoryClient
