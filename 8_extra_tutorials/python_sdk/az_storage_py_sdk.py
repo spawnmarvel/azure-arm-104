@@ -45,19 +45,22 @@ class FilShareUtilityWorker:
     def fs_list_directory(self, dir_path="testdir"):
         """ Listing contents of a directory """
         if self.connection_status:
-            parent_dir = ShareDirectoryClient.from_connection_string(
-                conn_str=self.connection_string, share_name=self.fs_share, directory_path=dir_path)
-            my_list = list(parent_dir.list_directories_and_files())
-            size = str(len(my_list))
-            print("Items: " + size)
-            ty = type(my_list[0])
-            print(ty)
-            # Iterate over list items
-            for l in my_list:
-                # get key, value for item
-                for k, v in l.items():
-                    if k.lower() == "name" or k.lower() == "size":
-                        print(str(k) + ", " + str(v))
+            try:
+                parent_dir = ShareDirectoryClient.from_connection_string(
+                    conn_str=self.connection_string, share_name=self.fs_share, directory_path=dir_path)
+                my_list = list(parent_dir.list_directories_and_files())
+                size = str(len(my_list))
+                print("Items: " + size)
+                ty = type(my_list[0])
+                print(ty)
+                # Iterate over list items
+                for l in my_list:
+                    # get key, value for item
+                    for k, v in l.items():
+                        if k.lower() == "name" or k.lower() == "size":
+                            print(str(k) + ", " + str(v))
+            except Exception as exe_error:
+                print(exe_error)
         else:
             pass
 
@@ -67,9 +70,12 @@ class FilShareUtilityWorker:
             # Uploading a file
             file_client = ShareFileClient.from_connection_string(
                 conn_str=self.connection_string, share_name="testit3fs", file_path="testdir/az_local_file.txt")
-            with open("az_local_file.txt", "rb") as source_file:
-                rv = file_client.upload_file(source_file)
-                print(rv)
+            try:
+                with open("az_local_file.txt", "rb") as source_file:
+                    rv = file_client.upload_file(source_file)
+                    print(rv)
+            except FileNotFoundError as file_error:
+                print(file_error)
         else:
             pass
 
@@ -90,5 +96,3 @@ if __name__ == "__main__":
     main()
     # Optional Configuration
     # https://docs.microsoft.com/en-us/python/api/overview/azure/storage-file-share-readme?view=azure-python
-    
-
