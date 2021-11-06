@@ -26,7 +26,7 @@ class FilShareUtilityWorker:
             print(file_error)
 
     def connect_to_file_share(self):
-        print(str(self.file_exist))
+        """ Connect to filse share """
         if self.file_exist:
             try:
                 connection_string = self.connection_string
