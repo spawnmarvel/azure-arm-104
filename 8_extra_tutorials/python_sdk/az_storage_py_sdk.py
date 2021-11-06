@@ -51,6 +51,8 @@ class FilShareUtilityWorker:
                 for k, v in l.items():
                     if k.lower() == "name" or k.lower() == "size":
                         print(str(k) + ", " + str(v))
+        else:
+            pass
 
     def fs_get_files_meta(self,dir_path="testdir"):
         """ Iterate over list items """
@@ -60,6 +62,8 @@ class FilShareUtilityWorker:
             with open("az_local_file.txt", "rb") as source_file:
                 rv = file_client.upload_file(source_file)
                 print(rv)
+        else:
+            pass
         
 
 def main():
