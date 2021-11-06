@@ -6,6 +6,7 @@ from azure.storage.fileshare import ShareServiceClient
 from azure.storage.fileshare import ShareFileClient
 from azure.storage.fileshare import ShareDirectoryClient
 
+
 def get_connectionstring():
     row = None
     with open("az_storage_py_con_str.txt", "r") as r:
@@ -31,6 +32,14 @@ for l in my_list:
     for k, v in l.items():
         if k.lower() == "name" or k.lower() == "size":
             print(str(k) + ", " + str(v))
+
+
+# Uploading a file
+file_client = ShareFileClient.from_connection_string(conn_str=connection_string, share_name="testit3fs", file_path="testdir/az_local_file.txt")
+
+with open("az_local_file.txt", "rb") as source_file:
+    rv = file_client.upload_file(source_file)
+    print(rv)
 
 
 
