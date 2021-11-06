@@ -81,7 +81,7 @@ class FilShareUtilityWorker:
 
     # TODO
     def fs_download_file():
-        """ Download a file from dir """
+        """ Download a file from file share """
         pass
 
 
