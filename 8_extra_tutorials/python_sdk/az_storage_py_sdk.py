@@ -79,11 +79,6 @@ class FilShareUtilityWorker:
         else:
             pass
 
-    # TODO
-    def fs_download_file():
-        """ Download a file from file share """
-        pass
-
 
 def main():
     worker = FilShareUtilityWorker()
