@@ -632,6 +632,33 @@ The SMB protocol requires TCP port 445 to be open; connections will fail if port
 The Azure File Sync service is used as a file distribution service. The ideal solution to use here is the Content Delivery service. For more information on the File Sync Service, one can go to: https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-planning
 
 Section 11 Implement backup and recovery
+
+Azure backup:
+Backup and Site Recovery:
+Recovery services vault:
+Location is extremely important, vault has to be in same region as resource, but not the same rg
+If resources in many regions, create vault in all.
+
+Vault has: functions
+Backup; governance purpose, vm, etc.
+Disaster recovery: Site recovery / replication = replicate server to vault, if disaster and main server down. Restore the recovery into a new region (15 + min)
+
+Backup:
+Azure or onprem(backup service software download and install on-prem (it will compress all files to a container)
+backup of :vm, fileshare, SQL server in vm.
+
+example with fileshare
+Policy: schedule, retain for ? (continue to have)
+Enable Backup
+
+View backup:
+Protected items:
+Backup items
+(Replication items)
+
+File recovery from a VM Backup:
+
+
 Section 12 Azure Virtual Machines
 Section 13
 Section [...]
