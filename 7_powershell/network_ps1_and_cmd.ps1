@@ -15,33 +15,6 @@ ping www.google.com -t # CMD
 # 2 Check connectivity based on port or service
 Test-NetConnection -ComputerName xxx.xx.xxx.xx -Port 1000
 
-# In a loop:
-$test = @('remotehostname:80','remotehostname:9548','remotehostname:4561', 'remotehostname:4562')
-
-Write-Output "check server and port, lazy admin at:"
-$env:computername
-
-Foreach ($t in $test)
-{
-  $source = $t.Split(':')[0]
-  $port = $t.Split(':')[1]
-  
-  Write-Host "Connecting to $source on port $port"
-
-  try
-  {
-    $socket = New-Object System.Net.Sockets.TcpClient($source, $port)
-  }
-  catch [Exception]
-  {
-    Write-Host $_.Exception.GetType().FullName
-    Write-Host $_.Exception.Message
-  }
-
-  Write-Host "Connected`n"
-}
-
-
 
 # netstat
 # netstat [-a] [-b] [-e] [-n] [-o] [-p <Protocol>] [-r] [-s] [<interval>] #CMD
