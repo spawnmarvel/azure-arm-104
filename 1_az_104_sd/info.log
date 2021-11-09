@@ -657,6 +657,18 @@ Backup items
 (Replication items)
 
 File recovery from a VM Backup:
+From VM->Backup ->Vault service
+Can then do file recovery from snap, mount disk (12 hours)
+
+On-premises Backup:
+Select on-prm from valut, download agent run it on vm
+choose files, schedule etc.
+Backup bare metal, then must prepare infrastructure in vault.
+MS SQL, then must prepare infrastructure in vault.
+
+Backup reports:
+
+
 
 
 Section 12 Azure Virtual Machines
