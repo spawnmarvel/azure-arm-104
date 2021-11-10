@@ -670,10 +670,25 @@ Backup reports:
 
 
 
-Section 12 Azure Virtual Machines
-Section 13
-Section [...]
-Section 25
+Section 12 Azure Virtual Machines (58)*
+Section 13 Windows and Linux VMs (25)*
+Section 14 Manage Azure VM (24)*
+Section 15 Manage VM Backups (8)*
+
+Section 16 Azure App Service (39)
+Section 17 Azure Kuberernetes Services (AKS) (32)
+
+Section 18 Manage Virtual Networking (48)*
+Section 19 Implement and manage virtual Networking (22)*
+Section 20 Configure name resolution (22)*
+Section 21 Secure access to virtual networks (15)*
+
+Section 22 Configure load balancing (47)
+
+Section 23 Monitor and troubleshoot virtual networking (55)*
+
+Section 24 Monitor resources by using Azure Monitor (26)
+Section 25 Wrap up (25)
 
 
 

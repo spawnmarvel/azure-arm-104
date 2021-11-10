@@ -10,7 +10,7 @@ Create an SMB file share
 How to create an NFS share (preview)
 Mount:
 Mount SMB Azure file share on Windows = done
-Mount SMB Azure file share on Linux
+Mount SMB Azure file share on Linux = same procedure, script
 
 ***********************************************************************************************************
 New to event hub:
