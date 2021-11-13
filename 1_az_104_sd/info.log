@@ -667,6 +667,74 @@ Backup bare metal, then must prepare infrastructure in vault.
 MS SQL, then must prepare infrastructure in vault.
 
 Backup reports:
+Diagnostics turn on and send to arc strorage, event hub or send to log analytics.
+What to send:
+back reports
+site recovery jobs
+site recovery event
+etc
+
+NEW Soft delete
+We can change our mind, can be un- before 14 days has gone
+14 days to delete backup data
+
+
+NEW Azure Site Recovery / ASR to Site-to-Site Replication.
+How to set uo for High avaliabilty?
+-load balancer, , distributing the work over multiple machines etc.
+
+But what if entire region goes down?
+East Us not available->Disaster recovery
+Copy of env ready to go (ASR), copy of entire solution and ready to deploy.
+ASR synchronization off all data up to seconds.
+High avaliabilty with respect to data being abot to recovery quickly.
+
+Example
+go to rg->disaster recovery->choose region->
+Paired region with high speed, use that.
+It will create rg group, new net and and replicate it, it takes time.
+rg az304new
+rg az304new-asr
+
+This takes time
+go to rg->vm->disaster recovery->
+When the job is started (it looks like nothing happend)
+It will show up eventually.....
+97 % synchronization
+
+Can also view it in Recovery service valut->site recovery jobs (but can take time)
+
+
+NEW ASR Test failover:
+Check if replication is healty
+go to rg->vm->disaster recovery->
+Replicated items->Test failover to verify that the failover worked correctly
+It does not impact the running VM.
+Replicated items->Failover, then replication breaks, gets the new VM running i other region and no more data would be copied. (Permanent)
+
+Having ASR VM ready does have a cost, but not so much as a duplicte vm.
+But storage cost and and GB transmitted between WEST US and Est US 2 for example.
+
+TEST THE DISASTER RECOVERY FAILOVER:
+
+create test vnet, in same rg az304new-asr and same region EAST US 2.
+Accept default, create.
+Back to orginal vm in az304new->Disaster recovery->Test Failover
+Recovery point
+Choose test vnet we just created->OK
+This should not take long since it is for HA.
+
+To know that that it worked got az304new-asr, check VM and vnet. or check status on replicated items
+
+Last step, got to vm in az304new,Disaster recovery->Clean up test failover.
+
+for a real faileover, it would stop replication from vm to vm (the sync), so testing is what we do until w ehave a real disaster.
+
+
+
+
+
+
 
 JUST VIEW THE REST (6 h approx.), MS LEARN IS HANDS ON!
 

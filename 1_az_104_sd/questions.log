@@ -160,7 +160,23 @@ You deploy Azure File sync,doed this meet Requirements?
 nooooooo
 The Azure File Sync service is used as a file distribution service. The ideal solution to use here is the Content Delivery service. 
 
+11
+Implement backup and recovery
 
+web-based app called myweb-app, users all over world, the app is critical app so 
+we need to ensure bck solution:
+*
+To bck any rg, the number one is to create recovery services valut.
+2
+Company has:
+az account and subscription, vm, there is a need to create/protect with azure bck.
+need rule for bck, daily at 12 and stored for 45 days.
+*
+MS docs say-> all schedule information in the backup policy
+3
+Primary goal of cloud bck servcie is:
+*
+Prevent data loss, by bck for vm and other rg's that has/stores data
 
 
 
