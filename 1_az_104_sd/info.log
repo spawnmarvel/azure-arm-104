@@ -732,7 +732,46 @@ for a real faileover, it would stop replication from vm to vm (the sync), so tes
 
 
 Section 12 Azure Virtual Machines (58)*
-TODO
+TODO, DONE this 100 times, any more tips from Scott D?
+
+Create a virtual machine:
+
+Tips:
+different pricing for different locations
+
+Azure spot instance, just for low priority and dont mind beeing (like sitting on a seat that someone owns, until they appear and claim the seate)
+Then this is cheaper....
+
+Inbound allow default: (this will allow all IP's) to:
+HTTPS/SSH or RDP
+
+All VMs are encrypted, but can enecrypt more....
+Accelerate networking, just for some VM's, it is high speed.
+
+Tips: Management:
+Save money for test:
+Auto-shutdown:
+Enable auto shutdown, so not big bill, set to 11.pm for example.
+Can also set up bck here.
+
+Advanced:
+Extensions, install some software or configuration with scripts.
+Host group, provision and managed physical server, your own machine, not shared with other.
+
+Proximity placement group, oppsite of avaliabilty set (put machines far enough appart, so if one goes down, the others are not affected)
+Proximity placement group is the opposite, putting resources  physically close together in the same region.
+
+An availability set is a logical grouping of VMs that allows Azure to understand how your application is built to provide for redundancy and availability. 
+We recommended that two or more VMs are created within an availability set to provide for a highly available application and to meet the 99.95% Azure SLA. 
+There is no cost for the Availability Set itself, you only pay for each VM instance that you create.
+
+Tags is important.
+
+Download template for automation, yes....
+
+Connect to a virtual machine
+
+
 
 Section 13 Windows and Linux VMs (25)*
 Section 14 Manage Azure VM (24)*
