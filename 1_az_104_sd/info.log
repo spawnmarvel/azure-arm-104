@@ -731,14 +731,9 @@ Last step, got to vm in az304new,Disaster recovery->Clean up test failover.
 for a real faileover, it would stop replication from vm to vm (the sync), so testing is what we do until w ehave a real disaster.
 
 
-
-
-
-
-
-JUST VIEW THE REST (6 h approx.), MS LEARN IS HANDS ON!
-
 Section 12 Azure Virtual Machines (58)*
+TODO
+
 Section 13 Windows and Linux VMs (25)*
 Section 14 Manage Azure VM (24)*
 Section 15 Manage VM Backups (8)*
@@ -757,6 +752,9 @@ Section 23 Monitor and troubleshoot virtual networking (55)*
 
 Section 24 Monitor resources by using Azure Monitor (26)
 Section 25 Wrap up (25)
+
+
+JUST VIEW THE REST (6 h approx.), MS LEARN IS HANDS ON!
 
 
 
