@@ -44,6 +44,19 @@ Hi spawnmarvel! You've successfully authenticated, but GitHub does not provide s
 
 https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
 
+### Adding or changing a passphrase:
+
+https://docs.github.com/en/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases
+
+```sh
+$ ssh-keygen -p -f ~/.ssh/id_ed25519
+> Enter old passphrase: [Type old passphrase]
+> Key has comment 'your_email@example.com'
+> Enter new passphrase (empty for no passphrase): [Type new passphrase]
+> Enter same passphrase again: [Repeat the new passphrase]
+> Your identification has been saved with the new passphrase.
+```
+
 ## Stuff about Azure, ARM, Powershell and more. Continued from 
 
 https://github.com/spawnmarvel/azure-arm
