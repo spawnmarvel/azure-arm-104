@@ -71,7 +71,8 @@ https://github.com/spawnmarvel/azure-arm
 
 ### Folders
 1. AZ-104 Udemy S.D
-2. [Microsoft-Certified-Azure-Administrator-Associate] https://docs.microsoft.com/en-us/learn/certifications/azure-administrator/
+2. AZ-104 Official Course Study Guide MS AZ-104+Official+Course+Study+Guide.pdf
+2.1 ([Microsoft-Certified-Azure-Administrator-Associate] https://docs.microsoft.com/en-us/learn/certifications/azure-administrator/)
 3. Compute
 4. Storage
 5. Network
