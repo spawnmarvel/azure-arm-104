@@ -770,6 +770,11 @@ Tags is important.
 Download template for automation, yes....
 
 Connect to a virtual machine..
+When not using it, stop it so not cost
+
+Vm availability
+Availability options must be created on creation.
+
 
 
 
