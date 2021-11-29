@@ -775,9 +775,6 @@ When not using it, stop it so not cost
 Vm availability
 Availability options must be created on creation.
 
-
-
-
 Section 13 Windows and Linux VMs (25)*
 Section 14 Manage Azure VM (24)*
 Section 15 Manage VM Backups (8)*
