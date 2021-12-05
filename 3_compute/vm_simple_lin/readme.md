@@ -103,6 +103,7 @@ Write-Host $passWordSecure
 
 ### 5 Use SSH/Putty to login
 Get the IP from Azure VM
+Open Az CLI-> Type ssh vmname@ip, then agree and give password. But please use private key file in prod.
 
 ### 6 Check resources/remove (change rg) if needed
 Use the scripts:
