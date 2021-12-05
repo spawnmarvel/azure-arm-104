@@ -1,2 +1,26 @@
 Section 13 Windows and Linux VMs (25)*
 
+Modifying existing ARM templates Part 1:
+ARM (opposite model not used ASM)
+When we create vm we can look at template and paramters file.
+Can download the both files and download script to deploy the template (the spesific onw) for ps1, ruby and .net and cli.
+
+Template:
+
+* JSON
+* Schema URL
+* ContentVersion for you to increment
+* Parameters file
+* Varables similar to parameters, but are compute fields, aka rg function, name of rg, and createting a vnet of that.
+* They are constructed
+
+* Output
+The key section is the resource section
+
+Parameters:
+* 1 param for each param defined in the template
+* Template location para , a string->paramters file has the string parameter "West Europe" for example
+
+Modifying existing ARM templates Part 2:
+
+
