@@ -75,18 +75,6 @@ New-AzResourceGroupDeployment -Name $deployName `
   -virtualNetworkId $vnetId `
   -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -WhatIf
 ```
-### 3 This vm uses an existing vnet
-deploy_vm.ps1
-
-```ps1
-# connect to azure first
-# Connect-AzAccount
-$sub = Get-AzSubscription
-$vnet = "testit2-vnet"
-$rgName = "testit2-rg"
-# create rg
-$resourceGr = New-AzResourceGroup -Name $rgName -Location "west europe" -Force
-```
 
 ### 4.1 Secure the password if not using keyvault
 
@@ -105,7 +93,8 @@ Write-Host $passWordSecure
 Get the IP from Azure VM
 Open Az CLI-> Type ssh vmname@ip, then agree and give password. But please use private key file in prod.
 
-### 6 Check resources/remove (change rg) if needed
+### 6 Scripts
 Use the scripts:
-get_rg_resources.
+get_rg_resources
+deploy_vm # test with -WhatIf, deploy with -Verbose or -Debug
 remove_rg.ps1
