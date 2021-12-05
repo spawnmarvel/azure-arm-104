@@ -75,7 +75,21 @@ New-AzResourceGroupDeployment -Name $deployName `
   -virtualNetworkId $vnetId `
   -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -WhatIf
 ```
+### 3 This vm uses an existing vnet
+deploy_vm.ps1
+
+```ps1
+# connect to azure first
+# Connect-AzAccount
+$sub = Get-AzSubscription
+$vnet = "testit2-vnet"
+$rgName = "testit2-rg"
+# create rg
+$resourceGr = New-AzResourceGroup -Name $rgName -Location "west europe" -Force
+```
+
 ### 4.1 Secure the password if not using keyvault
+
 ```ps1
 $var = Get-Content ".\keyvault.txt"
 $arr = $var.Split([Environment]::NewLine)

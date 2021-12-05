@@ -772,10 +772,105 @@ Download template for automation, yes....
 Connect to a virtual machine..
 When not using it, stop it so not cost
 
+SLA is only covered for premium SSD for SLA 99.9%, can do better then that ->
+
 Vm availability
 Availability options must be created on creation.
+Availability set: 
+two or more VMs that are identical, LB on front of them.
+99.95 SLA since it it two or more (less then 1 min a day)
+
+Availability zone (different datacenters):
+choose where to deploy the vms, zone 1, 2 and 3.
+So physically placing them in a building
+99.99 SLA (9 sec a day)
+Availability zone is the way to go if availability and high availability is needed.
+
+One thing:
+availability set has a name:
+Fault domain = unforseen, aka power supply, switch issue etc.  Max 3 fault domains even if you have 20 vms.
+
+update domain = patch roll out, 20 max domains, 20 vm, roll out 1, 2 , 3 , 4, 1 at a time, boot start.
+if 4 update domains and 2 vm, patch 5 in one go, then next 5.
+
+Monitoring basic:
+Overview of VM
+Pin button = put to dashboard
+But also Diagnostics at the bottom, must enable it.
+enable guest-level monitoring = WMI agent on vm for WMI data and  a new storage account for the data.
+Performance counters avaliabilty
+60 sec rate to not stress stress server, if more othen, must alter custom.
+Logs tab, event log, can also take IIS and tracing for .Net apps:
+Agent:
+If issue with agent, button for remove it and then unstall it again.
+
+Insight tab-> must have workspace or create it for analytics.
+
+Custom script extension:
+Script after deployement (new wm is empty)
+VM->Settings->Extensions->add powershell custom script extension
+get file, browse
+arguments
+
+Operations->Run command-<powershell here also (remotely)
+
+Bastion service:
+RDP = Windo
+SSH = Linux
+BASTION = Bastion must exist on own subnet.
+Not need to open RDP Port.
+Connect to vm via Bastion server, more secure way.
+No RDP or SSH and no public IP.
+Just username and password and a login browser
+
+virtuale machine scale set:
+grow/shrink resources
+virtual machine scale set = two or more vms with LB
+create set name
+no availability set, but have availability zone.
+user / pass, al vms gets the same
+can use existing LB or new
+instance of vms = 2 or more.
+scalling
+min vm = 1, max vm = 5
+scale out %
+scale in %
+Health monitoring built in
+Automatic repair, delete and re instance vms.
+Spreading algorithm if using availability zones
+
+Can make the same ourselfs or use this.
+There is no cost for virtuale machine scale set (just normaal vm cost etc)
+
+Create vm in ps1:
+az module ps1.
+
+verb (new, get, delete) followed by hyphen followed by az, followed by servicename.
+New-AzResourceGroup
+Delete-AzResourceGroup
+Get-AzResourceGroup
+
+New-AzVM -ResourceGroupName "a name" 
+-Name "vmname" 
+-Location "EastUs" 
+-VirtualNetworkName "newvnet" 
+-SubnetName "default"
+-SecurityGroupName "newNSG" 
+-PublicIpAdress "myipadr_think_about_why_not_or_use_a_proxy" 
+-OpenPorts 80,443, 3389 # By default none, but maybe webserver and rdp.
+ 
+Hit enter, userid and pass
+
+Now view it in portal, many things was left out here.
+Azure took the default for thoose:
+DS1 vm
+win server 2016
+
+Just a demo.
 
 Section 13 Windows and Linux VMs (25)*
+see info_important.log
+
 Section 14 Manage Azure VM (24)*
 Section 15 Manage VM Backups (8)*
 
