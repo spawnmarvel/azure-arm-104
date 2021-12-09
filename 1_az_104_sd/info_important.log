@@ -19,8 +19,15 @@ The key section is the resource section
 
 Parameters:
 * 1 param for each param defined in the template
-* Template location para , a string->paramters file has the string parameter "West Europe" for example
+* Template location para , a string-> paramters file has the string parameter "West Europe" for example
 
 Modifying existing ARM templates Part 2:
+resource section:
+VM:
+dependsOn: The vnet has to exist before the NIC, the public ip has to exists and the NSG.
+ARM is big, it is the backbone.
+Important to understand it for exam.
+
+Modifying existing ARM templates Part 3:
 
 
