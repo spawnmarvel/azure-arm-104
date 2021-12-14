@@ -29,4 +29,231 @@ ARM is big, it is the backbone.
 Important to understand it for exam.
 
 Modifying existing ARM templates Part 3:
+Download a template after review create:
+Minimum changes to create a new vm in the same:
+region and resource group:
+is (in the parameters file):
+New NIC (name)
+Keep same NSG, same vnet, not changing the vnet or subnet name
+New public IP add (name)
+New virtuale machine (name)
+* Then the VM can be launched side by side in the same resource group
+Keep the disk, username but add password.
+
+Azure will review and verify all properties.
+If it exists it will just validate it, if not it will make it.
+DSC = Desired State Configuration
+DSC will ensure this, so you can redeploy over and over to test this.
+
+Modifying existing ARM templates Part 4:
+Improved over the years.
+
+Template
+Parameters
+and scripts.
+But scripts are not soo easy to figure out, bla bla.
+Use powershell for example, you know where it is.
+Can add template to library under -> create virtual machine->templates
+
+New-AzResourceGroupDeployment -Name $deployName `
+  -ResourceGroupName $resourceGr.ResourceGroupName `
+  -virtualNetworkId $vnetId `
+  -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -WhatIf
+
+
+Use command line is good for ARM.
+
+Azure biceps is coming.
+https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview
+
+You can use Bicep instead of JSON to develop your Azure Resource Manager templates (ARM templates). 
+The JSON syntax to create an ARM template can be verbose and require complicated expressions. 
+Bicep syntax reduces that complexity and improves the development experience. 
+Bicep is a transparent abstraction over ARM template JSON and doesn't lose any of the JSON template capabilities. 
+During deployment, the Bicep CLI converts a Bicep file into ARM template JSON.
+
+A Bicep file declares Azure resources and resource properties, without writing a sequence of programming commands to create resources.
+
+Resource types, API versions, and properties that are valid in an ARM template are valid in a Bicep file.
+
+Deploy Linux VM using ARM templates 92:
+
+Modify ARM template from dowloaded templates/file above.
+Modify section of virtual machine, the image reference with a Linux variant to change OS and and also:
+
+New NIC (name)
+Keep same NSG, same vnet, not changing the vnet or subnet name
+New public IP add (name)
+New virtuale machine (name)
+* Then the VM can be launched side by side in the same resource group
+Keep the disk, username but add password, or use phasephrase
+
+
+"imageReference": {
+                        "publisher": "Canonical",
+                        "offer": "UbuntuServer",
+                        "sku": "18.04-LTS",
+                        "version": "latest"
+                    }
+
+
+ "imageReference": {
+                        "publisher": "MicrosoftWindowsServer",
+                        "offer": "WindowsServer",
+                        "sku": "2016-datacenter-gensecond",
+                        "version": "latest"
+                    }
+
+
+
+ARM Custom Script Extensions 93:
+Challenges:
+ARM template to deploy->fresh Windows or Linux, but how to get your code on it?
+
+
+Custom Script Extensions:
+
+https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-tutorial-deploy-vm-extensions
+
+Edit the template
+Add a virtual machine extension resource to the existing template with the following content:
+
+It can be a github link, a local file for example.
+The custom script extensions can be included in ARM template to get your VM to a useful running state once it's deployed.
+
+{
+  "type": "Microsoft.Compute/virtualMachines/extensions",
+  "apiVersion": "2021-04-01",
+  "name": "[concat(variables('vmName'),'/', 'InstallWebServer')]",
+  "location": "[parameters('location')]",
+  "dependsOn": [
+    "[concat('Microsoft.Compute/virtualMachines/',variables('vmName'))]"
+  ],
+  "properties": {
+    "publisher": "Microsoft.Compute",
+    "type": "CustomScriptExtension",
+    "typeHandlerVersion": "1.7",
+    "autoUpgradeMinorVersion": true,
+    "settings": {
+      "fileUris": [
+        "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1"
+      ],
+      "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File installWebServer.ps1"
+    }
+  }
+}
+
+ARM Use Existing VHD (Virtual Hard Drive) 94:
+So instead of using custom scripts, you can use a VHD to have a VM ready to go.
+It will be all the same things:
+Storage account, IP address, NIC and so on.,
+The relevant part is the disk, where you are passing in URI of an existing disk.
+So you are creating a disk that is an important of of an existing VHD.
+So no Windows/Linux etc.
+You copy the VHD and create a VM from it.
+
+
+https://docs.microsoft.com/en-us/azure/virtual-machines/windows/create-vm-specialized-portal
+
+Copy a disk
+Create a snapshot and then create a disk from the snapshot. This strategy allows you to keep the original VHD as a fallback:
+
+Create a VM from a disk
+After you have the managed disk VHD that you want to use, you can create the VM in the portal
+
+
+ARM Templates for Almost Everything 95:
+
+https://github.com/Azure/azure-quickstart-templates
+
+https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts
+
+
+Section 14 Manage Azure VM (24)*
+
+Add Data Disks to VM:
+Data disk->Create and attach a new disk
+Lun, Name, Size etc...
+Hit save from portal, it will then be attached.
+Can detach and attach it to a different VM .
+If you need to resize it, then detach it first.
+
+Add NIC Interface to VM:
+Most normal situations:
+VM->Singel NIC->Adn belongs to a singel vnet and subnet.
+
+VM->Two NICS-> is possible.
+Just for test:
+Two VM's each belongs to same subnet.
+10.0.16.0/24 is present, VM'S uses default subnet
+VM2 NIC 10.0.16.4
+VM3 NIC 10.0.16.5
+
+Present address range 10.0.16.0/24, can view in the portal available address spaces, in this case 249
+Add second address range 10.16.16.0/24, now we are doubling the size of the vnet
+and add a new subnet, that is called second from range 10.16.16.0/24 (available address spaces 251)
+
+Go to VM, stop it, Networking tab->Attach network interface.
+Name
+We are forced to use same virtual network, bit now we can chnage subnet to 10.16
+Keep default, create
+Now a VM with two tabs with two NICS, private IP on one and public IP on one NIC.
+
+Change VM size:
+Up or down, disruptive, a bit down time.
+
+Redeploy VM:
+In RG->Resources->Tab move at the top (or ps1, .sh)
+What if VM with issues (RDP, Networking etc): redeploy it.
+How to redeploy:
+
+https://docs.microsoft.com/en-us/troubleshoot/azure/virtual-machines/redeploy-to-new-node-windows
+
+If you have been facing difficulties troubleshooting Remote Desktop (RDP) connection or application access 
+to Windows-based Azure virtual machine (VM), redeploying the VM may help. 
+When you redeploy a VM, Azure will shut down the VM, move the VM to a new node within the Azure infrastructure, 
+and then power it back on, retaining all your configuration options and associated resources. 
+
+The following example deploys the VM named myVM in the resource group named myResourceGroup:
+
+Set-AzVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
+
+Can also use VM->Redeploy button
+
+success alert
+Good job!
+Yes, if you Redeploy the VM, it will be allocated to a different hardware cluster. 
+This will ensure that demovm is not affected by the maintenance. 
+If you go to the Redeploy blade of your Virtual Machine, you can see the ability to relocate the VM on a different host.
+
+VM Server-side Encryption Services (SSE):
+
+Create VM options, disk encryption:
+default option platform managed key
+customer managed key
+double managed platform and customer key, must have both keys to encrypt.
+VHD is encrypted 
+
+Azure Disk Encryption (ADE): 
+Encryption Services inside OS, windows also has bitlocker.
+Content of VHD is encrypted
+
+Bit locker tutorial:
+Create a virtual machine->created
+CLI, PS1 or Portal.
+Portal:
+View disk, already SSE with PMK
+-> Wheel->Additional settings->Encryption settings, ADE.
+Choose disk, OS fo example (must have key vault for this)
+Key vault, check Azure Disk Encryption for volume encryption
+
+Disk settings, choose key vault
+This is disruptive for the VM, must reboot.
+on the VM->Disk screen we have now->SSE with PMK & ADE
+
+Section 15 Manage VM Backups (8)*
+
+
+
+
 
