@@ -253,6 +253,24 @@ on the VM->Disk screen we have now->SSE with PMK & ADE
 
 Section 15 Manage VM Backups (8)*
 
+Introduction to VM Backups 103:
+vm->operations->backup
+create new recovery service vault or use existing.
+(This vault must be in same region)
+
+Key concepts is policy:
+
+Policyname:
+Frequency: daily
+Time 8:00 pm
+Timezone
+Retain:90 days.
+Note:
+Daily bck for 30 days.
+Weekly bck for 12 weeks
+Enable bck
+
+VM Backups Jobs and Restore 104:
 
 
 
