@@ -880,9 +880,157 @@ Section 15 Manage VM Backups (8)*
 see info_important.log
 
 Section 16 Azure App Service (39)
+Web App:
+Abstraction over hardware, you dont have control.
+You dont even know what characteristics the hardware has.
+You do not have access to it.
+* Upload code
+* Configure
+* Azue run it.
+
+Web App:
+* Built in integration MS VS 
+* integration Azure DevOps
+* integration github actions
+* ready to go environment
+
+Similar to to running a app in IIS
+Deploy to a dir and its already configured.
+Web App (APP or API og mobile backend)
+
+Easy to get code into a web app compared to VM.
+
+App Service Plan(108):
+Web Apps need App service plan, it is the hosting.
+Resources constrained, this is what you pay for.
+* Can have x amount apps in same service plan.
+* Can create service plan at the same time.
+
+App Service Plan:
+* Hosting, cost
+New rg
+Plan name
+Choose OS, Linux or Windows
+Region, close to user.
+Last is Pricing Tier:
+1 Dev/Test
+2 Production
+3 Isolated
+
+View 1 Dev/Test:
+Tier: F1, B1, B2, B3
+For Linux there is also a free plan.
+But use B plan.
+100 (200, 400) total ACU, Azure Compute Unit, relative performance.
+But constraintes
+B1
+* Custom domain
+* SSL certificate
+* scalling
+* 10 GB storage
+
+2 Production
+All is higer
+Tier P1V2, P2V2, P3V2, S1, S2, S2
+Premium and standard
+* Standard :Backup, more storage, scale higher etc.
+* Premium :Backup, more storage, scale higher etc.
+
+For example:
+P1 plan:
+*can run 10 webapps, 10 different URLS sharing resources.
+
+Web Apps (109):
+Test create with B1 Dev/Test
+* Linux
+* Basic sku
+* size small
+* ACU 100
+* Memory 1.75 GB
+
+This is our hosting area.
+
+New->Web App->Create
+Basic
+* same rg as app service plan
+* name, many taken
+* Publish:
+Code or container docker.
+For now code
+Runtime stack->select by what OS you use.
+So in this case we can choose .Net core
+* App service plan: The one we created above.
+
+Monitoring:
+Can enable application Insight.
+Next->Done.
+NOTE: We do not pay for the app, just the plan.
+
+Web App settings(110):
+
+Go to rg->URL
+It opens default page, to check that it works.
+In the portal->there is stop, start, restart, swap etc.
+
+Deployments blade:
+Deployments center->
+*CI/CD 
+** Azure repos 
+** github
+** Bitbucket
+** Local git 
+** (Manual with FTP also)
+Trigger a publish.
+
+Settings->Configuration->Application settings
+Familiar with IIS, same set up.
+* Application settings var is like web.config file
+* Connection settings, keep it out of code, db settings deploy to portal and not sitting in code.
+General settings:
+* stack
+* change version
+* ftp allow
+* Always on or off
+* ARR affinity, session, state stored
+* Debugging and more
+
+Custom domain, Force HTTPS only.
+Networking tab:
+* This is an outbound conection from wepp app to resources on a private virtual network.
+So you can:
+Enable or whitelist wepp app to acces any VMS/DB or other rgs in Azure.
+
+Azure front door:
+load balancing
+CDN also
+
+Scaling Web Apps (111)
+* Options for scaling if app service plan is filling.
+2 Options
+1 Scale up (resources, moving to the next plan, B1->B2->Apply, seamless for users)
+2 Scale out (more flexble, manual scalling, double the number of processes)
+* Scale out to 1 instance count = basically creating a second app service plan, and apps are duplicated, Azure automati puts a LB in front as well.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Section 17 Azure Kuberernetes Services (AKS) (32)
 
 Section 18 Manage Virtual Networking (48)*
+see info_important.log
+
 Section 19 Implement and manage virtual Networking (22)*
 Section 20 Configure name resolution (22)*
 Section 21 Secure access to virtual networks (15)*
