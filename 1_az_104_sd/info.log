@@ -1010,26 +1010,77 @@ Scaling Web Apps (111)
 1 Scale up (resources, moving to the next plan, B1->B2->Apply, seamless for users)
 2 Scale out (more flexble, manual scalling, double the number of processes)
 * Scale out to 1 instance count = basically creating a second app service plan, and apps are duplicated, Azure automati puts a LB in front as well.
+* This gives for example 2 B1'S, there is max instance on each plan (B1 = 3)
+* Move from B1 to S, gives 10 instances.
+* P has option for auto scaling, must add rules. Scal up CPU > 75%, Scale Down CPU < 10% (wait 5 min)
+* Default instance 3 for example
+
+Backup Web Apps (112):
+S plan has 10 bck a day, P has 50
+
+What is backedup?
+* Configuration settings
+* App files, everything you deploy
+* Also databases assiciated with web app
+
+App Service->Settings->Backup
+*Backup storage account, must be in same subscription
+*Backup schedule or manually
+*Backup database and include it in the bck
+
+* Schedule is derived from tiers, the amount of backups on each tier and cost to storage acc.
+Press backup
+
+Can also restore->go back to a point.
+
+App Service Networking(113):
+
+The concepts has changed a lot over the years.
+App service, a multi tenant service. You and other customer running on same HW if a standard or premium plan.
+MS managing traffic, isolating and so on.
+Challenge:
+App service great abstraction over the underlying infrastructure of VMS and Networking.
+But what if you need some confuguration over it?
+* App service->Networking
+** Inbound traffic
+** web app
+** outbound traffic
+
+What can we restrict on inbound?
+By default app service has public IP and public domain name.
+*  Access restriction (similar to NSG, allow/deny rules)
+NOTE. When you have an app service, you have 2 endpoints.
+1 Public web endpoint, myapp.azurewebsites.net
+2 Administration endpoint (where you do the deployment), myapp.scm.azurewebsites.net
+
+* SSL settings, if you need to control SSL certificate, then must turn on->App assigned addresses
+
+Web app:
+* domains
 
 
+What we reallt want to look at is VNET integration:
+Outbound traffic
+* VNET integration
+** allows private traffic to travel from VNET, which could be VM connected to VNET to the app service that dows not travel over internet.
+*** Then you could restrict traffic coming in, you could just block all incoming traffic and only allow over VNET integration.
 
+Outbound address = all IPS your app can conect to.
 
+* CDN and front door also
+But you could put a LB in front of it or app server application gateway in front of it.
 
-
-
-
-
-
-
-
-
-
+Basically:
+Great to have all on one place.
+VNET integration, where you allow only private internal MS communication to this.
+Can also turn on/off access to spesific rgs for the application, both the fron door and the deployment endpoint.
 
 
 Section 17 Azure Kuberernetes Services (AKS) (32)
+TODO
 
 Section 18 Manage Virtual Networking (48)*
-see info_important.log
+see info_important.log TODO
 
 Section 19 Implement and manage virtual Networking (22)*
 Section 20 Configure name resolution (22)*
