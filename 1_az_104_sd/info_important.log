@@ -271,6 +271,25 @@ Weekly bck for 12 weeks
 Enable bck
 
 VM Backups Jobs and Restore 104:
+VM->Backup->Backup jobs->
+(This took 5.6 hh)
+
+VM->Backup->Restore points(num)
+Datetime, application consistent->Restore VM
+
+Restore configuration:
+* Create virtual machine (Copy of previous VM only)
+* Restore Disks 
+(if you got certain settings into a storage acc, 
+virtual network service endpoints etc.
+It will restore the disk in the same storage acc,
+and then you can start the VM from there.)
+
+Staging, tmp storage acc, non premium.
+
+Created a new VM from the a backup, so now two identical machines.
+Also option for Replace existing VM and disk to go back to a restore point.
+
 
 
 
