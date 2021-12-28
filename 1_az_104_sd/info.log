@@ -1077,7 +1077,46 @@ Can also turn on/off access to spesific rgs for the application, both the fron d
 
 
 Section 17 Azure Kuberernetes Services (AKS) (32)
-TODO
+Introduction to Containers(115):
+
+One way to run container is Web App:
+
+* Can push and run image anywhere
+* Ref web app container publish code or container function.
+* Can choose Web App and select publish: container instead of code as previous shown.
+* That one is way tp run container, then you get all the benefist of Web Apps.
+** scaling, auto scale, monitoring etc.
+
+Most popular way is Kubernetes:
+* Former Google standard, but is now industry standard.
+* Enterprise grade service, lot of rgs required, not cheap.
+
+If:
+* Code in Containers
+* HA
+* And more then Kubernetes service
+
+A third way is Container service:
+* Fast, simple
+* No scaling
+* For demos and dev, not long turn production.
+* Can be used for Kubernetes bursting for quick nodes
+
+Can also run container in VM:
+* Install docker
+* You are responsible for that
+
+Also Service Fabric (MS alternative to Kubernetes):
+* Support Containers
+* Can also add outside servers, ie 2 VMS in Azure, 3 in AWS, and 3 on-prem.
+
+
+Create AKS Cluster(116):
+
+
+
+
+
 
 Section 18 Manage Virtual Networking (48)*
 see info_important.log TODO
