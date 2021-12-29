@@ -1113,6 +1113,56 @@ Also Service Fabric (MS alternative to Kubernetes):
 
 Create AKS Cluster(116):
 
+Basic
+Create resource->Kubernetes service
+* It runs on VMS, is an abstraction.
+* Cluster name
+* Region and version
+* Node size (here is the cost) and node count
+
+Node pools:
+can run several containers, minimum of 1 node pool.
+Virtual nodes, instant scaling, ACI, Azure container instance, faster scaling, burstable (cannot wait 5 min).
+VM scale set, is also available.
+
+Authentication:
+RBACK
+
+Networking:
+* Create new network, basic setting, create NSG to do sec.
+* DNS name prefix, connect to cluster using common name.
+* Public ip not used here
+* LB is set to standard
+* Leave rest default
+
+Monitoring:
+* Enable it, cause want to get data out from containers and use Azure tools.
+
+Tags:
+
+Create and then it wil be a running Kubernetes cluster.
+
+Kubectl(117):
+Kubernetes server->cluster->Node pools to see and add pool, scale is on the 3 dots to the right.
+
+cloudshell has instant accees to Kubernetes (az cli used here).
+If you want it local:
+AZ cli:
+* connect to Azure
+* az aks (allow cli to conect to aks and download appropriate called Kubectl.
+
+How to interact with the above created cluster:
+* az aks get-credentials --resource-group rgname --name clustername
+Now we have the right context and can run Kubectl
+* kubctl get nodes
+Now we are talking inside Kubernetes
+Deploy an app to this (there is no IIS, tomcat listening, we have to deploy that)
+
+Deploy a conatiner to AKS(118):
+
+
+
+
 
 
 
