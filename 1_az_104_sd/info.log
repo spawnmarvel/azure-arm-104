@@ -1158,12 +1158,49 @@ Now we have the right context and can run Kubectl
 Now we are talking inside Kubernetes
 Deploy an app to this (there is no IIS, tomcat listening, we have to deploy that)
 
-Deploy a conatiner to AKS(118):
+Deploy a container to AKS(118):
+.yaml file
+* Instructions
+* images
 
+tutorial
+https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough
 
+cp to cloud shell the yaml file.
+Edit with nano
+* What container it needs, and memory etc
+* Backend service on 6379 port
+* Frondend container on 80 port
+* Redis is backend env.
+* Lb also
 
+3 Service will be deployed with this yaml file
 
+* Deploy it and push it to the running nodes:
 
+kubectl apply -f myyamlfile.yaml
+
+* Output service name created
+* View nodes
+kubectl get nodes
+
+* View services
+kubectl get services
+
+Paste external IP in browser and view app
+
+Very easy to deploy prepackaged code, images in a container to kubernetes.
+
+But it is not the simplest solution (it all depends on needs):
+* multiple nodes
+* container
+* and kubectl for access.
+
+Simpler:
+* Web app or ACI (Azure Container Instance)
+
+Kubernetes AKS dashboard
+* it is not working in cloudshell
 
 
 
