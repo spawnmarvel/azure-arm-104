@@ -1202,11 +1202,113 @@ Simpler:
 Kubernetes AKS dashboard
 * it is not working in cloudshell
 
+Scaling kubernetes(119):
+
+kubectl get nodes (3 nodes, vms)
+*aks-agentpool-97897879878-vms00000
+*aks-agentpool-45897879878-vms00001
+*aks-agentpool-63897879878-vms00002
+
+kubctl get pods (1 front end, 1 backend)
+kubctl get pods -o (-o more info, where are they running, not only vm 0000 is used)
+*azure-vote-back
+*azure-vote-front
+
+Two ways to scale:
+* Increase num of pods
+kubectl scale --replicas=3 deployement/azure-vote-front
+
+kubectl get pods
+*Now it is 1 for backend and 3 for front
+
+kubctl get pods -o
+* Now all VMS are used, 0000, 0001, 0002
+
+yaml:
+containers:
+      - name: azure-vote-front
+        image: mcr.microsoft.com/azuredocs/azure-vote-front:v1
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+        ports:
+        - containerPort: 80
+        env:
+        - name: REDIS
+          value: "azure-vote-back"
+
+This was a DS2 servers was used here, is has 7GB of memory, and we request max 256mb of memory.
+7000 / 250 = 27.5  containers on a single server.
+
+kubectl scale --replicas=27 deployement/azure-vote-front
+* Since we have 3 VMS, it will deploy them around thoose.
+
+Scaling down:
+kubectl scale --replicas=1 deployement/azure-vote-front
+
+By scaling pods, we are not increasing cost, but using the exisiting resources we are paying for.
+We are just getting more out of them, since each container has limist on max.
+You can of course go to the:
+Kubernetes service (server)->Node pools, 3 dots and scale number manually.
+
+Can also use auto scaler:
+kubectl autoscale (more servers created when needed, min max cpu, memory etc)
+
+Installing Docker Desktop(120):
+If:
+* using finished docker images, zabbix, grafana etc
+* no need to install docker dekstop on your workstation
+* simply point container to an open repository, and you get thoose images up and running
+
+But if:
+* own code, developer
+* must have docker dekstop
+* mac, linux, win, download software
+* with WSL (windows subsystem for linux) it now works on win 10, instructions on docs.docker.com/docker-for-windows/install/
+* can also use oracle virtualbox for linux on windows
+
+When istalled:
+* create images (code)
+* publish to repository
+* deploy to Azure
+
+ACI Azure Container Instances (121):
+Quickest way to deploy a Docker container to Azure.
+* 1 AKS, servers, manage pods, scale etc much admin.
+* 2 With ACI you can just deploy the image to Azure and Azure will run it, no mange of VMS etc.
+* 3 Web app container, all features of app service in terms of deploy and so on, but need app service plan.
+
+ACI = here is an image, just run it.
+
+Create->Container Instance
+Basic:
+* rg
+* name
+* region
+* images source:
+** Quickstart images (MS default, hello world, nginx webserver (very fast), nano server (tiny IIS webserver))
+** Azure container registry (push images to private for you and link to ACR
+** Docker hub or other registry
+** Size
+
+Networking:
+* Can give FQDN, public URL
+
+create, go to rg and copi URL and visit.
+
+ACI is great for:
+* dev and demo
+* small apps, limited alerts and metrics, but a container for everyday use
+* Since it has IP, and FQDN, you can use CNAME record and put a proper domain
 
 
 
 Section 18 Manage Virtual Networking (48)*
-see info_important.log TODO
+see info_important.log
 
 Section 19 Implement and manage virtual Networking (22)*
 Section 20 Configure name resolution (22)*
