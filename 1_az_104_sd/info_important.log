@@ -292,6 +292,14 @@ Also option for Replace existing VM and disk to go back to a restore point.
 
 
 Section 18 Manage Virtual Networking (48)*
-TODO
+Virtual Networks(123):
+Public IP Addresses(124):
+Network Routing(125):
+VPNs and ExpressRoute(126):
+ExpressRoute Direct(127):
+Create Azure Firewall(128):
+Configure Azure Firewall(129):
+Virtual WAN(130):
+
 
 
