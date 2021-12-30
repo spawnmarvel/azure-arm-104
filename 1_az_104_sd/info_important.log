@@ -293,6 +293,43 @@ Also option for Replace existing VM and disk to go back to a restore point.
 
 Section 18 Manage Virtual Networking (48)*
 Virtual Networks(123):
+Create->
+Basic:
+* No cost, free
+* There are limits, 250 pr region
+* Name 
+
+IP Addresses (this is the biggest descision)
+* Restrictions in terms of creating VNET that overlap with other IP adr.
+* Anything that starts with 10 is a private IP Adr, not accessible from internet.
+* There are some IP adr that are known a as private 192, 168, 169, 127.0.0.0, will of course not work over internet
+
+Exmaple creates:
+10.0.0.0/24 Azure is telling we have a VNET with same spaces
+10.0.0.0/20, 20 block range, so cannot connect thoose two togehter.
+
+* Smart to:
+** VNET must not overlap, even if you do not want to connect, interconnect them.
+
+IP Addresses:
+* Using CIDR notation 
+10.0.0.0 the beggining of the IP adr.
+/24 the 24 bit mask, gives range from (10.0.0.0 - 10.0.0.255), 255 IP adr
+
+* The lower the number the more IP adr reserverd
+
+/16 the 16 mask, gives range (10.0.0.0 - 10.0.255.255) its multplied with 255, 65K IP Adr.
+
+MS supports IPv6 now
+All VNET SAAS require at least 1 subnet, virtual address space like the playgraound where the VNET can play.
+
+
+
+
+
+
+
+
 Public IP Addresses(124):
 Network Routing(125):
 VPNs and ExpressRoute(126):
