@@ -351,8 +351,13 @@ Security:
 * If you enable DDOS (you get intelligent DDOS, but this will cost) 
 
 Public IP Addresse(124):
-
-
+Create a public ip address:
+Home->Public IP addresses
+*Name
+*Basic, standard
+*IPv4, 6
+*Dynamic, static ip
+*
 
 
 
