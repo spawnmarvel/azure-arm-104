@@ -353,22 +353,53 @@ Security:
 Public IP Addresse(124):
 Create a public ip address:
 Home->Public IP addresses
-*Name
-*Basic, standard
-*IPv4, 6
-*Dynamic, static ip
-*
+* Name
+* Basic, standard
+* IPv4 (is free), IPv6 (must enable and create)
+** Dynamic IP (the regual DNS wil take care of this)
+** Static IP (never changes, use in some kind of FW setting, that needs
+to be opend up, or DNS of creating custom domain and need that IP to live within
+the DNS system)
+* Idel timeout settings (Client does not need to send keep-alive) for x a mount of time(4 is default)
+* DNS name label, it is where you set/get FQDN
+** Can use:
+*** something.centralregion.cloudapp.azure.com (terrible, but free)
+*** Custom domain name, CNAME record would be able to map custom domain
+*** or Azure DNS system as well
+
+Created a public IP in that particula region
 
 
 
-
-
-
-
-
-Public IP Addresses(124):
 Network Routing(125):
+
+Create->Route table
+Route table:
+* List of IP ranges
+* So MS Azure knows where to send the traffic that comes over your network.
+
+* Name
+* rg
+Created:
+We have no userdefined routes to our table:
+Routes->Add route.
+
+Example:
+*Add route to the table:
+** Any server that orginates from server running on the back end network
+** That we created for the other virtual network, to go through a FW before leaving the network
+
+* Route name, SendToFirewall
+* Adress prefix, 190.0.2.0/23 (where traffic orginates from, source)
+* Next hop type, virtula appliance (FW not created yet, outside of this scope)
+** But lets assume that our FW is sitting there, wating for someone to talk to it on, 190.0.4.1
+** Next hop type, 190.0.4.1
+Create it
+When done we must assiciated it with a subnet.
+Choose subnet for the table to follow the particular route.
+
 VPNs and ExpressRoute(126):
+
 ExpressRoute Direct(127):
 Create Azure Firewall(128):
 Configure Azure Firewall(129):
