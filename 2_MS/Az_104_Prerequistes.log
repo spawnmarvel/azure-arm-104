@@ -156,7 +156,129 @@ Clean up
 Remove-AzResourceGroup -Name MyResourceGroupName
 
 Control Azure services with the CLI
-https://docs.microsoft.com/nb-no/learn/modules/control-azure-services-with-cli/
+
+As part of the testing, you want to compare app performance for different data sources, 
+and for different types of data connections. You've noticed that when your development team uses the Azure portal to create a new test instance of the app, 
+they don't always use exactly the same parameters. 
+You plan to solve this problem by using a set of standard deployment commands for each app test, which can be automated if required, 
+and which will work in the same way across all the computers used by your software team.
+
+Azure CLI
+variable="value"
+variable=integer
+
+PowerShell
+$variable="value"
+$variable=integer
+
+az --version
+
+$ az find
+the following arguments are required: <CLI_TERM>
+
+TRY THIS:
+az find "az storage"
+Give me any Azure CLI group and I’ll show the most popular commands within the group.
+
+az find "az monitor activity-log list"
+Give me any Azure CLI command and I’ll show the most popular parameters and subcommands.
+
+az find "arm template"
+You can also enter a search term, and I'll try to help find the best commands.
+
+https://aka.ms/cli_ref
+Read more about the command in reference docs
+
+* Connect
+az login
+* Create
+az group create --name <name> --location <location>
+* Verify
+az group list
+az group list --output table
+
+Exercise - Create an Azure website using the CLI
+* let's use the Azure CLI to create a resource group, and then to deploy a web app into this resource group.
+
+* create several variables that you will use in later commands
+export RESOURCE_GROUP=learn-92e86fb8-eec3-486f-9306-f729f468c5ad
+export AZURE_REGION=centralus
+export AZURE_APP_PLAN=popupappplan-$RANDOM
+export AZURE_WEB_APP=popupwebapp-$RANDOM
+
+az group list --output table
+
+* If you have several items in the group list, you can filter the return values by adding a --query option. Try the following command:
+az group list --query "[?name == '$RESOURCE_GROUP']"
+
+* Steps to create a service plan
+* Create an App Service plan to run your app. The following command specifies the free pricing tier, but you can run az appservice plan create --help to see the other pricing tiers.
+az appservice plan create --name $AZURE_APP_PLAN --resource-group $RESOURCE_GROUP --location $AZURE_REGION --sku FREE
+
+* Verify that the service plan was created successfully by listing all your plans in a table.
+az appservice plan list --output table
+
+* Steps to create a web app
+az webapp create --name $AZURE_WEB_APP --resource-group $RESOURCE_GROUP --plan $AZURE_APP_PLAN
+
+* Verify that the app was created successfully by listing all your apps in a table.
+az webapp list --output table
+
+Name               Location    State    ResourceGroup                               DefaultHostName    AppServicePlan
+-----------------  ----------  -------  ------------------------------------------  -----------------------------------  ------------------
+popupwebapp-15123  Central US  Running  learn-92e86fb8-eec3-486f-9306-f729f468c5ad  popupwebapp-15123.azurewebsites.net  popupappplan-12763
+
+* then my website URL would be: http://popupwebapp-15123.azurewebsites.net
+* or curl curl $AZURE_WEB_APP.azurewebsites.net
+
+Steps to deploy code from GitHub
+* Let's use a simple PHP page available in the Azure Samples GitHub repository that displays "Hello World!" when it executes. Make sure to use the web app name you created.
+az webapp deployment source config --name $AZURE_WEB_APP --resource-group $RESOURCE_GROUP --repo-url "https://github.com/Azure-Samples/php-docs-hello-world" --branch master --manual-integration
+
+* Result
+{
+  "branch": "master",
+  "deploymentRollbackEnabled": false,
+  "id": "/subscriptions/538be7b9-15c9-4be0-a2ee-8d948e33ad6a/resourceGroups/learn-92e86fb8-eec3-486f-9306-f729f468c5ad/providers/Microsoft.Web/sites/popupwebapp-15123/sourcecontrols/web",
+  "isGitHubAction": false,
+  "isManualIntegration": true,
+  "isMercurial": false,
+  "kind": null,
+  "location": "Central US",
+  "name": "popupwebapp-15123",
+  "repoUrl": "https://github.com/Azure-Samples/php-docs-hello-world",
+  "resourceGroup": "learn-92e86fb8-eec3-486f-9306-f729f468c5ad",
+  "systemData": null,
+  "type": "Microsoft.Web/sites/sourcecontrols"
+}
+
+http://popupwebapp-15123.azurewebsites.net/
+
+* Now gives Hello World
+
+*Remove the rg
+
+RG_GROUP="learn-92e86fb8-eec3-486f-9306-f729f468c5ad"
+echo "Name of rg; $RG_GROUP"
+
+RG_EXISTS= az group exists --name $RG_GROUP
+echo "Does rg exist; $RG_EXISTS"
+
+RG_RESULT= az group delete --name $RG_GROUP --no-wait --yes -y #--subscription
+echo $RG_RESULT
+
+az group list --output table
+Name                                        Location    Status
+------------------------------------------  ----------  --------
+learn-92e86fb8-eec3-486f-9306-f729f468c5ad  westus      Deleting
+
+Deploy Azure infrastructure by using JSON ARM templates
+
+
+
+
+
+
 
 
 AZ-104: Manage identities and governance in Azure
