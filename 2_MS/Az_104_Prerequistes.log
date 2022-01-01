@@ -2,6 +2,162 @@ https://docs.microsoft.com/nb-no/learn/paths/az-104-administrator-prerequisites/
 
 AZ-104: Prerequisites for Azure administrators
 TODO 3h
+Configure Azure resources with tools
+Use Azure Resource Manager
+Explore the Azure Resource Manager template parameters
+
+In the parameters section of the template, you specify which values you can input when deploying the resources. The available properties for a parameter are:
+"parameters": 
+    { "<parameter-name>" :
+        { "type" : "<type-of-parameter-value>",
+         "defaultValue": "<default-value-of-parameter>",
+          "allowedValues": [ "<array-of-allowed-values>" ], 
+           "minValue": <minimum-value-for-int>,
+           "maxValue": <maximum-value-for-int>,
+            "minLength": <minimum-length-for-string-or-array>, 
+            "maxLength": <maximum-length-for-string-or-array-parameters>,
+             "metadata": { "description": "<description-of-the parameter>" } } }
+
+
+Windows
+Azure Az PowerShell module
+Linux
+On Linux, the package manager will change based on the Linux distribution you choose.
+LINUX
+Distribution(s)	Package manager
+Ubuntu, Debian	apt-get
+Red Hat, CentOS	yum
+OpenSUSE	zypper
+Fedora	dnf
+Mac
+On macOS, you will use Homebrew to install PowerShell.
+
+Powershell cmdlets
+* to get help on the Get-ChildItem cmdlet, enter the following statement in a Windows PowerShell session:
+Get-Help -Name Get-ChildItem -Detailed
+* You can get a list of loaded modules using the Get-Module command:
+Get-Module
+
+$PSVersionTable.PSVersion
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force
+# Take a coffee, this takes time, answer Yx2 and wait, when done, close/open Powershell and verify module
+# Minimum Powershell v is 5.1
+Get-InstalledModule -Name Az
+
+* Update a PowerShell module
+Update-Module -Name Az
+
+Connect AzAccount
+* or
+Connect AzAccount -TenantId The-tenant-id-we-copied-from-azure-ad
+
+* iF Created multiple Azure subscriptions. You can configure Azure PowerShell to execute commands against a particular subscription.
+Set-AzContext -Subscription '00000000-0000-0000-0000-000000000000'
+
+* Get a list of all resource groups
+Get-AzResourceGroup | Format-Table
+
+* Create a resource group
+New-AzResourceGroup -Name <name> -Location <location>
+
+$rg = “testit2-rg”
+Get-AzResource -ResourceGroupName $rg
+
+* Create an Azure Virtual Machine
+New-AzVm
+       -ResourceGroupName <resource group name>
+       -Name <machine name>
+       -Credential <credentials object>
+       -Location <location>
+       -Image <image name>
+
+* The AzVM suffix is specific to VM-based commands in PowerShell. There are several others you can use:
+Command	Description
+Remove-AzVM	      Deletes an Azure VM.
+Start-AzVM	      Start a stopped VM.
+Stop-AzVM	      Stop a running VM.
+Restart-AzVM	  Restart a VM.
+Update-AzVM	      Updates the configuration for a VM.
+
+* The interesting thing is that now your VM is an object you can interact with
+$ResourceGroupName = "ExerciseResources"
+$vm = Get-AzVM  -Name MyVM -ResourceGroupName $ResourceGroupName
+$vm.HardwareProfile.vmSize = "Standard_DS3_v2"
+
+Update-AzVM -ResourceGroupName $ResourceGroupName  -VM $vm
+
+
+Exercise - Create an Azure Resource using scripts in Azure PowerShell
+
+Connect-AzAccount
+
+* Create a Linux VM with Azure PowerShell
+* Add the -OpenPorts parameter, and pass "22" as the port. This will let us SSH into the machine.
+
+New-AzVm -ResourceGroupName learn-9a7c6d9b-5436-4341-9ac2-61a67345466e -Name "testvm-eus-01" -Credential (Get-Credential) -Location "East US" -Image UbuntuLTS -OpenPorts 22
+Dhamapada, Dhamapada-eat-carrot-ls45
+
+$vm = (Get-AzVM -Name "testvm-eus-01" -ResourceGroupName learn-9a7c6d9b-5436-4341-9ac2-61a67345466e)
+
+* Query the value to dump out the information about the VM.
+$vm
+$vm.HardwareProfile
+$vm.StorageProfile.OsDisk
+$vm | Get-AzPublicIpAddress
+
+ssh Dhamapada@111.11.11.1
+exit
+
+* Delete a VM
+Stop-AzVM -Name $vm.Name -ResourceGroup $vm.ResourceGroupName
+Get-AzResource -ResourceGroupName $vm.ResourceGroupName | Format-Table
+Remove-AzVM -Name $vm.Name -ResourceGroup $vm.ResourceGroupName -Force -As-Job
+Get-AzResource -ResourceGroupName $vm.ResourceGroupName | Format-Table
+
+* Delete the network interface.
+$vm | Remove-AzNetworkInterface –Force
+
+Delete the managed OS disks and storage account.
+Get-AzDisk -ResourceGroupName $vm.ResourceGroupName -DiskName $vm.StorageProfile.OSDisk.Name | Remove-AzDisk -Force
+
+* Next, delete the virtual network.
+Get-AzVirtualNetwork -ResourceGroup $vm.ResourceGroupName | Remove-AzVirtualNetwork -Force
+
+* Delete the network security group.
+Get-AzNetworkSecurityGroup -ResourceGroup $vm.ResourceGroupName | Remove-AzNetworkSecurityGroup -Force
+
+* And finally, delete the public IP address.
+Get-AzPublicIpAddress -ResourceGroup $vm.ResourceGroupName | Remove-AzPublicIpAddress -Force
+
+
+Exercise - Create and save scripts in Azure PowerShell
+
+cd $HOME\clouddrive
+touch "./ConferenceDailyReset.ps1"
+code "./ConferenceDailyReset.ps1" # Integrated editor azure portal
+* Start by capturing the input parameter in a variable. Add the following line to your script.
+param([string]$resourceGroup)
+* Prompt for a username and password for the VM's admin account and capture the result in a variable.
+
+param([string]$resourceGroup)
+$adminCredential = Get-Credential -Message "Enter a username and password for the VM administrator."
+For ($i = 1; $i -le 3; $i++) 
+{
+    $vmName = "ConferenceDemo" + $i
+    Write-Host "Creating VM: " $vmName
+    New-AzVm -ResourceGroupName $resourceGroup -Name $vmName -Credential $adminCredential -Image UbuntuLTS
+}
+
+Get-AzResource -ResourceType Microsoft.Compute/virtualMachines
+
+Clean up
+* The sandbox automatically cleans up your resources when you're finished with this module.
+Remove-AzResourceGroup -Name MyResourceGroupName
+
+Control Azure services with the CLI
+https://docs.microsoft.com/nb-no/learn/modules/control-azure-services-with-cli/
+
 
 AZ-104: Manage identities and governance in Azure
 TODO 4 hr 7 min
