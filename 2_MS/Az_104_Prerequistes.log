@@ -274,11 +274,135 @@ learn-92e86fb8-eec3-486f-9306-f729f468c5ad  westus      Deleting
 
 Deploy Azure infrastructure by using JSON ARM templates
 
+Practice of infrastructure as code by using ARM templates. 
+You can also integrate your ARM templates into continuous integration and continuous deployment (CI/CD) tools like Azure Pipelines, which can automate your release pipelines for fast and reliable application and infrastructure updates. By using Azure DevOps and ARM template tasks, you can continuously build and deploy your projects.
+
+ARM template file structure
+
+Element	Description
+schema	        A required section that defines the location of the JSON schema file that describes the structure of JSON data. The version number you use depends on the scope of the deployment and your JSON editor.
+contentVersion	A required section that defines the version of your template (such as 1.0.0.0). You can use this value to document significant changes in your template to ensure you're deploying the right template.
+apiProfile	    An optional section that defines a collection of API versions for resource types. You can use this value to avoid having to specify API versions for each resource in the template.
+parameters	    An optional section where you define values that are provided during deployment. These values can be provided by a parameter file, by command-line parameters, or in the Azure portal.
+variables	    An optional section where you define values that are used to simplify template language expressions.
+functions	    An optional section where you can define user-defined functions that are available within the template. User-defined functions can simplify your template when complicated expressions are used repeatedly in your template.
+resources	    A required section that defines the actual items you want to deploy or update in a resource group or a subscription.
+output	        An optional section where you specify the values that will be returned at the end of the deployment.
+
+Deploy a local template.
+Deploy a linked template.
+Deploy in a continuous deployment pipeline.
 
 
+Exercise - Create and deploy an Azure Resource Manager template
+
+1 file called azuredeploy.json.
+2 The Visual Studio Code ARM template extension comes configured with snippets to help you develop templates
+3 The VS Code automatically displays several potential choices that start with arm!.
+
+Your file now looks like this:
+
+JSON
+
+Copy
+{
+"$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+"contentVersion": "1.0.0.0",
+"parameters": {},
+"functions": [],
+"variables": {},
+"resources": [],
+"outputs": {}
+}
+
+4 Connect-AzAccount
+5 Get-AzSubscription
+* Run the following command, replacing {Your subscription ID} with the one you copied in the previous step to change your active subscription to the Concierge Subscription.
+6 $context = Get-AzSubscription -SubscriptionId {Your subscription ID}
+  Set-AzContext $context
+
+7 Deploy the template to Azure by running the following commands. The ARM template doesn't have any resources yet, so you won't see resources created.
+$templateFile = "./azuredeploy.json"
+$ran = Get-Random -Maximum 100
+$deployName = "buildTest" + $ran + $ran
+Write-Host "Running deploy: " $deployName
+$deploymentName=$deployName
+$rg = 'learn-af1fd9f8-de1d-4048-a20a-48904672560b'
+New-AzResourceGroupDeployment -Name $deploymentName `
+  -ResourceGroupName $rg `
+  -TemplateFile $templateFile `
 
 
+* When you've deployed your ARM template to Azure, go to the Azure portal and make sure you're in the sandbox subscription. To do that, select your avatar in the upper-right corner of the page. Select Switch directory. In the list, choose the Microsoft Learn Sandbox directory.
 
+* In the azuredeploy.json file in Visual Studio Code, place your cursor inside the braces in the parameters attribute. "parameters":{},
+
+* Select Enter, and then enter par. You see a list of related snippets. Choose arm-param. It adds a generic parameter to the template. It will look like this:
+
+ "parameters": {
+    "parameter1": {
+    "type": "string",
+    "metadata": {
+        "description": "description"
+    }
+  }
+},
+* Change the parameter to be called storageName, and leave the type as a string. Add a minLength value of 3 and a maxLength value of 24. Add a description value of The name of the Azure storage resource.
+"parameters": {
+        "storageName": {
+            "type": "string",
+            "minLength":3,
+            "maxLength":24,
+            "metadata": {
+                "description": "description"
+            }
+        }
+    },
+
+* Use the new parameter in the resources block in both the name and displayName values. The entire file will look like this:
+"resources": [{
+        "name": "[parameters('storageName')]",
+ "tags": {
+            "displayName": "[parameters('storageName')]"
+        },
+
+Add another parameter to limit allowed values
+* Place your cursor after the closing brace for the storageNameparameter. Add a comma, and select Enter.
+* Again, enter par, and select arm-param.
+* ARM templates support // and /* */ comments.
+
+
+Allow this deployment to finish. This deployment succeeds as expected
+
+
+Run the following commands to deploy the template with a parameter that isn't allowed. Here, you changed the storageSKU parameter to Basic.
+
+$templateFile = "./azuredeploy.json"
+$ran = Get-Random -Maximum 100
+$deployName = "buildTest" + $ran + $ran
+Write-Host "Running deploy: " $deployName
+$deploymentName=$deployName
+$rg = 'learn-af1fd9f8-de1d-4048-a20a-48904672560b'
+New-AzResourceGroupDeployment -Name $deploymentName `
+  -ResourceGroupName $rg `
+  -TemplateFile $templateFile `
+  -storageName "espenklei12" `
+  -storageSKU "Standard_LRS" -Verbose
+
+This deployment fails. Notice the error.
+
+Add output to the ARM template
+
+"outputs": {
+        "storageEndpoint": {
+            "type": "object",
+            "value": "[reference(parameters('storageName')).primaryEndpoints]"
+        }
+    }
+    
+And change
+ -storageSKU "Basic" -Verbose
+ -storageSKU "Standard_LRS" -Verbose
 
 
 AZ-104: Manage identities and governance in Azure
