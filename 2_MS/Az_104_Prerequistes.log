@@ -447,6 +447,67 @@ Select Azure Active Directory editions
 4 Azure Active Directory Premium P2. In addition to the Free and P1 features, P2 also offers Azure Active Directory Identity Protection to help provide risk-based Conditional Access to your apps and critical company data. 
 
 Implement Azure Active Directory join
+* Azure Active Directory (Azure AD) enables single sign-on to devices, apps, and services from anywhere. 
+  IT administrators must ensure corporate assets are protected and that devices meet standards for security and compliance.
+
+** Single-Sign-On (SSO) to your Azure-managed SaaS apps and services. 
+** Enterprise compliant roaming of user settings across joined devices. 
+** Access to Microsoft Store for Business using an Azure AD account
+** Windows Hello support for secure and convenient access to work resources.
+** Restriction of access to apps from only devices that meet compliance policy
+** Seamless access to on-premise resources when the device has line of sight to the on-premises domain controller.
+
+Connection options
+* Registering a device to Azure AD enables you to manage a device’s identity,can use the identity to enable or disable a device.
+* Joining a device is an extension to registering a device. Joining provides the benefits of registering and changes the local state of a device. 
+
+NOTE: Registration combined with a mobile device management (MDM) solution such as Microsoft Intune, provides additional device attributes in Azure AD. You can create conditional access rules that enforce access from devices to meet your standards for security and compliance.
+
+Implement self-service password reset
+* Enabling Self-service Password Reset (SSPR) gives the users the ability to bypass the helpdesk and reset their own passwords.
+* To configure Self-Service Password Reset, you first determine who will be enabled to use self-service password reset. 
+  From your existing Azure AD tenant, on the Azure portal under Azure Active Directory (Users) select Password reset.
+  In the Password reset properties there are three options: None, Selected, and All.
+* The Selected option is useful for creating specific groups who have self-service password reset enabled. 
+  You can create group for testing or proof of concept before deploying to a larger group.
+
+Authentication methods
+* At least one authentication method is required to reset a password. It is a good idea to have other methods available.
+* email notification, a text, or code sent to user’s mobile or office phone, or a set of security questions.
+* can also configure how many correctly answered security questions are required for a successful password reset
+
+Configure user and group accounts
+
+Create user accounts
+Azure Active Directory-> Users
+
+Typically, Azure AD defines users in three ways:
+* Cloud identities. These users exist only in Azure AD
+* Directory-synchronized identities. These users exist in an on-premises Active Directory. 
+  A synchronization activity that occurs via Azure AD Connect brings these users in to Azure. Their source is Windows Server AD.
+* Guest users. These users exist outside Azure. Examples are accounts from other cloud providers and Microsoft accounts such as an Xbox LIVE account. Their source is Invited user.
+
+Manage user accounts
+* New or guest 
+
+Create bulk user accounts
+* Azure Active Directory (Azure AD) supports bulk user create and delete operations and supports downloading lists of users. Just fill out the comma-separated values (CSV) template. 
+  You can download the template from the Azure AD portal. To create users in the Azure portal, you must be signed in as a Global administrator or User administrator.
+* Users | All users-> Bulk operations
+
+Things to consider when using the template
+* Naming conventions, First.last@domain.com
+* Methods commonly used include generating a random password and emailing it to the new user or their manager.
+
+Create group accounts
+
+
+
+
+
+
+
+
 
 
 
