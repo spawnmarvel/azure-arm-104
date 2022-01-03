@@ -406,7 +406,51 @@ And change
 
 
 AZ-104: Manage identities and governance in Azure
-TODO 4 hr 7 min
+
+Configure Azure Active Directory
+* Single sign-on to any cloud or on-premises web app
+* Works with iOS, macOS, Android, and Windows devices
+* Protect on-premises web applications with secure remote access
+* Easily extend Active Directory to the cloud
+* Protect sensitive data and applications
+* Reduce costs and enhance security with self-service capabilities
+
+Describe Azure Active Directory concepts
+* Identity, object that get autenticated
+* Account, an identity that has data associated with it
+* Azure AD Account, an identity created thorugh Azure AD or other MS cloud services, (work or school account)
+* Azure Subscription, useds to pay for cloud services 
+* Azure tenant/directory, a dedicated/trusted instance of Azure AD
+
+Compare Active Directory Domain Services to Azure Active Directory
+* AD DS is the traditional deployment of Windows Server-based Active Directory on a physical or virtual server.
+* Although Azure AD has many similarities to AD DS, there are also many differences. 
+* It is important to realize that using Azure AD is different from deploying an Active Directory domain controller on an Azure virtual machine and adding it to your on-premises domain. 
+* Here are some characteristics of Azure AD that make it different.
+
+** Identity solution. Azure AD is primarily an identity solution, and it is designed for Internet-based applications by using HTTP and HTTPS communications.
+** REST API Querying. Because Azure AD is HTTP/HTTPS based, it cannot be queried through LDAP
+** Communication Protocols. Because Azure AD is HTTP/HTTPS based, it does not use Kerberos authentication. 
+*** Instead, it uses HTTP and HTTPS protocols such as SAML, WS-Federation, and OpenID Connect for authentication (and OAuth for authorization).
+** Federation Services. Azure AD includes federation services, and many third-party services (such as Facebook).
+** Flat structure. Azure AD users and groups are created in a flat structure, and there are no Organizational Units (OUs) or Group Policy Objects (GPOs).
+
+Select Azure Active Directory editions
+* Azure Active Directory comes in four editions—Free, Microsoft 365 Apps, Premium P1, and Premium P2
+1 Azure Active Directory Free. Provides user and group management, on-premises directory synchronization, basic reports, 
+  and single sign-on across Azure, Microsoft 365, and many popular SaaS apps.
+2 Azure Active Directory Microsoft 365 Apps. This edition is included with O365. In addition to the Free features, this edition provides Identity & Access Management for Microsoft 365 apps including branding, 
+  MFA, group access management, and self-service password reset for cloud users.
+3 Azure Active Directory Premium P1. In addition to the Free features, P1 also lets your hybrid users access both on-premises and cloud resources. 
+  Support for adv. administration, dynamic groups, self service management groups, identity manager (on-prem idenetiy and access management suite), cloud-
+  write-back, self service password reset
+4 Azure Active Directory Premium P2. In addition to the Free and P1 features, P2 also offers Azure Active Directory Identity Protection to help provide risk-based Conditional Access to your apps and critical company data. 
+
+Implement Azure Active Directory join
+
+
+
+
 
 AZ-104: Implement and manage storage in Azure
 TODO 4 hr 44 min
