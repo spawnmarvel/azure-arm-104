@@ -1,3 +1,75 @@
 Exercise - Give guest users access in Azure Active Directory B2B
 
 Add guest users to the organization
+
+New user
+Default Directory
+-> Invite user
+
+Jin Kun
+kleivane something @gmail.com
+
+->Invite
+Successfully invited user Jin Kun.
+
+Mail:
+Organization:  xxxxx
+Domain:  exxxxxxxxxxxxxxxxx.onmicrosoft.com
+ 
+This message was provided by the sender and is not from Microsoft Corporation.
+Sender Picture	
+  Message from
+  Default Directory:
+“	
+Hi Jin,
+you have now been invited
+regards
+
+* Notice that the user now appears in the list of users and has Guest as User type.
+
+
+Add guest users to an application
+
+Enterprise applications | All applications
+Default Directory - Azure Active Directory
+
+Search for and select DocuSign. The Docusign pane appears.
+
+Select Create. The Docusign | Overview pane appears.
+
+In the left menu pane, under Manage, select Users and groups. The Users and groups pane appears for Docusign.
+
+On the top menu bar, select Add user/group.
+
+The Add Assignment pane appears.
+
+Under Users and groups, select the None Selected link. The Users and groups pane appears.
+
+Select the guest user you added in the previous exercise, and select Select. The Add Assignment pane reappears.
+
+Select Assign. The Users and groups pane for Docusign appears. You now see the user in the list for this application.
+
+To check that the correct access level is set, select the user in the list.
+
+On the top menu bar, select Edit. The Edit Assignment pane appears.
+
+Under Select a role, select the None Selected link. The Select a role pane appears.
+
+Select DocuSign Sender, and then select Select to make sure they have the correct access.
+
+The Edit Assignment pane reappears.
+
+Select Assign. The Users and groups pane appears with the proper Role assigned as DocuSign Sender for the user you selected.
+
+When the invitation arrives, the user accepts it, and can then access the application.
+
+Resend invitations to guest users
+* If the guest user didn't receive the first email invitation, you can resend an invitation email.
+
+* In your Azure AD organization, in the left menu pane, under Manage, select Users. The All users pane appears.
+* Select the user. The Profile pane for the user appears.
+
+Invitation accepted
+No   (manage) 
+
+Successfully resent invitation to kleivane something @gmail.com
