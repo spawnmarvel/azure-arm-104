@@ -501,9 +501,22 @@ Things to consider when using the template
 
 Create group accounts
 
+Azure AD allows you to define two different types of groups.
+*  Security groups. Security groups are used to manage member and computer access to shared resources for a group of users.
+* Microsoft 365 groups. Microsoft 365 groups provide collaboration opportunities by giving members access to a shared mailbox, calendar, files, SharePoint site, and more. 
+  You can give people outside of your organization access to the group. Both users and admins can use Microsoft 365 groups.
 
+Adding members to groups
+* Assigned. Lets you add specific users to be members of this group and to have unique permissions.
+* Dynamic User. Lets you use dynamic membership rules to automatically add and remove members. 
+  When a member's attributes change, Azure reviews the dynamic group rules for the directory. 
+  If the member meets the rule requirements, they're added. If the member no longer meets the rules requirements, they're removed.
+* Dynamic Device (Security groups only). Lets you use dynamic group rules to automatically add and remove devices. If a device's attributes change (same as above (add, rm))
 
+Create administrative units
+* It can be useful to restrict administrative scope by using administrative units in organizations that are made up of independent divisions of any kind.
 
+Configure subscriptions
 
 
 
