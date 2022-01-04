@@ -1,5 +1,14 @@
 # azure-arm-104
 
+
+### Github switch user local machine:
+
+1. List your git config and view current user
+git config --list
+2. Change username and email global
+git config  user.name "First Lastname"
+git config  user.email "info@firstlastname.com"
+
 ### Repos switch to SSH:
 
 https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories
