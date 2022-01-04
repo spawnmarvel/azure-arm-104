@@ -1,0 +1,39 @@
+Exercise - Grant access using Azure RBAC and the Azure portal
+
+A co-worker named Alain at First Up Consultants needs permission to create and manage virtual machines 
+for a project he is working on. Your manager has asked that you handle this request. 
+Using the best practice to grant users the least privileges to get their work done, 
+you decide to assign Alain the Virtual Machine Contributor role for a resource group.
+
+* In the Azure portal under Navigate, select Resource groups.
+* Select FirstUpConsultantsRG1-XXXXXXX resource group.
+* Select Access control (IAM).
+* Select the Role assignments tab to view the current list of role assignments.
+
+FirstUpConsultantsRG1-lod20942263 | Access control (IAM)
+Resource group
+
+* At the top, click Add role assignment.
+Add role assignment
+
+* On the Role tab, search for and select Virtual Machine Contributor.
+* Select Next.
+* On the Members tab, select + Select members.
+* Search for and select the appropriate LabUser-XXXXXXX name. Find the exact username to use on the Resources tab next to the instructions.
+
+Selected members:
+LA
+LabUser-20942263
+
+* Select Next.
+* Select Review + assign.
+* After a few moments, the LabUser-XXXXXXX user is assigned the Virtual Machine Contributor 
+  role at the FirstUpConsultantsRG1-XXXXXXX resource group scope. The user can now create and manage virtual machines just within this resource group.
+
+LabUser-20942263 was added as Virtual Machine Contributor for FirstUpConsultantsRG1-lod20942263.
+
+Remove access
+* In the list of role assignments, select the LabUser-XXXXXXX user with the Virtual Machine Contributor role.
+* Click Remove
+
+LabUser-20942263 was removed as LODReader for FirstUpConsultantsRG1-lod20942263.

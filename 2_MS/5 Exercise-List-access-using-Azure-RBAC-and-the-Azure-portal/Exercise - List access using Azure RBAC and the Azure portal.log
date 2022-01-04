@@ -1,0 +1,31 @@
+Exercise - List access using Azure RBAC and the Azure portal
+
+* Look for the Admin username like LabAdmin-XXXXXXX and the password.
+* Sign in to the Azure portal using the LabAdmin username and password.
+* Make sure you are signed in as the LabAdmin-XXXXXXX that was identified in the lab instructions' Resources tab. If you're signed in with a different account, sign out and sign in using the LabAdmin username and password on the Resources tab.
+* On the Profile menu, select the ellipsis (...) to see more links.
+* Screenshot of user menu with My permissions highlighted.
+* Select My permissions to open the My permissions pane.
+
+ ou have the following access:
+Your account 'LabAdmin-20942263something5356353675673563@triplecrownlabsoutlook.onmicrosoft.com' has been assigned the role 'LODOwner' (type CustomRole) and has access to FirstUpConsultantsRG1-lod20942263
+Your account 'LabAdmin-20942263something535635367567356@triplecrownlabsoutlook.onmicrosoft.com' has been assigned the role 'LODReader' (type CustomRole) and has access to FirstUpConsultantsRG1-lod20942263
+
+List role assignments for a resource group
+* Follow these steps to see what roles are assigned at the resource group scope.
+* Select Home, and under Azure services, select Resource groups.
+
+FirstUpConsultantsRG1-lod20942263
+Resource group
+FirstUpConsultantsRG1-lod20942263 | Access control (IAM)
+Resource group
+
+* This tab shows who has access to the resource group. 
+  Notice that some roles are scoped to This resource while others are (Inherited) from a parent scope.
+
+List roles
+*  As you learned in the previous unit, a role is a collection of permissions. 
+   Azure has over 70 built-in roles that you can use in your role assignments. Follow this step to list the roles.
+
+   select the Roles tab to list of all the built-in and custom roles.
+

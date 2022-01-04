@@ -1,0 +1,28 @@
+Exercise - View activity logs for Azure RBAC changes
+
+First Up Consultants reviews Azure role-based access control (Azure RBAC) changes quarterly for auditing and troubleshooting purposes. 
+You know that changes get logged in Azure Activity Log. 
+Your manager has asked if you can generate a report of the role assignment and custom role changes for the last month.
+
+
+View activity logs
+* Click All services and then find Activity log.
+Monitor | Activity log
+
+* Click Activity log to open the activity log.
+* Set the Timespan filter to Last month.
+* Add an Operation filter and type role to filter the list.
+
+Create role assignment
+Succeeded
+7 minutes ago
+Tue Jan 04 2022 19:25:56 GMT+0100 (sentraleuropeisk normaltid)
+Microsoft Learn Hosting (prod) - 2
+
+* Click one of the operations to see the activity log details.
+
+Create role assignment
+Tue Jan 04 2022 19:25:54 GMT+0100 (sentraleuropeisk normaltid)
+New alert rule
+Summary
+JSON
