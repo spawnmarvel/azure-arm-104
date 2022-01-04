@@ -1,7 +1,8 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {
+    "parameters": {  // type arm + enter for a new parameter1
+        // storage name will in this case come from input, ps1 script
         "storageName": {
             "type": "string",
             "minLength":3,
@@ -10,7 +11,7 @@
                 "description": "description"
             }
         },
-    // storage sku
+    // storage sku will in this case come from input, ps1 script
     "storageSKU": {
         "type": "string",
    "defaultValue": "Standard_LRS",
@@ -30,6 +31,7 @@
     "functions": [],
     "variables": {},
     "resources": [{
+        // here we pass the input from parameters
         "name": "[parameters('storageName')]",
         "type": "Microsoft.Storage/storageAccounts",
         "apiVersion": "2021-04-01",
@@ -46,6 +48,7 @@
     "outputs": {
         "storageEndpoint": {
             "type": "object",
+            // here we pass the 
             "value": "[reference(parameters('storageName')).primaryEndpoints]"
         }
     }
