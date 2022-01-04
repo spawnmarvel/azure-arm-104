@@ -518,6 +518,43 @@ Create administrative units
 
 Configure subscriptions
 
+Identify regions
+* A region is a geographical area on the planet containing at least one, but potentially multiple datacenters. 
+
+Implement Azure subscriptions
+* An Azure subscription is a logical unit of Azure services that is linked to an Azure account. Billing for Azure services is done on a per-subscription basis. 
+* Each subscription can have a different billing and payment setup, so you can have different subscriptions and different plans by department, project, regional office, and so on.
+* Subscriptions have accounts. An Azure account is simply an identity in Azure Active Directory (Azure AD) or in a directory that is trusted by Azure AD, such as a work or school organization. 
+* Every Azure subscription is associated with an Azure Active Directory
+
+Identify subscription usage
+* Free
+* Pay-As-You-Go
+* Enterprise Agreement
+* Student
+
+Implement cost management
+* With Azure products and services, you only pay for what you use.
+
+Plan and control expenses
+* Cost analysis, budget, recommendations, exporting cost management data
+
+Apply resource tagging
+* apply the name Environment and the value Production or Development to your resources and more
+
+Apply cost savings
+* Reservations help you save money by paying ahead. You can pay for one-year or three-years of virtual machine, SQL Database compute capacity, Azure Cosmos DB throughput, or other Azure resources. 
+  Pre-paying allows you to get a discount on the resources you use.
+* Azure Hybrid Benefits is a pricing benefit for customers who have licenses with Software Assurance. Azure Hybrid Benefits helps maximize the value of existing on-premises Windows Server or SQL Server license investments when migrating to Azure.
+* Azure Credits is monthly credit benefit that allows you to experiment with
+* Azure regions pricing can vary from one region to another
+* Budgets help you plan for and drive organizational accountability limit = alert
+* Pricing Calculator
+
+Configure Azure policy
+
+
+
 
 
 
