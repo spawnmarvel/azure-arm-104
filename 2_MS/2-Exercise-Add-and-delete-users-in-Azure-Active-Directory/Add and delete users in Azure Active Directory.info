@@ -1,0 +1,87 @@
+
+Create an Azure Active Directory organization
+
+
+NOTE: When switching directory to MICROSOFT LEARN SANDBOX->  
+       You do not have access
+
+What is Azure Active Directory?
+https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-whatis
+
+Azure Active Directory (Azure AD) is Microsoft’s cloud-based identity and access management service, 
+which helps your employees sign in and access resources in:
+* External resources, such as Microsoft 365, the Azure portal, and thousands of other SaaS applications.
+* Internal resources, such as apps on your corporate network and intranet, along with any cloud apps developed by your own organization. 
+  For more information about creating a tenant for your organization, see Quickstart: Create a new tenant in Azure Active Directory.
+
+Try the tutorial in personal subsciption
+
+Tiers:
+Azure Active Directory Free. Provides user and group management, on-premises directory synchronization, 
+basic reports, self-service password change for cloud users, and single sign-on across Azure, Microsoft 365, and many popular SaaS apps.
+
+Azure Active Directory Premium P1. In addition to the Free features, P1 also lets your hybrid users access both on-premises and cloud resources. 
+It also supports advanced administration, such as dynamic groups, self-service group management, Microsoft Identity Manager (an on-premises identity and access management suite) 
+and cloud write-back capabilities, which allow self-service password reset for your on-premises users.
+
+Azure Active Directory Premium P2. In addition to the Free and P1 features, 
+P2 also offers Azure Active Directory Identity Protection to help provide risk-based Conditional Access to your apps and critical company data and Privileged Identity Management to help discover, 
+restrict, and monitor administrators and their access to resources and to provide just-in-time access when needed.
+
+"Pay as you go" feature licenses. You can also get additional feature licenses, 
+such as Azure Active Directory Business-to-Customer (B2C). B2C can help you provide identity 
+and access management solutions for your customer-facing apps. For more information, see Azure Active Directory B2C documentation.
+
+Tutoriall continue:
+Create an Azure Active Directory organization
+* Already have it
+Default Directory | Overview
+Azure Active Directory
+
+Get a free trial for Azure AD Premium
+Licenses | Overview
+Default Directory - Azure Active Directory
+
+Azure AD Premium P2
+With Azure Active Directory Premium P2 you can gain access to advanced security features, richer reports and rule based assignments to applications. 
+Your end users will benefit from self-service capabilities and customized branding.
+Free trial
+Azure Active Directory Premium P2 enhances your directory with additional features that include multi-factor authentication, policy driven management and end-user self-service. Learn more about features
+The trial includes 100 licenses and will be active for 30 days beginning on the activation date. If you wish to upgrade to a paid version, you will need to purchase Azure Active Directory Premium P2. Learn more about pricing
+Azure Active Directory Premium P2 is licensed separately from Azure Services. By confirming this activation you agree to the Microsoft Online Subscription Agreement and the Privacy Statement.
+
+
+Add a new user
+Now, let's create a user account.
+
+New user
+Default Directory
+
+Identity
+
+User name: chris@contosomarketingXXXXXX.onmicrosoft.com. The domain name should match the primary domain you copied in the previous section.
+Name: Chris Green
+Password
+
+Show Password, (check), and copy it somewhere you can refer to it later.
+->Create
+
+chris@espenklxxxxxx.onmicrosoft.com
+
+Delete a user
+chris@espenklxxxxxx.onmicrosoft.com->delete user
+
+Recover a deleted user
+* You can restore deleted users. View the list of the deleted users, and then restore one.
+
+Users | Deleted users
+Default Directory - Azure Active Directory
+
+Select Chris Green and in the top menu bar, select Restore user.
+
+Successfully created user Chris Green.
+Successfully deleted user Chris Green.
+Chris Green has been restored.
+
+
+

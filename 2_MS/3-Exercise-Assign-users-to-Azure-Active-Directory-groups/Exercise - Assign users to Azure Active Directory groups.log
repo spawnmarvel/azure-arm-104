@@ -1,0 +1,50 @@
+Exercise - Assign users to Azure Active Directory groups
+
+In this exercise, you'll create an Azure Active Directory (Azure AD) group to manage the developer team's access. 
+You'll also add a rule for the group to manage the membership automatically.
+
+
+Add a new group
+
+Groups | All groups
+Default Directory - Azure Active Directory->group->new
+
+Setting	             Value
+Group type	         Security
+Group name	         Developer group
+Group description	 Developer team
+
+Use direct assignment to add a user to this group
+
+Developer group | Members
+Group
+Chris Green is now a member.
+
+
+Modify the group to use dynamic assignment
+* You can change the group to use dynamic assignment. Membership then depends on whether a user meets the rules you set for the group.
+
+NOTE: If you didn't activate the free trial for Azure AD Premium 2, you won't be able to complete this section. 
+    That's ok. You can still see how you change the group to use dynamic assignment.
+
+Developer group | Properties
+Group
+Change Membership type to Dynamic User.
+-> Under Dynamic user members, select the Add dynamic query link.
+
+On the Configure Rules tab, select the following values for the rule:
+
+Setting	         Value
+Property	     country
+Operator	     Equals
+Value	         United States
+
+save->
+The membership of this group now depends on whether the user is in the United States.
+
+Change group back to assigned
+Change Membership type to Assigned. ->save
+
+
+
+

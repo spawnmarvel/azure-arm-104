@@ -724,11 +724,95 @@ NOTE:
 
 Create Azure users and groups in Azure Active Directory
 
+What are user accounts in Azure Active Directory?
+* All user accounts are granted a set of default permissions. 
+  A user's account access consists of the type of user, their role assignments, and their ownership of individual objects.
+* Permissions and roles, Administrator roles (all + crud users), Memeber users (can be all - crud user), Guest users (restricted)
+
+
+Add user accounts AZ(PS1)
+# create a new user
+New-AzureADUser
+
+# You can bulk create member users and guests accounts. The following example shows how to bulk invite guest users.
+$invitations = import-csv c:\bulkinvite\invitations.csv
+
+$messageInfo = New-Object Microsoft.Open.MSGraph.Model.InvitedUserMessageInfo
+
+$messageInfo.customizedMessageBody = "Hello. You are invited to the Contoso organization."
+
+foreach ($email in $invitations)
+   {New-AzureADMSInvitation `
+      -InvitedUserEmailAddress $email.InvitedUserEmailAddress `
+      -InvitedUserDisplayName $email.Name `
+      -InviteRedirectUrl https://myapps.microsoft.com `
+      -InvitedUserMessageInfo $messageInfo `
+      -SendInvitationMessage $true
+   }
+# You create the comma-separated values (CSV) file with the list of all the users you want to add. An invitation is sent to each user in that CSV file.
+
+# Delete user accounts
+Remove-AzureADUser
+
+Exercise - Add and delete users in Azure Active Directory
+
+
+Manage app and resource access by using Azure Active Directory groups
+* You want to give the developers within your organization the same access. You also want to manage who is part of the developers' group and who isn't.
+* Azure Active Directory (Azure AD) helps you to manage your cloud-based apps, on-premises apps, and resources by using your organization's groups. 
+
+Access management in Azure AD
+* Azure AD roles: Use Azure AD roles to manage Azure AD-related resources like users, groups, billing, licensing, application registration, and more.
+* Role-based access control (RBAC) for Azure resources: 
+  Use RBAC roles to manage access to Azure resources like virtual machines, SQL databases, or storage.
+
+Access rights through single user or group assignment
+* Azure AD helps you provide access rights to a single user or to an entire group of users.
+
+There are different ways you can assign access rights:
+* Direct assignment: Assign a user the required access rights by directly assigning a role that has those access rights.
+* Group assignment: Assign a group the required access rights, and members of the group will inherit those rights.
+* Rule-based assignment: Use rules to determine a group membership based on user or device properties. 
+  For a user account or device's group membership to be valid, the user or device must meet the rules.
+
+
+Exercise - Assign users to Azure Active Directory groups
+
+
+Collaborate by using guest accounts and Azure Active Directory B2B
+* You want the external team to collaborate with the internal developer team in a process that's easy and secure. With Azure Active Directory 
+  (Azure AD) business to business (B2B), you can add people from other companies to your Azure AD tenant as guest users.
+
+* In any scenario where external users need temporary or restricted access to your organization's resources, give them guest user access. 
+  You can grant guest user access with the appropriate restrictions in place. Then remove access when the work is done.
+
+Collaborate with any partner by using their identities
+* With Azure Active Directory B2B, you don't have to manage your external users' identities. The partner has the responsibility to manage its own identities. 
+  External users continue to use their current identities to collaborate with your organization.
+
+* Her organization manages her identity as gcarvalho@proseware.com. 
+  You use that identity for the guest account in your organization's Azure AD. After Giovanna redeems the guest account invitation, 
+  she uses the same identity (name and password) for the guest account as she does for her organization.
+
+
+Why use Azure AD B2B instead of federation?
+* With Azure AD B2B, you don't take on the responsibility of managing and authenticating the credentials and identities of partners.
+* Giving access to external users is much easier than in a federation. 
+  You don't need an AD administrator to create and manage external user accounts. 
+  Any authorized user can invite other users. A line manager could, for example, 
+  invite external users to collaborate with their team. When collaboration is no longer needed, these external users can easily be removed.
+
+* A federation is more complex. A federation is where you have a trust established with another organization, 
+  or a collection of domains, for shared access to a set of resources. 
+  You might be using an on-premises identity provider and authorization service like Active Directory 
+  Federation Services (AD FS) that has an established trust with Azure AD.
+
+
+Exercise - Give guest users access in Azure Active Directory B2B
 
 
 
 
- 
 
 
 
