@@ -562,7 +562,70 @@ You organize subscriptions into containers called management groups and apply yo
 * Compliance and cost reporting by organization (business/teams).
 
 * All subscriptions within a management group automatically inherit the conditions applied to the management group. 
-For example, you can apply policies to a management group that limits the regions available for virtual machine (VM) creation.
+  For example, you can apply policies to a management group that limits the regions available for virtual machine (VM) creation.
+
+Adding management groups
+* The Management Group ID is the directory unique identifier that is used to submit commands on this management group.
+* The Display Name field is the name that is displayed within the Azure portal
+
+Implement Azure policies
+Azure Policy is a service in Azure that you use to create, assign, and manage policies. 
+* Enforcement and compliance. Turn on built-in policies or build custom ones for all resource types. 
+* Apply policies at scale. Apply policies to a Management Group with control across your entire organization.
+* Remediation. Real-time remediation
+
+Azure Policy will be important to you if your team runs an environment where you need to govern:
+* Multiple engineering teams (deploying to and operating in the environment)
+* Multiple subscriptions
+* Need to standardize/enforce how cloud resources are configured
+* Manage regulatory compliance, cost control, security, or design consistency
+
+Use cases
+* Specify the resource types that your organization can deploy.
+* Specify a set of virtual machine SKUs that your organization can deploy.
+* Restrict the locations your organization can specify when deploying resources.
+* Enforce a required tag and its value.
+* Audit if Azure Backup service is enabled for all Virtual machines.
+
+Create Azure policies
+
+1 Browse Policy Definitions. A Policy Definition expresses what to evaluate and what actions to take. Every policy definition has conditions under which it is enforced. 
+  And, it has an accompanying effect that takes place if the conditions are met. 
+  For example, you could prevent VMs from being deployed if they are exposed to a public IP address.
+2 Create Initiative Definitions. 
+  An initiative definition is a set of Policy Definitions to help track your compliance state for a larger goal. 
+  For example, ensuring a branch office is compliant.
+3 Scope the Initiative Definition. You can limit the scope of the Initiative Definition to Management Groups, Subscriptions, or Resource Groups.
+4 View Policy Evaluation results
+
+NOTE: Even if you have only a few Policy Definitions, we recommend creating an Initiative Definition.
+
+Create policy definitions
+* There are many Built-in Policy Definitions for you to choose from. Sorting by Category will help you locate what you need.
+  For example,
+  The Allowed Virtual Machine SKUs enables you to specify a set of virtual machine SKUs that your organization can deploy.
+  The Allowed Locations policy enables you to restrict the locations that your organization can specify when deploying resources. 
+  The Allowed Locations policy can be used to enforce your geo-compliance requirements.
+
+* When there isn't an applicable policy you can add a new Policy Definition. You can import a policy definitions from GitHub. New Policy Definitions are added almost every day.
+
+Create initiative definitions
+* Once you have determined which Policy Definitions you need, you create an Initiative Definition. This definition will include one or more policies. 
+
+Scope the initiative definition
+* Once our Initiative Definition is created, you can assign the definition to establish its scope. 
+  A scope determines what resources or grouping of resources the policy assignment gets enforced on.
+* You can select the Subscription, and then optionally a Resource Group.
+
+Determine compliance
+* Once your policy is in place, you can use the Compliance blade to review non-compliant initiatives, non-compliant policies, and non-compliant resources.
+
+
+Configure role-based access control
+
+
+
+
 
 
 
