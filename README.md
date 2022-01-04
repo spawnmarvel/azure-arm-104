@@ -3,11 +3,11 @@
 
 ### Github switch user local machine:
 
-1. List your git config and view current user
-git config --list
-2. Change username and email global
-git config  user.name "First Lastname"
-git config  user.email "info@firstlastname.com"
+####  List your git config and view current user
+1. git config --list
+#### Change username and email global
+2. git config  user.name "First Lastname"
+3. git config  user.email "info@firstlastname.com"
 
 ### Repos switch to SSH:
 
