@@ -622,8 +622,113 @@ Determine compliance
 
 
 Configure role-based access control
+* Securing your Azure resources, such as virtual machines, websites, networks, and storage, is a critical function for any organization using the cloud.
+
+Implement role-based access control
+* Azure RBAC is an authorization system built on Azure Resource Manager that provides fine-grained access management of resources in Azure.
+
+Here are some examples of what you can do with Azure RBAC:
+* Allow an application to access all resources in a resource group
+* Allow one user to manage virtual machines in a subscription and another user to manage virtual networks
+* Allow a DBA group to manage SQL databases in a subscription
+* Allow a user to manage all resources in a resource group, such as virtual machines, websites, and subnets
+
+Concepts
+* Service principal, object, user, group
+* Role definition, permissions
+* Scope, boundary of level: management groups, subscription, resource groups, resource
+* Assignment, Attaching a role definition to a service principal at a particular scope
+
+Create a role definition
+* Each role is a set of properties defined in a JSON file.
+* This role definition includes Name, Id, and Description. 
+  The definition also includes the allowable permissions (Actions), 
+  denied permissions (NotActions), and scope (read access, etc.) for the role.
+
+Actions and NotActions
+* The Actions and NotActions properties can be tailored to grant and deny the exact permissions you need. 
+  This table defines how the Owner, Contributor, and Reader roles.
+
+Built-in Role                 Action                           NotAction
+Owner(allow all actions)      *                                  
+
+Contributor(alow all actions  *                                Microsoft.Authorization/*/Delete,
+except writing/Deleting                                        Microsoft.Authorization/*/Write,
+role assignment)                                               Microsoft.Authorization/elevateAccess/Action
+
+Reader(allow all actions)     */read
 
 
+Scope your role
+* After defining the Actions and NotActions properties, you must scope the role.
+  The AssignableScopes property of the role specifies the role scope. The scope can be subscriptions. resource groups, or resources.
+
+
+* /subscriptions/[subscription id]
+* /subscriptions/[subscription id]/resourceGroups/[resource group name]
+* /subscriptions/[subscription id]/resourceGroups/[resource group name]/[resource]
+
+Create a role assignment
+* A role assignment is the process of scoping a role definition to a user, group, service principal, or managed identity. The purpose of the role assignment is to grant access. Access is revoked by removing a role assignment.
+
+NOTE: A resource inherits role assignments from its parent resource.
+
+Compare Azure roles to Azure Active Directory roles
+
+* Classic subscription administrator roles
+* Azure role-based access control (RBAC) roles
+* Azure Active Directory (Azure AD) administrator roles
+
+* To better understand roles in Azure, it helps to know some of the history. When Azure was initially released, access to resources was managed with 
+  just three administrator roles: Account Administrator, Service Administrator, and Co-Administrator. 
+  Later, role-based access control (RBAC) for Azure resources was added. 
+  Azure RBAC is a newer authorization system that provides fine-grained access management to Azure resources. 
+  RBAC includes many built-in roles, can be assigned at different scopes, and allows you to create your own custom roles. 
+  To manage resources in Azure AD, such as users, groups, and domains, there are several Azure AD administrator roles.
+
+Azure RBAC roles                                    Azure AD roles
+
+* Manage access to Azure resources.                 * Manage access to Azure Active Directory resources.
+
+* Scope can be specified at multiple levels         * Scope is at the tenant level.
+ (management group, subscription, 
+  resource group, resource).
+
+* Role information can be accessed in               * Role information can be accessed in Azure admin portal,
+  Azure portal, Azure CLI, Azure PowerShell,          Microsoft 365 admin portal, Microsoft Graph AzureAD
+  Azure Resource Manager templates, REST API.         PowerShell.
+
+
+Apply role-based access control
+
+* RBAC includes many built-in roles, can be assigned at different scopes, and allows you to create your own custom roles. 
+  To manage resources in Azure AD, such as users, groups, and domains, there are several Azure AD administrator roles.
+* Azure AD Admin roles are used to manage resources in Azure AD, such as users, groups, and domains.
+* Azure RBAC roles provide more fine-grained access management to Azure resources.
+
+
+Determine role-based access control roles
+
+Azure includes several built-in roles that you can use. There are four fundamental built-in roles. The first three apply to all resource types.
+* Owner. Has full access to all resources including the right to delegate access to others.
+* Contributor. Can create and manage all types of Azure resources but can’t grant access to others.
+* Reader. Can view existing Azure resources.
+* User Access Administrator. Lets you manage user access to Azure resources, rather than to managing resources.
+
+NOTE: 
+* There are other built-in roles. For example, the Virtual Machine Contributor role allows a user to create and manage virtual machines.
+* When the built-in roles don't meet the specific needs of your organization, you can create your own custom roles.
+* Roles can grant access to data within an object. 
+  For example, if a user has read data access to a storage account, then they can read the blobs or messages in the storage account.
+
+
+Create Azure users and groups in Azure Active Directory
+
+
+
+
+
+ 
 
 
 
