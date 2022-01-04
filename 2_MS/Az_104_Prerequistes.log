@@ -972,6 +972,12 @@ AZ-104: Implement and manage storage in Azure
 
 Configure storage accounts
 Test
+https://superuser.com/questions/1064197/how-to-switch-git-user-at-terminal/1405154
+
+git config --global user.name "Nanhe Kumar"
+git config --global user.email "info@nanhekumar.com"
+
+
 
 AZ-104: Deploy and manage Azure compute resources
 TODO 6 hr 19 min
