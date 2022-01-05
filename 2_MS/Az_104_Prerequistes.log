@@ -971,11 +971,7 @@ Exercise - Customize directory branding
 AZ-104: Implement and manage storage in Azure
 
 Configure storage accounts
-Test
-https://superuser.com/questions/1064197/how-to-switch-git-user-at-terminal/1405154
-
-git config --global user.name "Nanhe Kumar"
-git config --global user.email "info@nanhekumar.com"
+Yea
 
 
 
@@ -987,7 +983,6 @@ TODO 8 hr
 
 AZ-104: Monitor and back up Azure resources
 4 hr 50 min
-
 
 
 
