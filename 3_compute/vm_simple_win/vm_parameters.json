@@ -53,7 +53,7 @@
             "value": "testit2-rg"
         },
         "osDiskType": {
-            "value": "Standard_LRS"
+            "value": "StandardSSD_LRS"
         },
         "virtualMachineSize": {
             "value": "Standard_B2s"

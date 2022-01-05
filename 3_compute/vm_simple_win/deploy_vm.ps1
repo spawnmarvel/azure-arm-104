@@ -58,5 +58,5 @@ New-AzResourceGroupDeployment -Name $deployName `
  -virtualNetworkId $vnetId `
  -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -Verbose
 
-Write-Host "Migrated to Windosw from Linux test"
+Write-Host "Migrated to Windows from Linux test"
 Write-Host "todo get vm name from file and use it in the parameters file for publicIpAddressName, virtualMachineName etc."

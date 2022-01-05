@@ -24,7 +24,7 @@ $rgName = "testit2-rg"
 * Standard_BS2s - 2 vpcu, 4 gb memory A$48/mon ?
 * Administrator account + password
 * Public inbound ports, allow RDP, 3389
-* Disk standard, HDD
+* Disk standard, StandardSSD_LRS
 * Virtual net, testit2-vnet
 * Subnet default, 10.0.0.0/24
 * Public ip, (new) 
@@ -96,7 +96,22 @@ Write-Host $passWordSecure
 
 ### 5 Use mstsc to login
 Get the IP from Azure VM
+\Username
+ComputerName\Username as user
+Test-NetConnection -ComputerName IP -Port 3389
+.\Username
+Reset password
 But please use private IP in prod and make a separate public IP or other "DMZ" stuff
+
+https://docs.microsoft.com/en-us/answers/questions/665787/virtual-machine-agent-status-not-ready.html
+
+https://docs.microsoft.com/en-us/troubleshoot/azure/virtual-machines/windows-azure-guest-agent
+
+You can run the following PowerShell command to check whether VM Agent has been deployed to the VM:
+
+Get-AzVM -ResourceGroupName "RGNAME" -Name "VMNAME" -DisplayHint expand
+
+In the output, locate the ProvisionVMAgent property, and check whether the value is set to True. If it is, this means that the agent is installed on the VM.
 
 ### 6 Scripts
 Use the scripts:
