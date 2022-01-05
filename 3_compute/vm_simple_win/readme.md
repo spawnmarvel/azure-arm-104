@@ -18,21 +18,21 @@ $rgName = "testit2-rg"
 
 ### 2 The information provided in the Portal:
 
-* Virtual machine name test-vm8080
+* Virtual machine name test-vm8081
 * Availability zone, 1
-* Ubuntu Server 20_04-lts-gen2
+* Windows Server 2019 Datacenter - Gen2
 * Standard_BS2s - 2 vpcu, 4 gb memory A$48/mon ?
 * Administrator account + password
-* Public inbound ports, allow SSH 22
+* Public inbound ports, allow RDP, 3389
 * Disk standard, HDD
-* Virtual net, testit-vnet
+* Virtual net, testit2-vnet
 * Subnet default, 10.0.0.0/24
-* Public ip, (new) test-vm-ip
-* Public inbound ports, allow SHH 22
+* Public ip, (new) 
+* Public inbound ports, allow RDP
 * Boot diagnostics, Disable
 * extensions is empty now, will add when template works
 
-### 3 Download the template and parameter for automation
+### 3 Download the template and parameter for automation, cp the template to vm_template, cp the parameters to vm_parameters
 ### 3.1 Changes in the template, most important is described in the 3.3 Ps1 section
 ### (3.2 ) If you do not not want to change anything as described in 3.1, just provide a rg, templatefile, paramterfile and New-AzResourceGroupDeployment with just the
 ### main parameters(rg, tempfile, paramfile and user + password):
@@ -94,9 +94,9 @@ Write-Host $arr[1]
 Write-Host $passWordSecure
 ```
 
-### 5 Use SSH/Putty to login
+### 5 Use mstsc to login
 Get the IP from Azure VM
-Open Az CLI-> Type ssh vmname@ip, then agree and give password. But please use private key file in prod.
+But please use private IP in prod and make a separate public IP or other "DMZ" stuff
 
 ### 6 Scripts
 Use the scripts:
