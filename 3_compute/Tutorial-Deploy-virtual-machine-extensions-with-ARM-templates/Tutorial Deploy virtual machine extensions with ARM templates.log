@@ -1,2 +1,15 @@
+Tutorial: Deploy virtual machine extensions with ARM templates
 https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-tutorial-deploy-vm-extensions
+
+
+
+# All will be listed as avaliable
+Get-WindowsFeature -Name web*
+
+# After install, some will be listed as installed
+Install-WindowsFeature -Name Web-Server -IncludeManagementTools
+
+Custom Script Extension for Windows
+https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/custom-script-windows
+
 
