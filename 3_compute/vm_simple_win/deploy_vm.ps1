@@ -47,7 +47,7 @@ Write-Host $arr[1]
 Write-Host $passWordSecure
 
 # test it
-#New-AzResourceGroupDeployment -Name $deployName `
+# New-AzResourceGroupDeployment -Name $deployName `
 #  -ResourceGroupName $resourceGr.ResourceGroupName `
 #  -virtualNetworkId $vnetId `
 #  -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -WhatIf
@@ -58,4 +58,5 @@ New-AzResourceGroupDeployment -Name $deployName `
  -virtualNetworkId $vnetId `
  -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -Verbose
 
+Write-Host "Migrated to Windosw from Linux test"
 Write-Host "todo get vm name from file and use it in the parameters file for publicIpAddressName, virtualMachineName etc."
