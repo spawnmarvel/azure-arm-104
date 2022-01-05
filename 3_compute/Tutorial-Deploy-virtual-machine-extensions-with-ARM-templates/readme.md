@@ -1,4 +1,4 @@
-# Simple vm with username and password from script
+# Simple vm with username and password from script with vm extension ps1
 
 If you have a rg and a vnet, here is how to make a vm and include it in the vnet with below mentioned SKU, settings and connect it to the vnet
 (Make the vm type it in the portal first, stop at review + create and  download for automation.)
