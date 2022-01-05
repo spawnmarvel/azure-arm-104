@@ -94,12 +94,11 @@ Write-Host $arr[1]
 Write-Host $passWordSecure
 ```
 
-### 5 Use mstsc to login
-Get the IP from Azure VM
+### 5 Use mstsc to login (give it some minutes after deploy, due to virtual machine agent must be ready)
 \Username
-ComputerName\Username as user
+
 Test-NetConnection -ComputerName IP -Port 3389
-.\Username
+* 
 Reset password
 But please use private IP in prod and make a separate public IP or other "DMZ" stuff
 

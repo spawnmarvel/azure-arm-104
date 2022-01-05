@@ -2,6 +2,41 @@ Tutorial: Deploy virtual machine extensions with ARM templates
 https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-tutorial-deploy-vm-extensions
 
 
+Edit the template
+
+
+"variables": {
+        "nsgId": "[resourceId(resourceGroup().name, 'Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]",
+        "vnetId": "[parameters('virtualNetworkId')]",
+        "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]",
+        // added this variable for vm extensions
+        "vmName": "[parameters('virtualMachineName')]"
+    },
+
+
+ // added extension as child on vm
+
+{
+  "type": "Microsoft.Compute/virtualMachines/extensions",
+  "apiVersion": "2021-04-01",
+  "name": "[concat(variables('vmName'),'/', 'InstallWebServer')]",
+  "location": "[parameters('location')]",
+  "dependsOn": [
+    "[concat('Microsoft.Compute/virtualMachines/',variables('vmName'))]"
+  ],
+  "properties": {
+    "publisher": "Microsoft.Compute",
+    "type": "CustomScriptExtension",
+    "typeHandlerVersion": "1.7",
+    "autoUpgradeMinorVersion": true,
+    "settings": {
+      
+      "commandToExecute": "powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools && powershell.exe remove-item 'C:\\inetpub\\wwwroot\\iisstart.htm' && powershell.exe Add-Content -Path 'C:\\inetpub\\wwwroot\\iisstart.htm' -Value $('Hello World from ' + $env:computername)"
+    }
+  }
+}
+
+
 
 # All will be listed as avaliable
 Get-WindowsFeature -Name web*
@@ -9,7 +44,60 @@ Get-WindowsFeature -Name web*
 # After install, some will be listed as installed
 Install-WindowsFeature -Name Web-Server -IncludeManagementTools
 
-Custom Script Extension for Windows
-https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/custom-script-windows
+Deploy the template
+https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-tutorial-create-templates-with-dependent-resources?tabs=CLI#deploy-the-template
+
+Parent->Child
+https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/azure-resource-manager/templates/child-resource-name-type.md
+
+depends on is present
+"dependsOn": [
+    "[concat('Microsoft.Compute/virtualMachines/',variables('vmName'))]"
+  ],
+
+
+Run it
+
+VERBOSE: Performing the operation "Creating Deployment" on target "testit2-rg".
+VERBOSE: 22:41:00 - Template is valid.
+VERBOSE: 22:41:03 - Create template deployment 'buildTestVm116'
+VERBOSE: 22:41:03 - Checking deployment status in 5 seconds
+VERBOSE: 22:41:08 - Resource Microsoft.Compute/virtualMachines 'test-vm8081' provisioning status is running
+VERBOSE: 22:41:08 - Resource Microsoft.Network/networkInterfaces 'test-vm8081389' provisioning status is succeeded
+VERBOSE: 22:41:08 - Resource Microsoft.Network/publicIpAddresses 'test-vm8081-ip' provisioning status is succeeded
+VERBOSE: 22:41:08 - Resource Microsoft.Network/networkSecurityGroups 'test-vm8081-nsg' provisioning status is succeeded
+VERBOSE: 22:41:08 - Checking deployment status in 16 seconds
+VERBOSE: 22:41:24 - Resource Microsoft.Compute/virtualMachines/extensions 'test-vm8081/InstallWebServer' provisioning
+status is running
+VERBOSE: 22:41:24 - Resource Microsoft.Compute/virtualMachines 'test-vm8081' provisioning status is succeeded
+VERBOSE: 22:41:24 - Checking deployment status in 5 seconds
+VERBOSE: 22:41:30 - Checking deployment status in 5 seconds
+VERBOSE: 22:41:35 - Checking deployment status in 5 seconds
+VERBOSE: 22:41:40 - Checking deployment status in 5 seconds
+VERBOSE: 22:41:45 - Checking deployment status in 5 seconds
+VERBOSE: 22:41:51 - Checking deployment status in 5 seconds
+VERBOSE: 22:41:56 - Checking deployment status in 5 seconds
+VERBOSE: 22:42:01 - Checking deployment status in 5 seconds
+VERBOSE: 22:42:07 - Checking deployment status in 5 seconds
+VERBOSE: 22:42:12 - Checking deployment status in 5 seconds
+VERBOSE: 22:42:17 - Checking deployment status in 5 seconds
+VERBOSE: 22:42:23 - Checking deployment status in 5 seconds
+VERBOSE: 22:42:28 - Checking deployment status in 5 seconds
+VERBOSE: 22:42:33 - Checking deployment status in 5 seconds
+VERBOSE: 22:42:38 - Checking deployment status in 5 seconds
+VERBOSE: 22:42:44 - Checking deployment status in 5 seconds
+VERBOSE: 22:42:49 - Checking deployment status in 5 seconds
+VERBOSE: 22:42:54 - Checking deployment status in 5 seconds
+VERBOSE: 22:43:00 - Checking deployment status in 5 seconds
+VERBOSE: 22:43:05 - Checking deployment status in 5 seconds
+VERBOSE: 22:43:10 - Checking deployment status in 5 seconds
+VERBOSE: 22:43:15 - Resource Microsoft.Compute/virtualMachines/extensions 'test-vm8081/InstallWebServer' provisioning
+status is succeeded
+
+http://localhost/
+
+Hello World from test-vm8081 
+
+
 
 
