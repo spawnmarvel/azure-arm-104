@@ -44,6 +44,8 @@ Get-WindowsFeature -Name web*
 # After install, some will be listed as installed
 Install-WindowsFeature -Name Web-Server -IncludeManagementTools
 
+******* Inline script
+
 Deploy the template
 https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/template-tutorial-create-templates-with-dependent-resources?tabs=CLI#deploy-the-template
 
@@ -98,6 +100,8 @@ http://localhost/
 
 Hello World from test-vm8081 
 
+***** File URI
+
 Now lets add a file URI
 Add the script to github and point to that, change to my github and deploy a script
 
@@ -109,6 +113,51 @@ Add the script to github and point to that, change to my github and deploy a scr
     }
 
 
+https://stackoverflow.com/questions/39065921/what-do-raw-githubusercontent-com-urls-represent
+
+When you have your ps1 script ready remember to get the raw link (go to the script on github an press raw):
+
+Web
+
+https://github.com/spawnmarvel/azure-arm-104/blob/master/3_compute/Tutorial-Deploy-virtual-machine-extensions-with-ARM-templates/installWebServer.ps1
+
+Raw
+
+https://raw.githubusercontent.com/spawnmarvel/azure-arm-104/master/3_compute/Tutorial-Deploy-virtual-machine-extensions-with-ARM-templates/installWebServer.ps1
+
+
+Result
+VERBOSE: Performing the operation "Creating Deployment" on target "testit2-rg".
+VERBOSE: 20:51:55 - Template is valid.
+VERBOSE: 20:51:58 - Create template deployment 'buildTestVm119'
+VERBOSE: 20:51:58 - Checking deployment status in 5 seconds
+VERBOSE: 20:52:03 - Resource Microsoft.Compute/virtualMachines 'test-vm8081' provisioning status is running
+VERBOSE: 20:52:03 - Resource Microsoft.Network/networkInterfaces 'test-vm8081389' provisioning status is succeeded
+VERBOSE: 20:52:03 - Resource Microsoft.Network/publicIpAddresses 'test-vm8081-ip' provisioning status is succeeded
+VERBOSE: 20:52:03 - Resource Microsoft.Network/networkSecurityGroups 'test-vm8081-nsg' provisioning status is succeeded
+VERBOSE: 20:52:04 - Checking deployment status in 14 seconds
+VERBOSE: 20:52:18 - Resource Microsoft.Compute/virtualMachines/extensions 'test-vm8081/InstallWebServer' provisioning status is running
+VERBOSE: 20:52:18 - Resource Microsoft.Compute/virtualMachines 'test-vm8081' provisioning status is succeeded
+VERBOSE: 20:52:18 - Checking deployment status in 5 seconds
+VERBOSE: 20:52:23 - Checking deployment status in 5 seconds
+VERBOSE: 20:52:29 - Checking deployment status in 5 seconds
+VERBOSE: 20:52:34 - Checking deployment status in 5 seconds
+VERBOSE: 20:52:39 - Checking deployment status in 5 seconds
+VERBOSE: 20:52:44 - Checking deployment status in 5 seconds
+VERBOSE: 20:52:50 - Checking deployment status in 5 seconds
+VERBOSE: 20:52:55 - Checking deployment status in 5 seconds
+VERBOSE: 20:53:00 - Checking deployment status in 5 seconds
+VERBOSE: 20:53:05 - Checking deployment status in 5 seconds
+VERBOSE: 20:53:11 - Checking deployment status in 5 seconds
+VERBOSE: 20:53:16 - Checking deployment status in 5 seconds
+VERBOSE: 20:53:21 - Checking deployment status in 5 seconds
+VERBOSE: 20:53:27 - Checking deployment status in 5 seconds
+VERBOSE: 20:53:32 - Checking deployment status in 5 seconds
+VERBOSE: 20:53:37 - Checking deployment status in 5 seconds
+VERBOSE: 20:53:42 - Checking deployment status in 5 seconds
+VERBOSE: 20:53:48 - Checking deployment status in 5 seconds
+VERBOSE: 20:53:53 - Checking deployment status in 5 seconds
+VERBOSE: 20:53:58 - Resource Microsoft.Compute/virtualMachines/extensions 'test-vm8081/InstallWebServer' provisioning status is succeeded
 
 
 

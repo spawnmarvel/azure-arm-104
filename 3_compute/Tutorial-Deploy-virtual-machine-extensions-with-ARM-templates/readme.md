@@ -1,7 +1,18 @@
-# Simple vm with username and password from script with vm extension ps1
+# Simple vm with username and password from script, and a vm extension ps1 script
 
 If you have a rg and a vnet, here is how to make a vm and include it in the vnet with below mentioned SKU, settings and connect it to the vnet
 (Make the vm type it in the portal first, stop at review + create and  download for automation.)
+
+When you have your ps1 script ready remember to get the raw link (go to the script on github an press raw):
+
+Web
+
+https://github.com/spawnmarvel/azure-arm-104/blob/master/3_compute/Tutorial-Deploy-virtual-machine-extensions-with-ARM-templates/installWebServer.ps1
+
+Raw
+
+https://raw.githubusercontent.com/spawnmarvel/azure-arm-104/master/3_compute/Tutorial-Deploy-virtual-machine-extensions-with-ARM-templates/installWebServer.ps1
+
 
 ### 1 Resource group and vnet used: 
 * testit2-rg 
