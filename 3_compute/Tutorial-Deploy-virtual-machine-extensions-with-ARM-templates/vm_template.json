@@ -193,7 +193,7 @@
                 // file URI script
                 "settings": {
                     "fileUris": [
-                        "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1"
+                        "https://github.com/spawnmarvel/azure-arm-104/blob/master/3_compute/Tutorial-Deploy-virtual-machine-extensions-with-ARM-templates/installWebServer.ps1"
                     ],
                     "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File installWebServer.ps1"
                 }
