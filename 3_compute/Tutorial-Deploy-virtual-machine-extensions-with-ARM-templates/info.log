@@ -98,6 +98,18 @@ http://localhost/
 
 Hello World from test-vm8081 
 
+Now lets add a file URI
+Add the script to github and point to that, change to my github and deploy a script
+
+"settings": {
+      "fileUris": [
+        "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1"
+      ],
+      "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File installWebServer.ps1"
+    }
+
+
+
 
 
 
