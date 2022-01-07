@@ -1,0 +1,34 @@
+{
+    // your api reference
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  // your version
+  "contentVersion": "1.0.0.0",
+  "parameters": { 
+      "customName": {
+          // a custom paramter
+            "type": "string"
+        },
+      "location": {
+            "type": "string",
+            // a function
+            "defaultValue": "[resourceGroup().location]"
+        },
+        "networkInterfaceName": {
+            "type": "string",
+            "minLength":5,
+            "maxLength":20
+        }
+   },
+  "variables": { 
+      "customReference": "[parameters('customName')]",
+      "myLocation": "[parameters('location')]"
+   },
+  "functions": [  ],
+  "resources": [ 
+      // 1 resource
+     
+
+      //
+   ],
+  "outputs": {  }
+}
