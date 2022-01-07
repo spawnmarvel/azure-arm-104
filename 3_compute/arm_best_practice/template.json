@@ -30,7 +30,7 @@
         },
         "location": {
             "type": "string",
-            // a function
+            // a function call
             "defaultValue": "[resourceGroup().location]",
             "metadata" :{
                 "description": "a description"
@@ -48,6 +48,7 @@
         }
     },
     "variables": {
+        // a var
         "customNameUnique": "[concat(parameters('customName'),uniqueString(resourceGroup().id))]"
     },
     "functions": [],
@@ -56,10 +57,11 @@
         {
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2021-04-01",
+            // var used
             "name": "[variables('customNameUnique')]",
             "location": "[parameters('location')]",
             "tags": "[parameters('resourceTags')]",
-            
+
             "dependsOn": [],
 
             "sku": {
