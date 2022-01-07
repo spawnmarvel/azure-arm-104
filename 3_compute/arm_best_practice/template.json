@@ -10,8 +10,6 @@
             "metadata" :{
                 "description": "a description"
             }
-                
-            
         },
         "storageSKU": {
             "type": "string",
@@ -50,8 +48,7 @@
         }
     },
     "variables": {
-        "customNameUnique": "[concat(parameters('customName'),uniqueString(resourceGroup().id))]",
-        "myLocation": "[parameters('location')]"
+        "customNameUnique": "[concat(parameters('customName'),uniqueString(resourceGroup().id))]"
     },
     "functions": [],
     "resources": [
