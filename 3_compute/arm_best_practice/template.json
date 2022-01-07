@@ -59,16 +59,20 @@
             "name": "[variables('customNameUnique')]",
             "location": "[parameters('location')]",
             "tags": "[parameters('resourceTags')]",
+            
+            "dependsOn": [],
+
             "sku": {
                 "name": "[parameters('storageSKU')]"
             },
+
             "kind": "StorageV2",
             "properties": {
                 "supportsHttpsTrafficOnly": true
             }
         }
 
-        // , 2 resourcre
+        // , 2 resource
     ],
     "outputs": {
         //
