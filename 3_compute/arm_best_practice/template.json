@@ -1,34 +1,84 @@
 {
     // your api reference
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  // your version
-  "contentVersion": "1.0.0.0",
-  "parameters": { 
-      "customName": {
-          // a custom paramter
-            "type": "string"
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    // your version
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "customName": {
+            // a custom paramter
+            "type": "string",
+            "metadata" :{
+                "description": "a description"
+            }
+                
+            
         },
-      "location": {
+        "storageSKU": {
+            "type": "string",
+            "defaultValue": "Standard_LRS",
+            "allowedValues": [
+                "Standard_LRS",
+                "Standard_GRS",
+                "Standard_RAGRS",
+                "Standard_ZRS",
+                "Premium_LRS",
+                "Premium_ZRS",
+                "Standard_GZRS",
+                "Standard_RAGZRS"
+            ],
+            "metadata" :{
+                "description": "a description"
+            }
+        },
+        "location": {
             "type": "string",
             // a function
-            "defaultValue": "[resourceGroup().location]"
+            "defaultValue": "[resourceGroup().location]",
+            "metadata" :{
+                "description": "a description"
+            }
         },
-        "networkInterfaceName": {
-            "type": "string",
-            "minLength":5,
-            "maxLength":20
+        "resourceTags": {
+            "type": "object",
+            "defaultValue": {
+                "Environment": "Dev",
+                "Project": "Tutorial"
+            },
+            "metadata" :{
+                "description": "a description"
+            }
         }
-   },
-  "variables": { 
-      "customReference": "[parameters('customName')]",
-      "myLocation": "[parameters('location')]"
-   },
-  "functions": [  ],
-  "resources": [ 
-      // 1 resource
-     
+    },
+    "variables": {
+        "customNameUnique": "[concat(parameters('customName'),uniqueString(resourceGroup().id))]",
+        "myLocation": "[parameters('location')]"
+    },
+    "functions": [],
+    "resources": [
+        // 1 resource
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2021-04-01",
+            "name": "[variables('customNameUnique')]",
+            "location": "[parameters('location')]",
+            "tags": "[parameters('resourceTags')]",
+            "sku": {
+                "name": "[parameters('storageSKU')]"
+            },
+            "kind": "StorageV2",
+            "properties": {
+                "supportsHttpsTrafficOnly": true
+            }
+        }
 
-      //
-   ],
-  "outputs": {  }
+        // , 2 resourcre
+    ],
+    "outputs": {
+        //
+            "storageEndpoint": {
+                "type": "object",
+                "value": "[reference(variables('customNameUnique')).primaryEndpoints]"
+            }
+        //
+    }
 }

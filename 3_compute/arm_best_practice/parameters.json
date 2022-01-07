@@ -3,14 +3,20 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "customName": {
-            "value": "test-8081389"
+            "value": "testtutorial"
         },
+        "storageSKU": {
+            "value": "Standard_LRS"
+          },
         "location": {
             "value": "westeurope"
         },
-        "networkInterfaceName": {
-            "value": "test-vm8081389"
-        }
+        "resourceTags": {
+            "value": {
+              "Environment": "Test",
+              "Project": "Tutorial"
+            }
+          }
         
     }
 }
