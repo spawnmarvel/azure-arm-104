@@ -1,4 +1,4 @@
-# Simple vm with username and password from script
+# Simple vm with username and password from script and vnet in a different rg but same region.
 
 If you have a vnet, here is how to make a vm and include it in the vnet with below mentioned SKU, settings and connect it to the vnet
 (Make the vm type it in the portal first, stop at review + create and download for automation so you can use it or compare it and alter what you need.)
