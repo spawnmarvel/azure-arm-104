@@ -2,14 +2,23 @@
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "customPrefix": {
+            "type": "string",
+             "defaultValue": "testit2vms",
+            "metadata": {
+                "description": "name or prefix used for unique name generator"
+            }
+        },
         "location": {
             "type": "string"
         },
         "networkInterfaceName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "[concat(parameters('customPrefix'),'-nic')]"
         },
         "networkSecurityGroupName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "[concat(parameters('customPrefix'),'-nsg')]"
         },
         "networkSecurityGroupRules": {
             "type": "array"
@@ -21,7 +30,8 @@
             "type": "string"
         },
         "publicIpAddressName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "[concat(parameters('customPrefix'),'-public-ip')]"
         },
         "publicIpAddressType": {
             "type": "string"
@@ -30,10 +40,12 @@
             "type": "string"
         },
         "virtualMachineName": {
-            "type": "string"
+            "type": "string",
+             "defaultValue": "[concat(parameters('customPrefix'),'-vmname')]"
         },
         "virtualMachineComputerName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "[concat(parameters('customPrefix'),'-vmname')]"
         },
         "virtualMachineRG": {
             "type": "string"

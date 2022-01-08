@@ -2,20 +2,26 @@ write-Host "Started deploy simple vm" -ForegroundColor Green
 Write-Host "Create the rg (it is automatically created if you have not) and vnet (you must create) before you start" -ForegroundColor Yellow
 Write-Host "Get it from subscription and feed it to virtualNetworkId if you need to keep it safe" -ForegroundColor Yellow
 Write-Host "Must also use a random generator for -Name on deploy"
-$ran = Get-Random -Maximum 100
+$ran = Get-Random -Maximum 1000
 $deployName = "buildTestVm1" + $ran
 Write-Host "Running deploy: " $deployName
+$customPrefixTmp = 'test-1' + $ran
+Write-Host "Custom prefix: " $customPrefixTmp
 # connect to azure first
 # Connect-AzAccount
 $sub = Get-AzSubscription
-$vnet = "testit2-vnet"
+# vnet used shall be avaliable and
+$vnet = "vnet004799"
+# vnet rg shall be avaliable and created before
+$resourceGrVnet =  Get-AzResourceGroup -Name "testit-vnet2"
+# vm rg
 $rgName = "testit2-rg"
 # create rg
-$resourceGr = New-AzResourceGroup -Name $rgName -Location "west europe" -Force
-#  check what we have before we start
+$resourceGrVM = New-AzResourceGroup -Name $rgName -Location "west europe" -Force
+#  check that we have the vm rg
 Write-Host "Get resources in : " $rgName
 try {
-  $group = Get-AzResource -ResourceGroupName $resourceGr.ResourceGroupName
+  $group = Get-AzResource -ResourceGroupName $resourceGrVM.ResourceGroupName
 
   foreach ($g in $group) {
     Write-Host $g.Name + " " $g.Sku.Name
@@ -28,8 +34,8 @@ catch {
   
 }
 Write-Host "Continue..." -ForegroundColor Green
-# construct the virtualNetworkId (is has been removed from the downloaded paramter file)
-$vnetId = "/subscriptions/" + $sub.Id + "/resourceGroups/" + $resourceGr.ResourceGroupName + "/providers/Microsoft.Network/virtualNetworks/" + $vnet
+# construct the virtualNetworkId from the vnet rg, not the vm rg (is has been removed from the downloaded paramter file)
+$vnetId = "/subscriptions/" + $sub.Id + "/resourceGroups/" + $resourceGrVnet.ResourceGroupName + "/providers/Microsoft.Network/virtualNetworks/" + $vnet
 Write-Host $vnetId
 # template file
 $templateFile = ".\vm_template.json"
@@ -47,15 +53,11 @@ Write-Host $arr[1]
 Write-Host $passWordSecure
 
 # test it
-#New-AzResourceGroupDeployment -Name $deployName `
-#  -ResourceGroupName $resourceGr.ResourceGroupName `
-#  -virtualNetworkId $vnetId `
-#  -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -WhatIf
-
-# verbose or debug for actually deploying it
 New-AzResourceGroupDeployment -Name $deployName `
- -ResourceGroupName $resourceGr.ResourceGroupName `
- -virtualNetworkId $vnetId `
- -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -Verbose
+  -customPrefix $customPrefixTmp `
+  -ResourceGroupName $resourceGrVM.ResourceGroupName `
+  -virtualNetworkId $vnetId `
+  -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -Verbose
+   # verbose or debug or WhatIf for actually deploying it
 
-Write-Host "todo get vm name from file and use it in the parameters file for publicIpAddressName, virtualMachineName etc."
+

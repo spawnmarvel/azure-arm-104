@@ -1,14 +1,15 @@
 # Simple vm with username and password from script
 
-If you have a rg and a vnet, here is how to make a vm and include it in the vnet with below mentioned SKU, settings and connect it to the vnet
-(Make the vm type it in the portal first, stop at review + create and  download for automation.)
+If you have a vnet, here is how to make a vm and include it in the vnet with below mentioned SKU, settings and connect it to the vnet
+(Make the vm type it in the portal first, stop at review + create and download for automation so you can use it or compare it and alter what you need.)
 
 ### 1 Resource group and vnet used: 
-* testit2-rg 
-* testit2-vnet
-
 ```ps1
-$vnet = "testit2-vnet"
+# vnet used shall be avaliable and
+$vnet = "vnet004799"
+# vnet rg shall be avaliable and created before
+$resourceGrVnet =  Get-AzResourceGroup -Name "testit-vnet2"
+# vm rg
 $rgName = "testit2-rg"
 ```
 ### 1.1  A note about vnet:
@@ -16,7 +17,7 @@ $rgName = "testit2-rg"
 #### When you create or update a virtual network in your subscription, Network Watcher will be enabled automatically in your Virtual Network's region. There is no impact to your resources or associated charge for automatically enabling Network Watcher. 
 
 
-### 2 The information provided in the Portal:
+### 2 The information provided in the Portal for vm:
 
 * Virtual machine name test-vm8080
 * Availability zone, 1
@@ -25,7 +26,7 @@ $rgName = "testit2-rg"
 * Administrator account + password
 * Public inbound ports, allow SSH 22
 * Disk standard, HDD
-* Virtual net, testit-vnet
+* Virtual net, vnet004799?
 * Subnet default, 10.0.0.0/24
 * Public ip, (new) test-vm-ip
 * Public inbound ports, allow SHH 22
@@ -57,13 +58,46 @@ $rgName = "testit2-rg"
 # And get it like this:
 $sub = Get-AzSubscription
 # [..]
-# construct the virtualNetworkId (is has been removed from the downloaded parameter file used here) and it is ready to use
-$vnetId = "/subscriptions/" + $sub.Id +  "/resourceGroups/" + $resourceGr.ResourceGroupName + "/providers/Microsoft.Network/virtualNetworks/" +$vnet
+# construct the virtualNetworkId from the vnet rg, not the vm rg (is has been removed from the downloaded paramter file)
+$vnetId = "/subscriptions/" + $sub.Id + "/resourceGroups/" + $resourceGrVnet.ResourceGroupName + "/providers/Microsoft.Network/virtualNetworks/" + $vnet
 
 # The same goes for adminUserName from the parameter file, set it to null, we generate it from script
 "adminUsername": {
             "value": null
         },
+
+# 08.01.2021 If you have made a template in the portal and done edited it as mentioned above, there is more fun done.
+
+# In the template file we introduced.
+ "customPrefix": {
+            "value": null
+        },
+
+# That is used for:
+# networkInterfaceName
+# networkSecurityGroupName
+# publicIpAddressName
+# virtualMachineName
+# virtualMachineComputerName
+
+# With a function like this:
+# "defaultValue": "[concat(parameters('customPrefix'),'-nic-')]"
+
+# In the parameters file we removed:
+# networkInterfaceName
+# networkSecurityGroupName
+# publicIpAddressName
+# virtualMachineName
+# virtualMachineComputerName
+# " Since this will now come from the customPrefix
+
+# exampel for template (same for all the above mentioned) has
+"networkInterfaceName": {
+            "type": "string",
+            "defaultValue": "[concat(parameters('customPrefix'),'-nic')]"
+        },
+# parameters doed not have this paramter now, it is removed it was null, so either we had to give that from ps1 input (many params then for ps1) or keep it hardcoded
+
 ```
 
 ### 4 Run deploy_vm_simple.ps1 for testing with -WhatIf, change to -Verbose for actual deploy
@@ -76,9 +110,11 @@ $paramterFile = ".\vm_paramters.json"
 # [...]
 
 New-AzResourceGroupDeployment -Name $deployName `
-  -ResourceGroupName $resourceGr.ResourceGroupName `
+  -customPrefix $customPrefixTmp `
+  -ResourceGroupName $resourceGrVM.ResourceGroupName `
   -virtualNetworkId $vnetId `
-  -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -WhatIf
+  -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -Verbose
+   # verbose or debug or WhatIf for actually deploying it
 ```
 
 ### 4.1 Secure the password if not using keyvault
