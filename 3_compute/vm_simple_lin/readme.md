@@ -50,7 +50,7 @@ $rgName = "testit2-rg"
             
         },
 # We changed it to get it dynamically and keep it secure only to the session:
-# From the parameter file you download where the value were stored, we change it to:
+# From the parameter file you download where the value were stored, we change it to: (could remove this also and all nulls, since null view 08.01.2021 rm nulls)
  "virtualNetworkId": {
             "value": null
             
@@ -68,9 +68,13 @@ $vnetId = "/subscriptions/" + $sub.Id + "/resourceGroups/" + $resourceGrVnet.Res
 
 # 08.01.2021 If you have made a template in the portal and done edited it as mentioned above, there is more fun done.
 
-# In the template file we introduced.
- "customPrefix": {
-            "value": null
+# In the template file we introduced (could remove the null param in the parameters file).
+  "customPrefix": {
+            "type": "string",
+             "defaultValue": "testit2vms",
+            "metadata": {
+                "description": "name or prefix used for unique name generator"
+            }
         },
 
 # That is used for:
