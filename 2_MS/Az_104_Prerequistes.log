@@ -1129,6 +1129,55 @@ Secure storage endpoints
 
 
 Configure blob storage
+Stores unstructured data in the cloud as objects/blobs
+* The storage account
+* Containers in the storage account
+* Blobs in a container
+
+Create blob containers
+1. A container provides a grouping of a set of blobs. 
+1.1 All blobs must be in a container. 
+2. An account can contain an unlimited number of containers. 
+2.1 A container can store an unlimited number of blobs.
+
+* The name may only contain lowercase letters, numbers, and hyphens, and must begin with a letter or a number. (> 3, < 63)
+* Default container is private
+** Use Private to ensure there is no anonymous access to the container and blobs.
+** Use Blob to allow anonymous public read access for blobs only.
+** Use Container to allow anonymous public read and list access to the entire container, including the blobs.
+
+Note:
+PowerShell using the New-AzStorageContainer 
+
+Create blob access tiers
+* Hot, frequent access, default.
+* Cool, large amount, infrequently and minimum 30 d, cost effective, but access higher.
+* Archive, tolarate x amount of h latency and at least for 180 days. most cost effective, but access most expensive.
+
+Add blob lifecycle management rules
+* Policy for GPV2 ad Blob, policy transitions for access tiers or expire
+* Transition blobs to a cooler storage tier (hot to cool, hot to archive, or cool to archive) to optimize for performance and cost.
+* Delete blobs at the end of their lifecycles, Define rules to be run once per day at the storage account level.
+* Apply rules to containers or a subset of blobs.
+
+Determine blob object replication
+* Object replication asynchronously copies block blobs in a container according to rules that you configure. 
+  The contents of the blob, any versions associated with the blob, 
+  and the blob's metadata and properties are all copied from the source container to the destination container.
+
+Region1                       Region2
+Sr account                    Dest Account
+Sr Container1 - - - - - - - > De Container1->
+Blob1.txt   (asynchronously)  Blob1.txt
+
+                              Region3
+                              Dest Account
+Sr Container2 - - - - - - - > Sr Container2
+Blob2.txt                     Blob2.txt
+Blob3.txt                     Blob3.txt
+
+
+
 
 
 
