@@ -399,9 +399,37 @@ When done we must assiciated it with a subnet.
 Choose subnet for the table to follow the particular route.
 
 VPNs and ExpressRoute(126):
-Just view from now.............................
+* P2S, pc to Azure vnet, software on pc
+* S2S, site to site, physical vpn gateway on your side
+Both travel over internet
+
+ExpressRoute private connection to Azure
+* no internet, fast and expensive
+* talk to communication providers (telenor)
+* premium add on, USA->Europe
+
+MS peering and Azure private peering
+
+https://docs.microsoft.com/en-us/azure/expressroute/expressroute-faqs
+
+Number of virtual networks per expressroute circuit
+
+Circut size    Number of vnet links for standard     Number of vnet links for premium
+50 Mbps        10                                    20
+100 Mbps       10                                    25
+[...]          10                                    ++
+10 Gbps        10                                    100
+
+* Nothing is free, 50 Mbps to 10 Gbps (with add on 50 Mbps=375$ month, 10 Gbps=54300$
+* Pay ISP (private between you and ISP)
+* MS you must pay for ExpressRoute
+* Pay for outbound traffic
+* Inbound is free
 
 ExpressRoute Direct(127):
+* Global MS backbone
+
+
 Create Azure Firewall(128):
 Configure Azure Firewall(129):
 Virtual WAN(130):
