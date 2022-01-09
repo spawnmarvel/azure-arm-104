@@ -1202,6 +1202,87 @@ Configure storage security
 Authorization options
 * Azure AD, RBACK, Shared key (account access key), Shared access signature (access spesific time), Anonymous (A public container or blob is accessible to any user for anonymous read access)
 
+Create shared access signatures
+* A shared access signature (SAS) is a URI that grants restricted access rights to Azure Storage resources. 
+  You can provide a SAS to clients who shouldn't have access to your storage account key. 
+  By distributing a SAS URI to these clients, you grant them access to a resource for a specified period of time. 
+  SAS is a secure way to share your storage resources without compromising your account keys.
+
+Identify URI and SAS parameters
+* SAS = URI (parameters + token)                                                                                                  
+https://myaccount.blob.core.windows.net/?restype=service&comp=properties&sv=2015-04-05&ss=bf&srt=s&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https &sig=F%6GRVAZ5Cdj2Pw4txxxxx
+* Resource URI
+* Storage services version = sv
+* Service = ss=bf
+* Resource type = srt=s
+* Start time= st=
+* Expiery time = se
+* Resource = sr=b 
+* Permission = sp=rw
+* IP Range = sip=
+* Protocol = spr=https
+* Signature = sig=F%6GRVXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+Determine storage service encryption
+* Azure Storage Service Encryption (SSE) for data at rest protects your data by ensuring your organizational security and compliance commitments are met.
+* 256-bit AES encryption, one of the strongest block ciphers available.
+* SSE is enabled for all new and existing storage accounts and cannot be disabled. Because your data is secured by default, you don't need to modify your code or applications.
+* * Encryption type
+* * * MS managed keys
+* * * Customer manage key
+* Create customer managed keys
+* The Azure Key Vault can manage your encryption keys. 
+  You can create your own encryption keys and store them in a key vault, or you can use Azure Key Vault's APIs to generate encryption keys.
+* Customer-managed keys give you more flexibility and control. You can create, disable, audit, rotate, and define access controls.
+
+
+Apply storage security best practices
+* Risks (When you use shared access signatures in your applications, you should be aware of two potential risks.)
+* * SAS is compromised, it can be used by anyone who obtains it.
+* * SAS provided to a client application expires and the application is unable to retrieve a new SAS from your service, then no new connections
+
+Recommendations
+* HTTPS
+* Reference stored access policies where possible (Revoke permissions without having to regenerate the storage account keys, 
+  Set the storage account key expiration date far out in the future. )
+* Use near-term expiration times on an unplanned SAS (Short time)
+* Have clients automatically renew the SAS if necessary 
+
+https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/storage/azure-storage-file-share/samples/file_samples_authentication.py#L59
+
+def authentication_shared_access_signature(self):
+        # Instantiate a ShareServiceClient using a connection string
+        # [START generate_sas_token]
+        from azure.storage.fileshare import ShareServiceClient
+        share_service_client = ShareServiceClient.from_connection_string(self.connection_string)
+
+        # Create a SAS token to use to authenticate a new client
+        from azure.storage.fileshare import generate_account_sas, ResourceTypes, AccountSasPermissions
+
+        sas_token = generate_account_sas(
+            self.account_name,
+            self.access_key,
+            resource_types=ResourceTypes(service=True),
+            permission=AccountSasPermissions(read=True),
+            expiry=datetime.utcnow() + timedelta(hours=1)
+        )
+
+* Be careful with SAS start time (least 15 minutes in the past. Or, don't set it at all, which will make it valid immediately in all cases. )
+* Be specific with the resource to be accessed ( minimum required privileges.)
+* Understand that your account will be billed for any usage, including that done with SAS
+  write access 200 gb blob, read access download it 100 times, incurring 2TB egress
+* Validate data written using SAS (hould perform this validation after the data is written and before it is used by your application)
+* Don't assume SAS is always the correct choice
+  Risk: create a middle-tier service that writes to your storage account after performing business rule validation, authentication, and auditing.
+* Use Storage Analytics to monitor your application (logging and metrics to observe any spike in authentication failures)
+
+Configure Azure files and Azure File Sync
+Configure Azure files and Azure File Sync
+Configure Azure files and Azure File Sync
+Configure Azure files and Azure File Sync
+Configure Azure files and Azure File Sync
+
+
 
 
 
