@@ -970,10 +970,60 @@ Exercise - Customize directory branding
 
 AZ-104: Implement and manage storage in Azure
 
-yes
-
 Configure storage accounts
-Yea
+
+Identify features and usage cases for Azure storage accounts.
+Select between different types of storage and storage accounts.
+Select a storage replication strategy.
+Configure network access to storage accounts.
+Secure storage endpoints.
+
+Azure Storage offers:
+* a massively scalable object store for data objects
+* a file system service for the cloud
+* a messaging store for reliable messaging
+* and a NoSQL store. 
+
+Azure Storage is:
+* Durable and highly available, redundancy, replication across regions, geo
+* Secure, all data written is encrypted and IAM, RBACK
+* Scalable, designed to massiv scale for storage/performance
+* Managed, MS handles HW maintain, update and critical issue for you
+* Accessible, HTTP(S), SDK's .net, java, python etc, cli az and ps1
+
+You can generally think of Azure storage in three categories:
+
+* Storage for Virtual Machines, Virtual machine storage includes disks and files. 
+  Disks are persistent block storage for Azure IaaS virtual machines. Files are fully managed file shares in the cloud.
+* Unstructured Data, Unstructured data includes Blobs and Data Lake Store. 
+  Blobs are highly scalable, REST-based cloud object store. Data Lake Store is Hadoop Distributed File System (HDFS) as a service.
+* Structured Data. Structured data includes Tables, Cosmos DB, and Azure SQL DB. 
+  Tables are a key/value, autoscaling NoSQL store. 
+  Cosmos DB is a globally distributed database service. Azure SQL DB is a fully managed database-as-a-service built on SQL.
+
+General purpose storage accounts have two tiers: Standard and Premium.
+
+* Standard, HDD, lowest cost per GB, use for apps that require bulk storage and infrequently accessed
+* Premium, SSD, consistet low-letency performance, use for apps where I/O is intensive, i.e database
+
+NOTE: you cannot convert storage account from standard to premium, -> make new
+
+Explore Azure storage services
+
+Azure Storage includes these data services, each of which is accessed through a storage account:
+
+* Azure Containers (Blobs): A massively scalable object store for text and binary data, img/docs to browser, distributed access, mp4, jpg, bck/restore, disaster rec and arc.
+  Accessible: over HTTP(S) with SDK and/or clis
+
+* Azure Files: Managed file shares for cloud or on-premises deployments, network file shares, vms can read, write. 
+  Accessible: SMB from anywhere in the world, URL and SAS token (they allow specific access to a private asset for a specific amount of time.)
+
+* Azure Queues: A messaging store for reliable messaging between application components, 64 KB in size, messages to be processed asynchronously
+  Accessible:
+* Azure Tables: A NoSQL store for schemaless storage of structured data, now part of Azure Cosmos DB, 
+  API offering that provides throughput-optimized tables, global distribution, and automatic secondary indexes, storing structured, non-relational data.
+  Accessible:
+
 
 AZ-104: Deploy and manage Azure compute resources
 TODO 6 hr 19 min
