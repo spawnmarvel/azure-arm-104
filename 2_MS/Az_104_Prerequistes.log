@@ -1024,6 +1024,115 @@ Azure Storage includes these data services, each of which is accessed through a 
   API offering that provides throughput-optimized tables, global distribution, and automatic secondary indexes, storing structured, non-relational data.
   Accessible:
 
+Determine storage account kinds
+
+* Standard general-purpose v2        Most scenarios including Blob, File, Queue, Table, and Data Lake Storage.
+* Premium block blobs                Block blob scenarios with high transactions rates, or scenarios that use smaller objects or require consistently low storage latency.
+* Premium file shares                Enterprise or high-performance file share applications.
+* Premium page blobs                 Premium high-performance page blob scenarios.
+
+
+Determine replication strategies
+
+The data in your Azure storage account is always replicated to ensure durability and high availability. 
+
+Comparison of replication options
+
+                                                LRS             ZRS         GRS/RA-GRS        GZRS/RA-GZRS
+* Node unavailability within a data center      yes             yes         yes               yes
+* An entire data center (zonal or non-zonal)    no              yes         yes               yes 
+ becomes unavailable
+* A region-wide outage                          no              no          yes               yes
+* Read access to your data 
+  (in a remote, geo-replicated region) 
+  in the event of region-wide unavailability    no              no          yes(with RA-GRS   yes(with RA-GRS)
+* Available in storage account types            GPv1, v2, Blob  GPv2        Gpv1, v2 Blob     GPv2
+
+
+
+Locally redundant storage (3 copies)
+* synchronously replicates data to three disks within a data center in the primary region
+* LRS is the lowest-cost replication option and offers the least durability compared to other options
+* If a datacenter-level disaster (for example, fire or flooding) occurs, all replicas may be lost or unrecoverable.
+
+* Despite its limitations, LRS may be appropriate in these scenarios:
+** data that can be easily reconstructed if data loss occurs
+** data is constantly changing, for example a live feed, and storing the data is really not required
+** application is restricted to replicating data only within a country due to data governance requirements
+
+Zone redundant storage (3 x 3 copies)
+* synchronously replicates data amongthree Azure availability zones in the primary region
+* Synchronously replicates your data across three (3) storage clusters in a single region.
+* Each storage cluster is physically separated from the others and resides in its own availability zone.
+* Be able access and manage your data if a zone becomes unavailable
+* Excellent performance and low latency
+
+Here are a few of more things to know about ZRS:
+* Not yet available in all regions
+* Changing to ZRS from another data replication option requires the physical data movement from a single storage stamp to multiple stamps within a region.
+* ZRS may not protect your data against a regional disaster where multiple zones are permanently affected
+* Instead, ZRS offers resiliency for your data.
+
+Geo-redundant storage (3 x 3 (x 2))
+* stores another three copies of data in a paired Azure region
+* Geo-redundant storage (GRS) replicates your data to a secondary region (hundreds of miles away from the primary location of the source data).
+* GRS replicates your data to another data center in a secondary region, 
+  but that data is available to be read only if Microsoft initiates a failover from the primary to secondary region.
+* Read-access geo-redundant storage (RA-GRS) is based on GRS. RA-GRS replicates your data to another data center 
+  in a secondary region, and also provides you with the option to read from the secondary region. 
+  With RA-GRS, you can read from the secondary regardless of whether Microsoft initiates a failover from the primary to the secondary.
+
+Geo-zone redundant storage 
+* Geo-zone-redundant storage (GZRS) combines the high availability of zone-redundant storage with protection from regional outages as provided by geo-redundant storage
+* Data in a GZRS storage account is replicated across three Azure availability zones in the primary region and also replicated to a secondary geographic 
+  region for protection from regional disasters. Each Azure region is paired with another region within the same geography, together making a regional pair.
+
+
+Access storage
+* Object that you store in Azure Storage has a unique URL address
+* If your storage account is named mystorageaccount, then the default endpoints for your storage account are:
+
+Container service: //mystorageaccount.blob.core.windows.net
+Table service: //mystorageaccount.table.core.windows.net
+Queue service: //mystorageaccount.queue.core.windows.net
+File service: //mystorageaccount.file.core.windows.net
+
+Configure a custom domain
+* You can configure a custom domain for accessing blob data in your Azure storage account.
+* Direct CNAME mapping and an intermediary domain.
+* To enable a custom domain for the 
+   blobs.contoso.com sub domain to an Azure storage account, 
+   create a CNAME record that points from 
+   blobs.contoso.com to the Azure storage account 
+   [storage account].blob.core.windows.net. 
+   The following example maps a domain to an Azure storage account in DNS:
+
+CNAME record                                Target
+blobs.contoso.com                           contosoblobs.blob.core.windows.net
+
+
+* Intermediary mapping with asverify Mapping a domain that is already in use within Azure may result in minor downtime as the domain is updated. 
+  To avoid downtime, you can use the asverify subdomain to validate the domain. By prepending asverify to your own subdomain, 
+  you permit Azure to recognize your custom domain without modifying the DNS record for the domain. 
+  After you modify the DNS record for the domain, it will be mapped to the blob endpoint with no downtime.
+* The following examples maps a domain to the Azure storage account in DNS with the asverify intermediary domain:
+
+CNAME record                                 Target
+asverify.blobs.contoso.com                   asverify.contosoblobs.blob.core.windows.net      
+blobs.contoso.com                            contosoblobs.blob.core.windows.net
+
+
+Secure storage endpoints
+* For accessing a storage account, you would use the Firewalls and virtual networks blade to add the virtual networks that will have access. 
+* Firewalls and Virtual Networks restricts access to the Storage Account from specific Subnets on Virtual Networks or public IPs.
+* Subnets and Virtual Networks must exist in the same Azure Region or Region Pair as the Storage Account.
+
+
+Configure blob storage
+
+
+
+
 
 AZ-104: Deploy and manage Azure compute resources
 TODO 6 hr 19 min
