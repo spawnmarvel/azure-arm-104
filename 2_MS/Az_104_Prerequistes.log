@@ -1061,7 +1061,7 @@ Locally redundant storage (3 copies)
 ** application is restricted to replicating data only within a country due to data governance requirements
 
 Zone redundant storage (3 x 3 copies)
-* synchronously replicates data amongthree Azure availability zones in the primary region
+* synchronously replicates data amongst three Azure availability zones in the primary region
 * Synchronously replicates your data across three (3) storage clusters in a single region.
 * Each storage cluster is physically separated from the others and resides in its own availability zone.
 * Be able access and manage your data if a zone becomes unavailable
