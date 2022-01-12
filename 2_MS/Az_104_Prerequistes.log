@@ -1277,10 +1277,6 @@ def authentication_shared_access_signature(self):
 * Use Storage Analytics to monitor your application (logging and metrics to observe any spike in authentication failures)
 
 Configure Azure files and Azure File Sync
-Configure Azure files and Azure File Sync
-Configure Azure files and Azure File Sync
-Configure Azure files and Azure File Sync
-Configure Azure files and Azure File Sync
 
 
 
@@ -1293,7 +1289,8 @@ AZ-104: Configure and manage virtual networks for Azure administrators
 TODO 8 hr
 
 AZ-104: Monitor and back up Azure resources
-4 hr 50 min
+4 hr 50 min 
+
 
 
 

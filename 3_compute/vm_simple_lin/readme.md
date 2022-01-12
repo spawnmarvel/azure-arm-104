@@ -102,6 +102,12 @@ $vnetId = "/subscriptions/" + $sub.Id + "/resourceGroups/" + $resourceGrVnet.Res
         },
 # parameters doed not have this paramter now, it is removed it was null, so either we had to give that from ps1 input (many params then for ps1) or keep it hardcoded
 
+# 12.01.2022, you can toggle between subnets in paramters
+
+"subnetName": {
+            "value": "default"
+        },
+
 ```
 
 ### 4 Run deploy_vm_simple.ps1 for testing with -WhatIf, change to -Verbose for actual deploy
