@@ -163,10 +163,11 @@ $paramterFile = ".\vm_paramters.json"
 
 New-AzResourceGroupDeployment -Name $deployName `
   -customPrefix $customPrefixTmp `
+  -deployToSubnet $subnetDeployTmp `
   -ResourceGroupName $resourceGrVM.ResourceGroupName `
   -virtualNetworkId $vnetId `
   -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -WhatIf
-   # Verbose, Debug or WhatIf for actually deploying it
+# verbose or debug or WhatIf for actually deploying it
 ```
 
 ### 4.1 Secure the password if not using keyvault
