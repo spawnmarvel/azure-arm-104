@@ -5,6 +5,9 @@
         "customPrefix": {
             "value": null
         },
+        "deployToSubnet": {
+            "value": null
+        },
         "location": {
             "value": "westeurope"
         },
@@ -25,9 +28,6 @@
                 }
             ]
         },
-        "subnetName": {
-            "value": "default"
-        },
         "virtualNetworkId": {
             "value": null
         },
@@ -38,7 +38,7 @@
             "value": "Standard"
         },
         "virtualMachineRG": {
-            "value": "testit2-rg"
+            "value": null
         },
         "osDiskType": {
             "value": "StandardSSD_LRS"

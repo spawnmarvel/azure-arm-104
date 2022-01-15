@@ -79,7 +79,7 @@ New-AzResourceGroupDeployment -Name $deployName `
   -deployToSubnet $subnetDeployTmp `
   -ResourceGroupName $resourceGrVM.ResourceGroupName `
   -virtualNetworkId $vnetId `
-  -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -Verbose
+  -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -WhatIf
 # verbose or debug or WhatIf for actually deploying it
 
 

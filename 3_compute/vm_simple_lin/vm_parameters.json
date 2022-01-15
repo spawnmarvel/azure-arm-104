@@ -39,7 +39,7 @@
             "value": "Standard"
         },
         "virtualMachineRG": {
-            "value": "testit2-rg"
+            "value": null
         },
         "osDiskType": {
             "value": "Standard_LRS"

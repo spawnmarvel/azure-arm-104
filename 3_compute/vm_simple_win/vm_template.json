@@ -10,6 +10,13 @@
                 "description": "name or prefix used for unique name generator"
             }
         },
+        "deployToSubnet": {
+            "type": "string",
+            // "defaultValue":"vm-vnet",
+            "metadata": {
+                "description":"a custom specified vnet on deploy to separate vm deploys, override default value"
+            }
+        },
         "location": {
             "type": "string"
         },
@@ -25,7 +32,11 @@
             "type": "array"
         },
         "subnetName": {
-            "type": "string"
+            "type": "string",
+             "defaultValue":"[parameters('deployToSubnet')]",
+            "metadata" : {
+                "description":"a custom specified vnet/subnet on deploy to separate vm deploys, override default value from parameter"
+            }
         },
         "virtualNetworkId": {
             "type": "string"
@@ -48,6 +59,7 @@
             "type": "string",
             "defaultValue":"[concat(parameters('customPrefix'), '-vmname')]"
         },
+        // this is never used
         "virtualMachineRG": {
             "type": "string"
         },
