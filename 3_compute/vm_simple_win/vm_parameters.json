@@ -37,9 +37,7 @@
         "publicIpAddressSku": {
             "value": "Standard"
         },
-        "virtualMachineRG": {
-            "value": null
-        },
+        
         "osDiskType": {
             "value": "StandardSSD_LRS"
         },

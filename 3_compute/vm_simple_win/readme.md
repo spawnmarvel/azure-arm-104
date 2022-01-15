@@ -1,16 +1,21 @@
-# Simple vm with username and password from script and vnet in a different rg but same region.
+# Simple vm with username and password from script and vnet( and subnet) in a different rg but same region.
 
 If you have a vnet ready, here is how to make a vm and include it in the vnet with below mentioned SKU, settings and connect it to the vnet
 (Make the vm type it in the portal first, stop at review + create and download for automation so you can use it or compare it and alter what you need.)
 
-### 1 Resource group and vnet used: 
+### 1 Vnet (subnet) and RG for VM used: 
 ```ps1
-# vnet used shall be avaliable before deploy
+#  **** VNET
+Write-Host "Vnet info: "
 $vnet = "vnet004799"
+# subnet used shall be avaliable
+$subnetDeployTmp = "vm-vnet"
 # vnet rg shall be avaliable and created before
-$resourceGrVnet =  Get-AzResourceGroup -Name "testit-vnet2"
+$resourceGrVnetName = "testit-vnet2"
+
+#[...]
 # vm rg
-$rgName = "testit2-rg"
+$rgName = "testit2-rg""
 ```
 ### 1.1  A note about vnet:
 ### 1.1  A note about vnet:
@@ -103,29 +108,60 @@ $vnetId = "/subscriptions/" + $sub.Id +  "/resourceGroups/" + $resourceGr.Resour
         },
 # parameters do not have this parameter now, it is removed it was null, so either we had to give that from ps1 input (many params then for ps1) or keep it hardcoded
 
-# 12.01.2022, you can toggle between subnets in paramters
+# 15.01.2022 you can now use the paramter for wich subnet in the specified vnet the VM should be deployd to
 
+# Parameters file remove
 "subnetName": {
             "value": "default"
         },
+# add a custom parameter
+"deployToSubnet": {
+            "value": null
+        },
 
-```
 
-### 4 Run deploy_vm_simple.ps1 for testing with -WhatIf, change to -Verbose for actual deploy
-```ps1
-# template file
-$templateFile = ".\vm_template.json"
-# parameter file
+# Template file
+"deployToSubnet" : {
+            "type": "string",
+            "defaultValue":"default",
+            "metadata" : {
+                 "description":"a custom specified vnet on deploy to separate vm deploys, override default value"
+            }
+        },
+
 # [...]
-$paramterFile = ".\vm_paramters.json"
-# [...]
+
+"subnetName": {
+            "type": "string",
+            "defaultValue":"[parameters('deployToSubnet')]",
+            "metadata" : {
+                "description":"a custom specified vnet on deploy to separate vm deploys, override default value from parameter"
+            }
+        },
+
+# Parameters file removed
+
+"virtualMachineRG": {
+            "value": null
+        },
+
+# Template file added
+"virtualMachineRG": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().name]"
+        },
+
+# Deploy ps1
+# subnet used shall be avaliable from vnet and the rg
+$subnetDeployTmp = "vm-vnet"
 
 New-AzResourceGroupDeployment -Name $deployName `
   -customPrefix $customPrefixTmp `
-  -ResourceGroupName $resourceGr.ResourceGroupName `
+  -deployToSubnet $subnetDeployTmp `
+  -ResourceGroupName $resourceGrVM.ResourceGroupName `
   -virtualNetworkId $vnetId `
   -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -WhatIf
-   # Verbose, Debug or WhatIf for actually deploying it
+   # verbose or debug or WhatIf for actually deploying it
 ```
 
 ### 4.1 Secure the password if not using keyvault
@@ -164,3 +200,6 @@ Use the scripts:
 * get_rg_resources
 * deploy_vm # test with -WhatIf, deploy with -Verbose or -Debug
 * remove_rg.ps1
+* get_rg_vnet
+
+[![Screenshot](x_image.jpg)

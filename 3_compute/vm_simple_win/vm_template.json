@@ -61,7 +61,8 @@
         },
         // this is never used
         "virtualMachineRG": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "[resourceGroup().name]"
         },
         "osDiskType": {
             "type": "string"

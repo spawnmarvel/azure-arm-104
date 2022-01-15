@@ -5,7 +5,7 @@ Write-Host "`n"
 $ran = Get-Random -Maximum 1000
 $deployName = "buildTestVm1" + $ran
 Write-Host "Running deploy: " $deployName
-$customPrefixTmp = 'test-1' + $ran
+$customPrefixTmp = 'test-' + $ran
 Write-Host "Custom prefix for VM, NSG, NIC, IP: " $customPrefixTmp
 # connect to azure first
 # Connect-AzAccount
@@ -79,7 +79,7 @@ New-AzResourceGroupDeployment -Name $deployName `
   -deployToSubnet $subnetDeployTmp `
   -ResourceGroupName $resourceGrVM.ResourceGroupName `
   -virtualNetworkId $vnetId `
-  -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -WhatIf
+  -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -Verbose
 # verbose or debug or WhatIf for actually deploying it
 
 

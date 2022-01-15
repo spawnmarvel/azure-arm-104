@@ -137,6 +137,17 @@ $vnetId = "/subscriptions/" + $sub.Id + "/resourceGroups/" + $resourceGrVnet.Res
             }
         },
 
+# Parameters file removed
+
+"virtualMachineRG": {
+            "value": null
+        },
+
+# Template file added
+"virtualMachineRG": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().name]"
+        },
 
 # Deploy ps1
 # subnet used shall be avaliable from vnet and the rg
