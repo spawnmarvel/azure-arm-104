@@ -1,15 +1,12 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
+    "contentVersion": "1.0.0.2",
     "parameters": {
+        "customPrefix": {
+            "value": null
+        },
         "location": {
             "value": "westeurope"
-        },
-        "networkInterfaceName": {
-            "value": "test-vm8081389"
-        },
-        "networkSecurityGroupName": {
-            "value": "test-vm8081-nsg"
         },
         "networkSecurityGroupRules": {
             "value": [
@@ -34,20 +31,11 @@
         "virtualNetworkId": {
             "value": null
         },
-        "publicIpAddressName": {
-            "value": "test-vm8081-ip"
-        },
         "publicIpAddressType": {
             "value": "Static"
         },
         "publicIpAddressSku": {
             "value": "Standard"
-        },
-        "virtualMachineName": {
-            "value": "test-vm8081"
-        },
-        "virtualMachineComputerName": {
-            "value": "test-vm8081"
         },
         "virtualMachineRG": {
             "value": "testit2-rg"

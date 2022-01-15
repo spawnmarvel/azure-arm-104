@@ -1,16 +1,18 @@
-# Simple vm with username and password from script
+# Simple vm with username and password from script and vnet in a different rg but same region.
 
-If you have a rg and a vnet, here is how to make a vm and include it in the vnet with below mentioned SKU, settings and connect it to the vnet
-(Make the vm type it in the portal first, stop at review + create and  download for automation.)
+If you have a vnet ready, here is how to make a vm and include it in the vnet with below mentioned SKU, settings and connect it to the vnet
+(Make the vm type it in the portal first, stop at review + create and download for automation so you can use it or compare it and alter what you need.)
 
 ### 1 Resource group and vnet used: 
-* testit2-rg 
-* testit2-vnet
-
 ```ps1
-$vnet = "testit2-vnet"
+# vnet used shall be avaliable before deploy
+$vnet = "vnet004799"
+# vnet rg shall be avaliable and created before
+$resourceGrVnet =  Get-AzResourceGroup -Name "testit-vnet2"
+# vm rg
 $rgName = "testit2-rg"
 ```
+### 1.1  A note about vnet:
 ### 1.1  A note about vnet:
 
 #### When you create or update a virtual network in your subscription, Network Watcher will be enabled automatically in your Virtual Network's region. There is no impact to your resources or associated charge for automatically enabling Network Watcher. 
@@ -34,7 +36,7 @@ $rgName = "testit2-rg"
 
 ### 3 Download the template and parameter for automation, cp the template to vm_template, cp the parameters to vm_parameters
 ### 3.1 Changes in the template, most important is described in the 3.3 Ps1 section
-### (3.2 ) If you do not not want to change anything as described in 3.1, just provide a rg, templatefile, paramterfile and New-AzResourceGroupDeployment with just the
+### (3.2 ) If you do not not want to change anything as described in 3.1, just provide a rg, templatefile, parameterfile and New-AzResourceGroupDeployment with just the
 ### main parameters(rg, tempfile, paramfile and user + password):
 
 ### 3.3 Ps1:
@@ -64,6 +66,49 @@ $vnetId = "/subscriptions/" + $sub.Id +  "/resourceGroups/" + $resourceGr.Resour
 "adminUsername": {
             "value": null
         },
+
+# 08.01.2021 If you have made a template in the portal and done edited it as mentioned above, there is more fun done.
+
+# In the template file we introduced (could remove the null param in the parameters file).
+  "customPrefix": {
+            "type": "string",
+             "defaultValue": "testit2vms",
+            "metadata": {
+                "description": "name or prefix used for unique name generator"
+            }
+        },
+
+# That is used for:
+# networkInterfaceName
+# networkSecurityGroupName
+# publicIpAddressName
+# virtualMachineName
+# virtualMachineComputerName
+
+# With a function like this:
+# "defaultValue": "[concat(parameters('customPrefix'),'-nic-')]"
+
+# In the parameters file we removed:
+# networkInterfaceName
+# networkSecurityGroupName
+# publicIpAddressName
+# virtualMachineName
+# virtualMachineComputerName
+# " Since this will now come from the customPrefix
+
+# example for template (same for all the above mentioned) has
+"networkInterfaceName": {
+            "type": "string",
+            "defaultValue": "[concat(parameters('customPrefix'),'-nic')]"
+        },
+# parameters do not have this parameter now, it is removed it was null, so either we had to give that from ps1 input (many params then for ps1) or keep it hardcoded
+
+# 12.01.2022, you can toggle between subnets in paramters
+
+"subnetName": {
+            "value": "default"
+        },
+
 ```
 
 ### 4 Run deploy_vm_simple.ps1 for testing with -WhatIf, change to -Verbose for actual deploy
@@ -76,9 +121,11 @@ $paramterFile = ".\vm_paramters.json"
 # [...]
 
 New-AzResourceGroupDeployment -Name $deployName `
+  -customPrefix $customPrefixTmp `
   -ResourceGroupName $resourceGr.ResourceGroupName `
   -virtualNetworkId $vnetId `
   -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -WhatIf
+   # Verbose, Debug or WhatIf for actually deploying it
 ```
 
 ### 4.1 Secure the password if not using keyvault

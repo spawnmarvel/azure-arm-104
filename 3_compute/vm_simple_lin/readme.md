@@ -1,14 +1,19 @@
-# Simple vm with username and password from script and vnet in a different rg but same region.
+# Simple vm with username and password from script and vnet( and subnet) in a different rg but same region.
 
-If you have a vnet, here is how to make a vm and include it in the vnet with below mentioned SKU, settings and connect it to the vnet
+If you have a vnet ready, here is how to make a vm and include it in the vnet with below mentioned SKU, settings and connect it to the vnet
 (Make the vm type it in the portal first, stop at review + create and download for automation so you can use it or compare it and alter what you need.)
 
-### 1 Resource group and vnet used: 
+### 1 Vnet (subnet) and RG for VM used: 
 ```ps1
-# vnet used shall be avaliable and
+#  **** VNET
+Write-Host "Vnet info: "
 $vnet = "vnet004799"
+# subnet used shall be avaliable
+$subnetDeployTmp = "vm-vnet"
 # vnet rg shall be avaliable and created before
-$resourceGrVnet =  Get-AzResourceGroup -Name "testit-vnet2"
+$resourceGrVnetName = "testit-vnet2"
+
+#[...]
 # vm rg
 $rgName = "testit2-rg"
 ```
@@ -35,7 +40,7 @@ $rgName = "testit2-rg"
 
 ### 3 Download the template and parameter for automation
 ### 3.1 Changes in the template, most important is described in the 3.3 Ps1 section
-### (3.2 ) If you do not not want to change anything as described in 3.1, just provide a rg, templatefile, paramterfile and New-AzResourceGroupDeployment with just the
+### (3.2 ) If you do not not want to change anything as described in 3.1, just provide a rg, templatefile, parameterfile and New-AzResourceGroupDeployment with just the
 ### main parameters(rg, tempfile, paramfile and user + password):
 
 ### 3.3 Ps1:
@@ -95,18 +100,55 @@ $vnetId = "/subscriptions/" + $sub.Id + "/resourceGroups/" + $resourceGrVnet.Res
 # virtualMachineComputerName
 # " Since this will now come from the customPrefix
 
-# exampel for template (same for all the above mentioned) has
+# example for template (same for all the above mentioned) has
 "networkInterfaceName": {
             "type": "string",
             "defaultValue": "[concat(parameters('customPrefix'),'-nic')]"
         },
-# parameters doed not have this paramter now, it is removed it was null, so either we had to give that from ps1 input (many params then for ps1) or keep it hardcoded
 
-# 12.01.2022, you can toggle between subnets in paramters
+# 15.01.2022 you can now use the paramter for wich subnet in the specified vnet the VM should be deployd to
 
+# Parameters file remove
 "subnetName": {
             "value": "default"
         },
+# add a custom parameter
+"deployToSubnet": {
+            "value": null
+        },
+
+
+# Template file
+"deployToSubnet" : {
+            "type": "string",
+            "defaultValue":"default",
+            "metadata" : {
+                 "description":"a custom specified vnet on deploy to separate vm deploys, override default value"
+            }
+        },
+
+# [...]
+
+"subnetName": {
+            "type": "string",
+            "defaultValue":"[parameters('deployToSubnet')]",
+            "metadata" : {
+                "description":"a custom specified vnet on deploy to separate vm deploys, override default value from parameter"
+            }
+        },
+
+
+# Deploy ps1
+# subnet used shall be avaliable from vnet and the rg
+$subnetDeployTmp = "vm-vnet"
+
+New-AzResourceGroupDeployment -Name $deployName `
+  -customPrefix $customPrefixTmp `
+  -deployToSubnet $subnetDeployTmp `
+  -ResourceGroupName $resourceGrVM.ResourceGroupName `
+  -virtualNetworkId $vnetId `
+  -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -WhatIf
+   # verbose or debug or WhatIf for actually deploying it
 
 ```
 
@@ -123,8 +165,8 @@ New-AzResourceGroupDeployment -Name $deployName `
   -customPrefix $customPrefixTmp `
   -ResourceGroupName $resourceGrVM.ResourceGroupName `
   -virtualNetworkId $vnetId `
-  -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -Verbose
-   # verbose or debug or WhatIf for actually deploying it
+  -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -WhatIf
+   # Verbose, Debug or WhatIf for actually deploying it
 ```
 
 ### 4.1 Secure the password if not using keyvault

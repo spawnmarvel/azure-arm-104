@@ -1,15 +1,25 @@
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.2",
+    
     "parameters": {
+        "customPrefix": {
+            "type": "string",
+            "defaultValue": "testvmwin8956",
+            "metadata": {
+                "description": "name or prefix used for unique name generator"
+            }
+        },
         "location": {
             "type": "string"
         },
         "networkInterfaceName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "[concat(parameters('customPrefix'), '-nic')]"
         },
         "networkSecurityGroupName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "[concat(parameters('customPrefix'), '-nsg')]"
         },
         "networkSecurityGroupRules": {
             "type": "array"
@@ -21,7 +31,8 @@
             "type": "string"
         },
         "publicIpAddressName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue":"[concat(parameters('customPrefix'), '-public-ip')]"
         },
         "publicIpAddressType": {
             "type": "string"
@@ -30,10 +41,12 @@
             "type": "string"
         },
         "virtualMachineName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue":"[concat(parameters('customPrefix'), '-vmname')]"
         },
         "virtualMachineComputerName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue":"[concat(parameters('customPrefix'), '-vmname')]"
         },
         "virtualMachineRG": {
             "type": "string"
@@ -69,7 +82,7 @@
         {
             "name": "[parameters('networkInterfaceName')]",
             "type": "Microsoft.Network/networkInterfaces",
-            "apiVersion": "2021-03-01",
+            "apiVersion": "2020-11-01",
             "location": "[parameters('location')]",
             "dependsOn": [
                 "[concat('Microsoft.Network/networkSecurityGroups/', parameters('networkSecurityGroupName'))]",

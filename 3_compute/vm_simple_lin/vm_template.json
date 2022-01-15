@@ -1,12 +1,19 @@
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.2",
     "parameters": {
         "customPrefix": {
             "type": "string",
-             "defaultValue": "testit2vms",
+            "defaultValue": "testvmlin8956",
             "metadata": {
                 "description": "name or prefix used for unique name generator"
+            }
+        },
+        "deployToSubnet" : {
+            "type": "string",
+           // "defaultValue":"vm-vnet",
+            "metadata" : {
+                "description":"a custom specified vnet on deploy to separate vm deploys, override default value"
             }
         },
         "location": {
@@ -24,7 +31,11 @@
             "type": "array"
         },
         "subnetName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue":"[parameters('deployToSubnet')]",
+            "metadata" : {
+                "description":"a custom specified vnet on deploy to separate vm deploys, override default value from parameter"
+            }
         },
         "virtualNetworkId": {
             "type": "string"
@@ -75,7 +86,7 @@
         {
             "name": "[parameters('networkInterfaceName')]",
             "type": "Microsoft.Network/networkInterfaces",
-            "apiVersion": "2021-03-01",
+            "apiVersion": "2020-11-01",
             "location": "[parameters('location')]",
             "dependsOn": [
                 "[concat('Microsoft.Network/networkSecurityGroups/', parameters('networkSecurityGroupName'))]",
