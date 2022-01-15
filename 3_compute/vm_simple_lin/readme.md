@@ -191,3 +191,6 @@ Use the scripts:
 * get_rg_resources
 * deploy_vm # test with -WhatIf, deploy with -Verbose or -Debug
 * remove_rg.ps1
+* get_rg_vnet
+
+[![Screenshot](x_image.jpg)
