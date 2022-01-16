@@ -65,7 +65,7 @@ $rgName = "testit2-rg""
 $sub = Get-AzSubscription
 # [..]
 # construct the virtualNetworkId (is has been removed from the downloaded parameter file used here) and it is ready to use
-$vnetId = "/subscriptions/" + $sub.Id +  "/resourceGroups/" + $resourceGr.ResourceGroupName + "/providers/Microsoft.Network/virtualNetworks/" +$vnet
+$vnetId = "/subscriptions/" + $sub.Id + "/resourceGroups/" + $resourceGrVnetName + "/providers/Microsoft.Network/virtualNetworks/" + $vnet
 
 # The same goes for adminUserName from the parameter file, set it to null, we generate it from script
 "adminUsername": {

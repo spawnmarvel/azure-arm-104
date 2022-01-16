@@ -84,3 +84,4 @@ New-AzResourceGroupDeployment -Name $deployName `
 # verbose or debug or WhatIf for actually deploying it
 
 # Test success 16.01.2022 1, changed vnet id URL
+
