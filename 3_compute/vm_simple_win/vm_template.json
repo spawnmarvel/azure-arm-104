@@ -4,6 +4,7 @@
     
     "parameters": {
         "customPrefix": {
+            // from ps1 input
             "type": "string",
             "defaultValue": "test-666",
             "metadata": {
@@ -11,6 +12,7 @@
             }
         },
         "deployToSubnet": {
+            // from ps1 input
             "type": "string",
             // "defaultValue":"vm-vnet",
             "metadata": {
@@ -21,10 +23,12 @@
             "type": "string"
         },
         "networkInterfaceName": {
+            // from ps1 input append -
             "type": "string",
             "defaultValue": "[concat(parameters('customPrefix'), '-nic')]"
         },
         "networkSecurityGroupName": {
+            // from ps1 input append -
             "type": "string",
             "defaultValue": "[concat(parameters('customPrefix'), '-nsg')]"
         },
@@ -42,6 +46,7 @@
             "type": "string"
         },
         "publicIpAddressName": {
+            // from ps1 input append -
             "type": "string",
             "defaultValue":"[concat(parameters('customPrefix'), '-public-ip')]"
         },
@@ -52,10 +57,12 @@
             "type": "string"
         },
         "virtualMachineName": {
+            // from ps1 input append -
             "type": "string",
             "defaultValue":"[concat(parameters('customPrefix'), '-vmname')]"
         },
         "virtualMachineComputerName": {
+            // from ps1 input append -
             "type": "string",
             "defaultValue":"[concat(parameters('customPrefix'), '-vmname')]"
         },
