@@ -58,7 +58,8 @@ Write-Host "Connect VM : " $customPrefixTmp " to subnet: " $subnetDeployTmp " : 
 
 Write-Host "Continue..." -ForegroundColor Green
 # construct the virtualNetworkId from the vnet rg, not the vm rg (is has been removed from the downloaded paramter file)
-$vnetId = "/subscriptions/" + $sub.Id + "/resourceGroups/" + $resourceGrVnet.ResourceGroupName + "/providers/Microsoft.Network/virtualNetworks/" + $vnet
+# $vnetId = "/subscriptions/" + $sub.Id + "/resourceGroups/" + $resourceGrVnet.ResourceGroupName + "/providers/Microsoft.Network/virtualNetworks/" + $vnet
+$vnetId = "/subscriptions/" + $sub.Id + "/resourceGroups/" + $resourceGrVnetName + "/providers/Microsoft.Network/virtualNetworks/" + $vnet
 Write-Host $vnetId
 # template file
 $templateFile = ".\vm_template.json"
