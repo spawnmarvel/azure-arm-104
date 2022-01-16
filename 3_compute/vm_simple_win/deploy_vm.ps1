@@ -83,4 +83,4 @@ New-AzResourceGroupDeployment -Name $deployName `
   -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -Verbose
 # verbose or debug or WhatIf for actually deploying it
 
-# Test success 15.01.2022 2. Windows VM in rg xx, deployed to vnet/subnet in rg yy
+# Test success 16.01.2022 1, changed vnet id URL
