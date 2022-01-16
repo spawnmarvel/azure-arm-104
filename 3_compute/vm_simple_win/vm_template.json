@@ -216,7 +216,7 @@
                 "[parameters('zone')]"
             ]
         },
-        // added for enable autoshutdown alter the cp parma from portal parameters('virtualMachineName'))] to virtualMachineName
+        // added for enable autoshutdown alter the cp parma from portal parameters('virtualMachineNameWhatever'))] to virtualMachineName param from the param section
         {
             "name": "[concat('shutdown-computevm-', parameters('virtualMachineName'))]",
             "type": "Microsoft.DevTestLab/schedules",
