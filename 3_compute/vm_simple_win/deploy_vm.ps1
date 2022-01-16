@@ -1,11 +1,12 @@
 write-Host "1 Started: Simple vm with username and password from script and vnet in a different rg but same region" -ForegroundColor Green
 Write-Host "2 Creating the rg for VM (it is automatically created if you have not done it) " -ForegroundColor Yellow
 Write-Host "3 Vnet and subnet (you must create, if not this script will stop) before you start, the default value is -default for subnet, in no param is given" -ForegroundColor Yellow
+Write-Host "4 customPrefixTmp = 'test-' + ran # substitute ran for 'test-123' to deploy to the same vm over and over again, to check updates on that vm with new template updates" -ForegroundColor Yellow
 Write-Host "`n"
 $ran = Get-Random -Maximum 1000
-$deployName = "buildTestVm1" + $ran
+$deployName = "buildTestVm1" + $ran 
 Write-Host "Running deploy: " $deployName
-$customPrefixTmp = 'test-' + $ran
+$customPrefixTmp = 'test-' + $ran # substitute ran for 'test-123' to deploy to the same vm over and over again, to check updates on that vm with new template updates
 Write-Host "Custom prefix for VM, NSG, NIC, IP: " $customPrefixTmp
 # connect to azure first
 # Connect-AzAccount
@@ -80,7 +81,7 @@ New-AzResourceGroupDeployment -Name $deployName `
   -deployToSubnet $subnetDeployTmp `
   -ResourceGroupName $resourceGrVM.ResourceGroupName `
   -virtualNetworkId $vnetId `
-  -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -Verbose
+  -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -WhatIf
 # verbose or debug or WhatIf for actually deploying it
 
 # Test success 16.01.2022 1, changed vnet id URL
