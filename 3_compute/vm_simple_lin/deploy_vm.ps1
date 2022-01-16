@@ -58,7 +58,8 @@ Write-Host "Connect VM : " $customPrefixTmp " to subnet: " $subnetDeployTmp " : 
 
 Write-Host "Continue..." -ForegroundColor Green
 # construct the virtualNetworkId from the vnet rg, not the vm rg (is has been removed from the downloaded paramter file)
-$vnetId = "/subscriptions/" + $sub.Id + "/resourceGroups/" + $resourceGrVnet.ResourceGroupName + "/providers/Microsoft.Network/virtualNetworks/" + $vnet
+# $vnetId = "/subscriptions/" + $sub.Id + "/resourceGroups/" + $resourceGrVnet.ResourceGroupName + "/providers/Microsoft.Network/virtualNetworks/" + $vnet
+$vnetId = "/subscriptions/" + $sub.Id + "/resourceGroups/" + $resourceGrVnetName + "/providers/Microsoft.Network/virtualNetworks/" + $vnet
 Write-Host $vnetId
 # template file
 $templateFile = ".\vm_template.json"
@@ -79,7 +80,8 @@ New-AzResourceGroupDeployment -Name $deployName `
   -deployToSubnet $subnetDeployTmp `
   -ResourceGroupName $resourceGrVM.ResourceGroupName `
   -virtualNetworkId $vnetId `
-  -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -WhatIf
+  -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -Verbose
 # verbose or debug or WhatIf for actually deploying it
 
-# Test success 15.01.2022 2. Linux VM in rg xx, deployed to vnet/subnet in rg yy
+# Test success 16.01.2022 1, changed vnet id URL
+
