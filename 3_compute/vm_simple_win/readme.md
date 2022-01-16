@@ -172,7 +172,7 @@ $vnetId = "/subscriptions/" + $sub.Id + "/resourceGroups/" + $resourceGrVnetName
             "value": "en"
         },
         "autoShutdownNotificationEmail": {
-            "value": "espenkleivane@gmail.com"
+            "value": "somemail@gmail.com"
         }
 # Template file
 # we use out current genarted vm name
