@@ -1,4 +1,5 @@
 # Simple vm with username and password from script and vnet( and subnet) in a different rg but same region.
+# With auto shutdown
 
 If you have a vnet ready, here is how to make a vm and include it in the vnet with below mentioned SKU, settings and connect it to the vnet
 (Make the vm type it in the portal first, stop at review + create and download for automation so you can use it or compare it and alter what you need.)
@@ -150,6 +151,82 @@ $vnetId = "/subscriptions/" + $sub.Id + "/resourceGroups/" + $resourceGrVnetName
             "type": "string",
             "defaultValue": "[resourceGroup().name]"
         },
+
+
+# 16.01.202 with auto shutdown
+# Parameter file as this after "zone"
+
+        "autoShutdownStatus": {
+            "value": "Enabled"
+        },
+        "autoShutdownTime": {
+            "value": "19:00"
+        },
+        "autoShutdownTimeZone": {
+            "value": "UTC"
+        },
+        "autoShutdownNotificationStatus": {
+            "value": "Enabled"
+        },
+        "autoShutdownNotificationLocale": {
+            "value": "en"
+        },
+        "autoShutdownNotificationEmail": {
+            "value": "espenkleivane@gmail.com"
+        }
+# Template file
+# we use out current genarted vm name
+"virtualMachineName": {
+            "type": "string",
+            "defaultValue":"[concat(parameters('customPrefix'), '-vmname')]"
+        },
+
+# Add this after "zone"
+"autoShutdownStatus": {
+            "type": "string"
+        },
+        "autoShutdownTime": {
+            "type": "string"
+        },
+        "autoShutdownTimeZone": {
+            "type": "string"
+        },
+        "autoShutdownNotificationStatus": {
+            "type": "string"
+        },
+        "autoShutdownNotificationLocale": {
+            "type": "string"
+        },
+        "autoShutdownNotificationEmail": {
+            "type": "string"
+        }
+
+# add this after last "zone" section
+# added for enable autoshutdown alter the cp parma from portal parameters('virtualMachineNameWhatever'))] to virtualMachineName par from the param section
+{
+            "name": "[concat('shutdown-computevm-', parameters('virtualMachineName'))]",
+            "type": "Microsoft.DevTestLab/schedules",
+            "apiVersion": "2018-09-15",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'))]"
+            ],
+            "properties": {
+                "status": "[parameters('autoShutdownStatus')]",
+                "taskType": "ComputeVmShutdownTask",
+                "dailyRecurrence": {
+                    "time": "[parameters('autoShutdownTime')]"
+                },
+                "timeZoneId": "[parameters('autoShutdownTimeZone')]",
+                "targetResourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachineName'))]",
+                "notificationSettings": {
+                    "status": "[parameters('autoShutdownNotificationStatus')]",
+                    "notificationLocale": "[parameters('autoShutdownNotificationLocale')]",
+                    "timeInMinutes": "30",
+                    "emailRecipient": "[parameters('autoShutdownNotificationEmail')]"
+                }
+            }
+        }
 
 # Deploy ps1
 # subnet used shall be avaliable from vnet and the rg

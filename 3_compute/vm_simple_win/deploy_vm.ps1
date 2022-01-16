@@ -80,7 +80,7 @@ New-AzResourceGroupDeployment -Name $deployName `
   -deployToSubnet $subnetDeployTmp `
   -ResourceGroupName $resourceGrVM.ResourceGroupName `
   -virtualNetworkId $vnetId `
-  -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -WhatIf
+  -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -Verbose
 # verbose or debug or WhatIf for actually deploying it
 
 # Test success 16.01.2022 1, changed vnet id URL

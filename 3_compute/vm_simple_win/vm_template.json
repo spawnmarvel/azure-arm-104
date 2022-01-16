@@ -5,7 +5,7 @@
     "parameters": {
         "customPrefix": {
             "type": "string",
-            "defaultValue": "testvmwin8956",
+            "defaultValue": "test-666",
             "metadata": {
                 "description": "name or prefix used for unique name generator"
             }
@@ -83,6 +83,26 @@
             "type": "bool"
         },
         "zone": {
+            "type": "string"
+        }
+        // added for enable autoshutdown
+        ,
+        "autoShutdownStatus": {
+            "type": "string"
+        },
+        "autoShutdownTime": {
+            "type": "string"
+        },
+        "autoShutdownTimeZone": {
+            "type": "string"
+        },
+        "autoShutdownNotificationStatus": {
+            "type": "string"
+        },
+        "autoShutdownNotificationLocale": {
+            "type": "string"
+        },
+        "autoShutdownNotificationEmail": {
             "type": "string"
         }
     },
@@ -195,6 +215,31 @@
             "zones": [
                 "[parameters('zone')]"
             ]
+        },
+        // added for enable autoshutdown alter the cp parma from portal parameters('virtualMachineName'))] to virtualMachineName
+        {
+            "name": "[concat('shutdown-computevm-', parameters('virtualMachineName'))]",
+            "type": "Microsoft.DevTestLab/schedules",
+            "apiVersion": "2018-09-15",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'))]"
+            ],
+            "properties": {
+                "status": "[parameters('autoShutdownStatus')]",
+                "taskType": "ComputeVmShutdownTask",
+                "dailyRecurrence": {
+                    "time": "[parameters('autoShutdownTime')]"
+                },
+                "timeZoneId": "[parameters('autoShutdownTimeZone')]",
+                "targetResourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachineName'))]",
+                "notificationSettings": {
+                    "status": "[parameters('autoShutdownNotificationStatus')]",
+                    "notificationLocale": "[parameters('autoShutdownNotificationLocale')]",
+                    "timeInMinutes": "30",
+                    "emailRecipient": "[parameters('autoShutdownNotificationEmail')]"
+                }
+            }
         }
     ],
     "outputs": {
