@@ -1278,7 +1278,7 @@ def authentication_shared_access_signature(self):
 
 Configure Azure files and Azure File Sync
 
-
+TODO
 
 
 
@@ -1290,4 +1290,5 @@ TODO 8 hr
 
 AZ-104: Monitor and back up Azure resources
 4 hr 50 min 
+
 
