@@ -1290,6 +1290,9 @@ Azure Blobs             SDK, REST                                  You want your
                         to be stored and accessed at a massive
                         scale in block blobs.
 
+Azure files are true directory objects. Azure blobs are a flat namespace.
+Azure files are accessed through file shares. Azure blobs are accessed through a container.
+
 
 AZ-104: Deploy and manage Azure compute resources
 TODO 6 hr 19 min
