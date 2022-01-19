@@ -1278,8 +1278,17 @@ def authentication_shared_access_signature(self):
 
 Configure Azure files and Azure File Sync
 
-TODO
+Files and blobs comparison
 
+Feature                 Description                                When to use
+Azure Files             SMB, SDK, REST                             You want to "lift and shift" an application to the cloud that already uses the native file system APIs to
+                                                                   share data between it and other applications running in Azure. You want to store development and debugging
+                                                                   tools that need to be accessed from many virtual machines.
+
+Azure Blobs             SDK, REST                                  You want your application to support streaming and random-access scenarios. You want to be able to
+                        interface that allows unstructured data    access application data from anywhere.
+                        to be stored and accessed at a massive
+                        scale in block blobs.
 
 
 AZ-104: Deploy and manage Azure compute resources
