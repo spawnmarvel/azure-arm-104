@@ -1294,6 +1294,25 @@ Azure files are true directory objects. Azure blobs are a flat namespace.
 Azure files are accessed through file shares. Azure blobs are accessed through a container.
 
 
+Manage file shares
+* You can connect to your Azure file share with Windows or Windows Server. Just select Connect from your file share page.
+* Ensure port 445 is open. Azure Files uses SMB protocol. SMB communicates over TCP port 445. Also, ensure your firewall is not blocking TCP ports 445 from the client machine.
+
+* Mounting file shares (Linux)
+* Mount->AZ fileshare outside of az (on-prem or another az region) OS must support SMB 3.0
+
+Create file share snapshots
+* Azure Files provides the capability to take share snapshots of file shares. Share snapshots capture a point-in-time, read-only copy of your data.
+
+When to use share snapshots
+* take a share snapshot before you deploy new application code
+* Protection against accidental deletions or unintended changes
+* General backup purposes
+
+Implement file sync
+
+
+
 AZ-104: Deploy and manage Azure compute resources
 TODO 6 hr 19 min
 
@@ -1301,6 +1320,5 @@ AZ-104: Configure and manage virtual networks for Azure administrators
 TODO 8 hr
 
 AZ-104: Monitor and back up Azure resources
-4 hr 50 min 
-
+4 hr 50 min
 
