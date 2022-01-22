@@ -1422,6 +1422,25 @@ NOTE: A typical strategy is to start with an analysis of your data and create pa
 
 Choose your account settings
 
+Control access to Azure Storage with shared access signatures
+* Azure Blob Storage is Microsoft's object storage solution for the cloud, and is optimized for storing massive amounts of unstructured data. 
+  Every request to access files stored in Azure requires authorization. 
+  A shared access signature (SAS) provides secure, delegated access to resources in your storage account.
+
+Access Azure Storage
+* Public access
+* Azure Active Directory (Azure AD)
+* Shared key
+* Shared access signature (SAS)
+
+Public access is also known as anonymous public read access for containers and blobs.
+* Storage Account,  AllowBlobPublicAccess property. When set to true, Blob data is available for public access only if the container's public access setting is also set.
+* Container. You can enable anonymous access only if anonymous access has been allowed for the storage account. 
+** A container has two possible settings public access: 
+   Public read access for blobs, or public read access for a container and its blobs. 
+   Anonymous access is controlled at the container level, not for individual blobs.
+
+Use shared access signatures to delegate access to Azure Storage
 
 
 
