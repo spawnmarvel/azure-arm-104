@@ -1441,9 +1441,40 @@ Public access is also known as anonymous public read access for containers and b
    Anonymous access is controlled at the container level, not for individual blobs.
 
 Use shared access signatures to delegate access to Azure Storage
+* Clients don't have direct access to your storage account credentials and, at a granular level, you control what they access.0
+* A SAS has two components
+** URI that points to one or more storage resources
+** token that indicates how the resources may be accessed by the client
+
+Use stored access policies to delegate access to Azure Storage
+* (SAS) is a secure way to give access to clients without having to share your Azure credentials
+* Downside:
+** Anyone with the correct SAS can access the file while it's still valid
+
+* Only way you can revoke access to the storage is to regenerate access keys
+* Regeneration requires you to update all apps that are using the old shared key to use the new one
+
+Option:
+* SAS with a stored access policy
+
+What are stored access policies?
+* Can create for blob container, file shares, queue and tables
+* Identifier, reference the stored access policy
+* Start time
+* Expiry time,  After this time, requests to the storage will fail with a 403 error-code message.
+* Permissions
+
+With the portal (or cli or ps1 or sdk):
+* In the portal, go to the storage account and then go to the blob storage container. 
+  On the left, select Access policy. To add a new stored access policy, select + Add policy
+
+Create SAS tokens and associate them with stored access policies
 
 
+https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-user-delegation-sas-create-powershell
 
+
+Upload, download, and manage data with Azure Storage Explorer
 
 
 
