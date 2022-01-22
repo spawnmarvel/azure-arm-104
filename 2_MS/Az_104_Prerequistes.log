@@ -1310,6 +1310,123 @@ When to use share snapshots
 * General backup purposes
 
 Implement file sync
+* Azure File Sync transforms Windows Server into a quick cache of your Azure file share. 
+* SMB, transfer protocol,  NFS, file sharing, FTPS, secure ftp
+* L&S: File write access to same data
+* BCK and DR and file archiving
+
+Storage Sync Service
+* The Storage Sync Service is the top-level Azure resource for Azure File Sync. 
+  The Storage Sync Service resource is a peer of the storage account resource, and can similarly be deployed to Azure resource groups.
+
+Sync group
+* A sync group defines the sync topology for a set of files. (i.e two files manged with az file sync = 2 sync groups with different endpoints.
+
+Registered server
+* The registered server object represents a trust relationship between your server (or cluster) and the Storage Sync Service.
+
+Azure File Sync agent
+*  Downloadable pack, enable windows server to be synced with az FS
+3 main components:
+* FileSyncSvc.exe, monitor server and init sync
+* StorageSync.sys, az fs file system filter, if enabled = tiering files to az fs = its a feature that archives infrequently access files to free up space on local fs
+* PowerShell management cmdlets: (Intreact with Microsoft.StorageSync)
+** C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll
+** C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll
+
+Server endpoint
+* A server endpoint represents a specific location on a registered server, such as a folder on a server volume. 
+* Can hav emultiple point: F:\sync1, F:\sync2
+
+Cloud endpoint
+* A cloud endpoint is an Azure file share that is part of a sync group
+* The entire Azure file share syncs, and an Azure file share can be a member of only one cloud endpoint. (= Azure file share can be a member of only one sync group)
+
+Deploy Azure File Sync
+* There are several high-level steps for configuring File Sync.
+1. Deploy the Storage Sync Service
+2. Prepare Windows Server to use with Azure File Sync (Preparation steps include temporarily disabling Internet Explorer Enhanced Security and ensuring you have latest PowerShell version.)
+3. Install the Azure File Sync Agent
+4. Register Windows Server with Storage Sync Service
+
+NOTE: Once File Sync is configured you will need to configure file synchronization.
+
+Configure storage with tools
+
+Use Azure Storage Explorer
+* Storage explorer
+https://follow-e-lo.com/2020/09/13/azure-storage-107/
+
+Use the import and export service
+* shipping disk drives to an Azure datacenter
+
+Use AzCopy
+* AzCopy v10 is the next-generation command-line utility for copying data to/from Microsoft Azure Blob and File storage, 
+  which offers a redesigned command-line interface and new architecture for high-performance reliable data transfers. 
+* Using AzCopy, you can copy data between a file system and a storage account, or between storage accounts.
+
+AzCopy /?
+azcopy copy [source] [destination] [flags]
+
+
+Create an Azure Storage account
+
+https://follow-e-lo.com/2020/09/13/azure-storage-107/
+
+https://follow-e-lo.com/2022/01/16/5-min-create-and-configure-an-azure-files-mount-on-vm-2-with-robocopy/
+
+Decide how many storage accounts you need
+Organizations often have multiple storage accounts to enable them to implement different sets of requirements. 
+In the chocolate-manufacturer example, there will be one storage account for private business data and one storage account for consumer-facing files. 
+In this exercise, you'll learn the policy factors that are controlled by each type of storage account, which will help you decide how many accounts you need.
+
+* Azure provides many ways to store your data, including multiple database options like Azure SQL Database, 
+  Azure Cosmos DB, and Azure Table Storage. 
+  Azure offers multiple ways to store and send messages, such as Azure Queues and Event Hubs. 
+  You can even store loose files using services like Azure Files and Azure Blobs.
+
+Storage Container-> Blobs, Files, Queues and tables
+* Azure SQL Cosmos DB extra without storage account
+
+A storage account is an Azure resource and is part of a resource group
+Other Azure data services, such as Azure SQL and Azure Cosmos DB, are managed as independent Azure resources and cannot be included in a storage account.
+
+Storage account settings
+* Performance: Standard: any data service (Blob, File, Queue, Table) and uses magnetic disk drives
+* Performance: Premium: Premium provides more services for storing data, 
+  storing unstructured object data as block blobs or append blobs, and specialized file storage used to store and create premium file shares.
+  SSD
+
+* Replication,  protect against hardware failure or natural disaster.
+  LRS:Azure automatically maintains three copies of your data within the datacenter associated with the storage account
+  GRS to get replication at different datacenters
+
+* Virtual networks, A security feature that allows inbound access requests only from the virtual network(s) you specify
+
+
+How many storage accounts do you need?
+* The number of storage accounts you need is typically determined by your data diversity, cost sensitivity, and tolerance for management overhead.
+* Data diversity
+** data that is specific to a country or region? = need one storage account for each geographical region.
+** data that is proprietary and some for public consumption? =  enable virtual networks for the proprietary data and not for the public data = require separate storage accounts
+
+Cost sensitivity
+* A storage account by itself has no financial cost
+* Settings you choose for the account do influence the cost of services in the account
+* Can use multiple storage accounts to reduce costs
+** critical data into a storage account with geo-redundant, GRS
+** non-critical data local redundant, LRS
+
+NOTE: A typical strategy is to start with an analysis of your data and create partitions that share 
+      characteristics like location, billing, and replication strategy, and then create one storage account for each partition.
+
+Choose your account settings
+
+
+
+
+
+
 
 
 
