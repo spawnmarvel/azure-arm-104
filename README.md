@@ -87,6 +87,7 @@ https://github.com/spawnmarvel/azure-arm
 6. Security
 7. Powershell
 8. [More-labs] https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/
+9. Test
 
 2. MS Learn 7
 * Pre for administrators
@@ -96,13 +97,6 @@ https://github.com/spawnmarvel/azure-arm
 * Configure and manage virtual networks for administrators
 * Monitor and back up resources
 
-3. Compute
-4. TBD
-5. TBD
-6. TBD
-7. Powershell
-8. Extra tutorials
-9. Test
 
 #### Good to know
 
