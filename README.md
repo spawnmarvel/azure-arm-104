@@ -89,7 +89,8 @@ https://github.com/spawnmarvel/azure-arm
 8. [More-labs] https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/
 9. Test
 
-2. MS Learn 7
+
+#### MS Learn 
 * Pre for administrators
 * Manage identities and governance
 * Implement and manage storage
