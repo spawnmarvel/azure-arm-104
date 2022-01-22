@@ -98,7 +98,8 @@ https://github.com/spawnmarvel/azure-arm
 
 3. Compute
 4. TBD
-
+5. TBD
+6. TBD
 7. Powershell
 8. Extra tutorials
 9. Test
