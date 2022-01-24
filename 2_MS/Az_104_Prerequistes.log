@@ -1476,6 +1476,33 @@ https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-user-delegatio
 
 Upload, download, and manage data with Azure Storage Explorer
 
+Connect Azure Storage Explorer to a storage account
+* Storage Explorer is available on Windows, macOS, and Linux
+* It's easy to connect to and manage multiple storage accounts.
+* The interface lets you connect to Azure Cosmos DB and Data Lake.
+* Use the interface to update and view entities in your storage accounts 
+* Storage Explorer is free to download and use
+
+* Manage the data stored in multiple Azure storage accounts and across Azure subscriptions
+
+Use local emulators
+* Development phase of your project, not want developers to incur additional costs by using Azure storage accounts
+* Storage Explorer supports two emulators: Azure Storage Emulator and Azurite.
+* Azure Storage Emulator: uses local MS SQL 2012 expresse (Azure Table, Queue, Blob)
+* Azurite: uses Node.js open-source emulator that supports most Azure Storage commands through an API
+
+Connection types
+* Add resources by using Azure Active Directory (Azure AD)
+* Use a connection string
+* Use a shared access signature URI
+* Use a name and key
+* Attach to a local emulator
+* Attach to Azure Cosmos DB through a connection string
+* Attach to Azure Data Lake by using a URI
+
+https://docs.microsoft.com/en-us/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/2-connect-storage-account
+
+
 
 
 
