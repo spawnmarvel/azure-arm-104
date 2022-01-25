@@ -84,7 +84,7 @@ def main():
     worker = FilShareUtilityWorker()
     worker.connect_to_file_share()
     worker.fs_list_directory()
-    worker.fs_upload_file()
+    # worker.fs_upload_file()
 
 
 if __name__ == "__main__":
