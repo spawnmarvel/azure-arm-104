@@ -105,8 +105,8 @@ class QueueUtilityWorker:
 def main():
     worker = QueueUtilityWorker()
     worker.list_all_queues_service()
-    worker.send_msg()
-    # worker.read_msg_in_batches()
+    # worker.send_msg()
+    worker.read_msg_in_batches()
 
 
 if __name__ == "__main__":
