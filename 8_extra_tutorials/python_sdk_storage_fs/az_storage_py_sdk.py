@@ -15,7 +15,7 @@ class FilShareUtilityWorker:
         self.file_exist = False
         self.connection_status = False
         try:
-            with open("az_storage_py_con_str.txt", "r") as r:
+            with open("az_storage_con_str.txt", "r") as r:
                 row = r.readline()
                 self.connection_string = row
                 self.file_exist = True
