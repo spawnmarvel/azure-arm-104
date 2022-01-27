@@ -1503,6 +1503,11 @@ Connection types
 https://docs.microsoft.com/en-us/learn/modules/upload-download-and-manage-data-with-azure-storage-explorer/2-connect-storage-account
 
 
+https://follow-e-lo.com/2022/01/24/5-min-azure-storage-explorer-queues/
+
+Azure Cosmos DB
+* multiple ways to connect to Azure Cosmos DB
+* primary method is to use a connection string
 
 
 
