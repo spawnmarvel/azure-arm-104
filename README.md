@@ -3,6 +3,10 @@
 
 ### Github switch user local machine:
 
+### Git BASH
+
+[BASH] https://gitforwindows.org/
+
 ####  List your git config and view current user
 1. git config --list
 #### Change username and email global
