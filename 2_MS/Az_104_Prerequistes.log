@@ -1505,15 +1505,24 @@ https://docs.microsoft.com/en-us/learn/modules/upload-download-and-manage-data-w
 
 https://follow-e-lo.com/2022/01/24/5-min-azure-storage-explorer-queues/
 
+NOTE: The Azure Cosmos DB integration with Storage Explorer has been deprecated
+
 Azure Cosmos DB
 * multiple ways to connect to Azure Cosmos DB
 * primary method is to use a connection string
 
+AccountEndpoint=https://<YOUR-COSMOS-DB-NAME>.documents.azure.com:443/;AccountKey=<PRIMARY-MASTER-KEY>;
+In this template, replace <YOUR-COSMOS-DB-NAME> with the name of your database. <PRIMARY-MASTER-KEY> is a unique key for the database.
 
+Use Storage Explorer to manage Data Lake
 
 
 AZ-104: Deploy and manage Azure compute resources
-TODO 6 hr 19 min
+
+Configure virtual machines
+
+
+
 
 AZ-104: Configure and manage virtual networks for Azure administrators
 TODO 8 hr

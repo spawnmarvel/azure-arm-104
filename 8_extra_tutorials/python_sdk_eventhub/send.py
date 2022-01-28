@@ -1,5 +1,6 @@
 # https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-python-get-started-send
 # pip install azure-eventhub
+# pip install azure-eventhub-checkpointstoreblob-aio
 # Create an Event Hubs namespace and an event hub (portal)
 
 import asyncio
@@ -9,7 +10,7 @@ from azure.eventhub import EventData
 def get_event_hub_con():
     rv = ""
     try:
-        with open("az_event_hub_con.txt", "r") as r:
+        with open("az_event_con_str.txt", "r") as r:
                 row = r.readline()
                 rv = row
     
@@ -19,6 +20,8 @@ def get_event_hub_con():
 
 na = get_event_hub_con()
 print(na)
+
+# Send events
 
 async def run():
     # Create a producer client to send messages to the event hub.
