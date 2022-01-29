@@ -13,6 +13,7 @@ from azure.storage.fileshare.aio import ShareFileClient as aio_ShareFileClient
 def get_connection_string():
     connection_string = None
     try:
+        # could store this in keyvault or an env
         with open("az_storage_py_con_str.txt", "r") as r:
             row = r.readline()
             connection_string = row

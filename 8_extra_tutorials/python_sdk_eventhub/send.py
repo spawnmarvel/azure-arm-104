@@ -21,6 +21,7 @@ from azure.eventhub import EventData
 def get_event_hub_con():
     row = ""
     try:
+        # could store this in keyvault or an env
         with open("az_event_con_str.txt", "r") as r:
                 row = r.readline()
     
