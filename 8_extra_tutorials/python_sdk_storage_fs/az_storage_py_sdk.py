@@ -15,7 +15,7 @@ class FilShareUtilityWorker:
         self.file_exist = False
         self.connection_status = False
         try:
-            # secure this in keyvault
+            # s# could store this in keyvault or an env
             with open("az_storage_con_str.txt", "r") as r:
                 row = r.readline()
                 self.connection_string = row

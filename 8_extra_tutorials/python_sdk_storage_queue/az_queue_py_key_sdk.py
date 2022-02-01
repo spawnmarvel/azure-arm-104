@@ -18,6 +18,7 @@ class QueueUtilityWorker:
         self.file_exist = False
         self.connection_status = False
         try:
+            # could store this in keyvault or an env
             with open("az_storage_key.txt", "r") as r:
                 row = r.readline()
                 self.access_key = row
