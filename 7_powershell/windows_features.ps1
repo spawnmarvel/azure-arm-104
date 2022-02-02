@@ -1,3 +1,6 @@
+#install IIS
+Install-WindowsFeature -Name Web-Server -IncludeManagementTools
+# GET
 Get-WindowsFeature -Name "net*"
 
 #Display Name                                            Name                       Install State

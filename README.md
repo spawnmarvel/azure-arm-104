@@ -119,7 +119,8 @@ If you cannot connect to a port, check if it is in use with TCPView and or telne
 
 [netsh] https://follow-e-lo.com/2021/05/28/capture-traffic-wireshark/
 
-[network-commands] https://github.com/spawnmarvel/azure-arm-104/blob/master/6_powershell/network_ps1_and_cmd.ps1
+[network-commands] https://github.com/spawnmarvel/azure-arm-104/blob/master/7_powershell/network_ps1_and_cmd.ps1
+                   
 
 AppNetworkCounter is a simple tool for Windows that counts and displays the number of TCP/UDP bytes and packets sent and received by every application on your system
 
