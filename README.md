@@ -88,8 +88,7 @@ https://github.com/spawnmarvel/azure-arm
 
 * Plus exercises from MS Learn
 3. Compute
-4. Storage
-* Plus 8_Extra_Tutorials (python Fileshare and Queues)an dwordpress
+4. Storage: 8_Extra_Tutorials (python Fileshare and Queues) and wordpress
 5. Network
 6. Security
 7. Powershell
