@@ -86,9 +86,10 @@ https://github.com/spawnmarvel/azure-arm
 1. AZ-104 Udemy S.D
 2. ([Microsoft-Certified-Azure-Administrator-Associate] https://docs.microsoft.com/en-us/learn/certifications/azure-administrator/)
 
-* and exercises MS Learn
+* Plus exercises from MS Learn
 3. Compute
-4. Storage, 8_Extra_Tutorials (python Fileshare and Queues)an dwordpress
+4. Storage
+* Plus 8_Extra_Tutorials (python Fileshare and Queues)an dwordpress
 5. Network
 6. Security
 7. Powershell
