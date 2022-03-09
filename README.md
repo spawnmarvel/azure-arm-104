@@ -117,6 +117,8 @@ TCPView is a Windows program that will show you detailed listings of all TCP and
 
 If you cannot connect to a port, check if it is in use with TCPView and or telnet IP Port
 
+[ping] ping IP -t > ping_log.txt (Bytes and time used)
+
 [TCPView] https://docs.microsoft.com/en-us/sysinternals/downloads/tcpview
 
 [netsh] https://follow-e-lo.com/2021/05/28/capture-traffic-wireshark/
