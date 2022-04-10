@@ -1558,6 +1558,42 @@ Costs:
 * * RIs are flexible and can easily be exchanged or returned for an early termination fee.
 
 Determine virtual machine sizing
+
+The best way to determine the appropriate VM size is to consider the type of workload your VM needs to run
+
+* General purpose
+* Compute optimized
+* Memory optimized
+* Storage optimized
+* GPU
+
+Resizing virtual machines
+
+* Be cautious when resizing production VMs. 
+  Resizing may require a restart that can cause a temporary outage or change configuration settings like the IP address.
+
+Determine virtual machine storage
+Create virtual machines
+Connect to virtual machines
+* Windows:RDP 
+* Linux:SSH, Putty
+* Bastion: The Azure Bastion service is a new fully platform-managed PaaS service that you provision inside your virtual network. 
+           It provides secure and seamless RDP/SSH connectivity to your virtual machines directly in the Azure portal over SSL. 
+           When you connect via Azure Bastion, your virtual machines do not need a public IP address.
+
+Connect to Windows virtual machines
+* Remote Desktop Protocol (RDP)
+* The Azure PowerShell Get-AzRemoteDesktopFile cmdlet provides the same functionality
+
+* Windows Remote Management (WinRM) allows you to establish a command-line session to an Azure VM that runs any supported version of Windows. 
+  You can also use WinRM to run noninteractive Windows PowerShell scripts.
+
+https://docs.microsoft.com/en-us/learn/modules/configure-virtual-machines/8-connect-to-windows
+
+
+
+Configure virtual machine availability
+
 TODO
 
 
