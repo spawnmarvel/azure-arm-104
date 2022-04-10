@@ -1,0 +1,87 @@
+Install from market
+Putty login
+
+apt list --installed
+
+
+pgadmin4-desktop/pgadmin4,now 5.3 amd64 [installed,automatic]
+pgadmin4-server/pgadmin4,now 5.3 amd64 [installed,automatic]
+pgadmin4-web/pgadmin4,now 5.3 all [installed]
+pgadmin4/pgadmin4,now 5.3 all [installed]
+
+
+sudo -i
+su another_username
+
+https://www.digitalocean.com/community/tutorials/how-to-install-postgresql-on-ubuntu-20-04-quickstart#step-2-using-postgresql-roles-and-databases
+
+The installation procedure created a user account called postgres that is associated with the default Postgres role.
+
+sudo -i -u postgres
+
+Then you can access the Postgres prompt by running:
+
+psql
+
+
+https://www.tutorialspoint.com/postgresql/postgresql_select_database.htm
+
+postgres=# CREATE DATABASE dbtest;
+
+postgres=# \c dbtest;
+You are now connected to database "dbtest" as user "postgres".
+dbtest=#
+
+
+
+CREATE TABLE COMPANY(
+   ID SERIAL PRIMARY KEY     NOT NULL,
+   INFO          CHAR(15)    NOT NULL,
+   VALUE            INT     NOT NULL
+);
+
+INSERT INTO COMPANY (info, value) VALUES ('BA', 1);
+INSERT INTO COMPANY (info, value) VALUES ('VG', 2);
+
+dbtest=# select * from company;
+ id |      info       | value
+----+-----------------+-------
+  1 | BA              |     1
+  2 | VG              |     2
+(2 rows)
+
+
+
+create user myuser with encrypted password 'mypass45685';
+grant all privileges on database dbtest to myuser;
+
+
+In order to remotely access a PostgreSQL database, you must set the two main PostgreSQL configuration files:
+
+postgresql.conf
+listen_addresses = '*'
+
+pg_hba.conf
+host all all 0.0.0.0/0 md5
+
+service  postgresql  stop
+service  postgresql  start
+
+
+sudo -i -u postgres
+
+Then you can access the Postgres prompt by running:
+
+psql
+postgres=# \c dbtest;
+
+
+create role joe login password 'Abcd1234';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON company TO joe;
+
+
+psql -h localhost -U joe dbtest
+
+select * from company;
+
