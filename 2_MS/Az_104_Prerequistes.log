@@ -1520,8 +1520,45 @@ Use Storage Explorer to manage Data Lake
 AZ-104: Deploy and manage Azure compute resources
 
 Configure virtual machines
-TODO
 
+Plan virtual machines
+
+Start with the network
+Name the VM
+Decide the location for the VM
+Determine the size of the VM
+Understanding the pricing model
+Storage for the VM
+Select an operating system
+
+Network addresses and subnets are not trivial to change once you have them set up
+
+Name the VM
+* 15 characters on a Windows VM and 64 characters on a Linux VM.
+* A good convention is to include the following information in the name:
+
+* Environment: dev, prod, QA
+* Location: uw (US West), ue (US East)
+* Instance 01, 02
+* Product or Service: service
+* Role: sql, web, messaging
+
+devusc-webvm01 might represent the first development web server hosted in the US South Central location
+
+Considerations for the location
+
+Costs:
+* Consumption-based - With the consumption-based option, you pay for compute capacity by the second
+* * charged for 55 minutes of usage if the VM is deployed for 55 minutes. 
+    You are not charged for compute capacity if you stop and deallocate the VM since this releases the hardware.
+* * Storage costs: Even when a VM is stopped/deallocated, you are charged for the storage used by the disks
+
+* Reserved Virtual Machine Instances: 
+* * The commitment is made up front, and in return, you get up to 72% price savings compared to pay-as-you-go pricing
+* * RIs are flexible and can easily be exchanged or returned for an early termination fee.
+
+Determine virtual machine sizing
+TODO
 
 
 
