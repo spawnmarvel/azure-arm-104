@@ -68,6 +68,7 @@ $paramterFile = ".\vm_parameters.json"
 
 # jepp secure it, and get it from keyvault
 $var = Get-Content ".\keyvault.txt"
+Write-Host @$var
 $arr = $var.Split([Environment]::NewLine)
 $userName = $arr[0]
 $passWordSecure = ConvertTo-SecureString $arr[1] -AsPlainText -Force
@@ -80,7 +81,7 @@ New-AzResourceGroupDeployment -Name $deployName `
   -deployToSubnet $subnetDeployTmp `
   -ResourceGroupName $resourceGrVM.ResourceGroupName `
   -virtualNetworkId $vnetId `
-  -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -Verbose
+  -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -WhatIf
 # verbose or debug or WhatIf for actually deploying it
 
 # Test success 16.01.2022 1, changed vnet id URL
