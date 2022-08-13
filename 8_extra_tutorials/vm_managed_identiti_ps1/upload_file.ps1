@@ -1,5 +1,3 @@
-# Tutorial: Use a Windows VM system-assigned managed identity to access Azure Storage
-# https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage
 
 # Tutorial: Use a Windows VM system-assigned managed identity to access Azure Storage via a SAS credential
 # https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-storage-sas
