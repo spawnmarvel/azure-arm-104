@@ -18,6 +18,7 @@ Write-Host $ArmToken
 $params = @{canonicalizedResource="/blob/testit3straccount/testmaidentity";signedResource="c";signedPermission="rcw";signedProtocol="https";signedExpiry="2022-08-14T00:00:00Z"}
 $jsonParams = $params | ConvertTo-Json
 # Bearer token is used here
+# TODO could you keyvalt to store the id or login with az-connect to get the sub id
 $sasResponse = Invoke-WebRequest -Uri https://management.azure.com/subscriptions/xxx-findit-under-subscriptions-or-use-ps1-to-get-it/resourceGroups/test-it3/providers/Microsoft.Storage/storageAccounts/testit3straccount/listServiceSas/?api-version=2017-06-01 -Method POST -Body $jsonParams -Headers @{Authorization="Bearer $ArmToken"}
 
 # 5 Now we can extract the SAS credential from the response:
