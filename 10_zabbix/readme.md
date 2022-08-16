@@ -10,8 +10,9 @@ An in-depth paragraph about your project and overview of use.
 
 ### Dependencies
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
+* Ubuntu version, Ubuntu 22.04 LTS Jammy Jellyfish Release April 21, 2022
+* https://wiki.ubuntu.com/Releases
+* 
 
 ### Installing
 
