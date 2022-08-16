@@ -12,7 +12,8 @@ An in-depth paragraph about your project and overview of use.
 
 * Ubuntu version, Ubuntu 22.04 LTS Jammy Jellyfish Release April 21, 2022
 * https://wiki.ubuntu.com/Releases
-* 
+* 6.0 LTS Ubuntu 22.04 Jammy, Mysql, Apache
+* https://www.zabbix.com/download?zabbix=6.0&os_distribution=ubuntu&os_version=22.04_jammy&db=mysql&ws=apache
 
 ### Installing
 
