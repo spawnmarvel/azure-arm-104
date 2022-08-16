@@ -10,10 +10,10 @@ An in-depth paragraph about your project and overview of use.
 
 ### Dependencies
 
-* Ubuntu version, Ubuntu 22.04 LTS Jammy Jellyfish Release April 21, 2022
+* Ubuntu version, Ubuntu 20.04.4 LTS Focal Fossa
 * https://wiki.ubuntu.com/Releases
-* 6.0 LTS Ubuntu 22.04 Jammy, Mysql, Apache
-* https://www.zabbix.com/download?zabbix=6.0&os_distribution=ubuntu&os_version=22.04_jammy&db=mysql&ws=apache
+* 6.0 LTS Ubuntu 20.04 Focal, Mysql, Apache
+* https://www.zabbix.com/download?zabbix=6.0&os_distribution=ubuntu&os_version=20.04_focal&db=mysql&ws=apache
 
 ### Installing
 
