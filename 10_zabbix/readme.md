@@ -18,7 +18,8 @@ An in-depth paragraph about your project and overview of use.
 ### Installing
 
 * How/where to download your program
-* Any modifications needed to be made to files/folders
+* https://www.zabbix.com/download?zabbix=6.0&os_distribution=ubuntu&os_version=22.04_jammy&db=mysql&ws=apache
+* https://www.youtube.com/watch?v=88HaOuXaUcU&list=LL&index=1&t=600s
 
 ### Executing program
 
