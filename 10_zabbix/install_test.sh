@@ -1,3 +1,20 @@
+
+# Azure pre
+# Rg test-monitor
+# A new vnet and subnet test-monitor-vnet
+
+# VM MySQL
+#
+#
+#
+# VM Zabbix
+#
+#
+#
+
+# ladmin
+# Thisisnotgood789
+
 # https://www.youtube.com/watch?v=88HaOuXaUcU&list=LL&index=1&t=600s
 
 # How To Install Zabbix 6.0 LTS
@@ -7,23 +24,37 @@
 # All this was done with root
 
 # VM MySql
-# 1  -y to confirm it, mysql-server gives 8.0
-yum install mysql-server -y
+# 1 update the vm
+sudo apt update
 
-# 2 start db
-systemctl start mysqld 
+# 2  install mysql server
+sudo apt install mysql-server
 
-# 3 get in if access
-mysql
+# 3 secure mysql (SKIP THIS FOR NOW)
+sudo mysql_secure_installation
+
+# In the last step I kept all for the test, pass is the same as for VM.
+# But that is not the correct for secure installation, choose several “YES”, you will see when you do it.
+
+# 3.1  Test 
+sudo mysql
+
+# query
+select now();
+
+# exit
+exit;
 
 # VM Zabbix
 # 4 add packages, Install Zabbix repository
-wget https://repo.zabbix.com/zabbix/6.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.0-3+ubuntu20.04_all.deb
-dpkg -i zabbix-release_6.0-3+ubuntu20.04_all.deb
-apt update
+# Install Zabbix repository
+wget https://repo.zabbix.com/zabbix/6.2/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.2-1+ubuntu20.04_all.deb
 
+sudo dpkg -i zabbix-release_6.2-1+ubuntu20.04_all.deb
+
+sudo apt update
 # 5 Install Zabbix server for mysql (we get all configuration for mysql (not MySql)), frontend, agent
-# apt install zabbix-server-mysql zabbix-frontend-php zabbix-apache-conf zabbix-sql-scripts zabbix-agent
+sudo apt install zabbix-server-mysql zabbix-frontend-php zabbix-apache-conf zabbix-sql-scripts zabbix-agent
 
 # 6 VM MySql
 # Create initial database, Make sure you have database server up and running.
@@ -32,16 +63,31 @@ apt update
 # Must allow VM Zabbix IP to connect to MySQL
 
 # mysql -uroot -p
-password
+# password
+sudo mysql
 mysql> create database zabbix character set utf8mb4 collate utf8mb4_bin;
-mysql> create user zabbix@localhost identified by 'password';
-mysql> grant all privileges on zabbix.* to zabbix@localhost;
+mysql> create user zabbix@10.1.0.5 identified by 'zabbix123';
+mysql> select user, host from mysql.user;
+mysql> grant all privileges on zabbix.* to zabbix@10.1.0.5;
+mysql> show databases;
 mysql> quit;
 
 # 7, The files must be copied from zabbix to mysql. This creates all the zabbix tables
 # The zcat command allows the user to expand and view a compressed file without uncompressing that file.
 # On MySql (since remote Zabbix) server host import initial schema and data. You will be prompted to enter your newly created password.
-zcat /usr/share/doc/zabbix-sql-scripts/mysql/server.sql.gz | mysql -uzabbix -p zabbix
+# on the vm-zabbix navigate to
+
+# before you start make a the folder on vm-mysql
+mkdir from-vm-zabbix
+
+# then back to vm-zabbox for the copy
+/usr/share/doc/zabbix-sql-scripts/mysql
+
+/usr/share/doc/zabbix-sql-scripts/mysql$ scp server.sql.gz ladmin@IP-of-mysql:/home/ladmin/from-vm-zabbix
+ # type yes
+ # give password for user
+
+
 
 # 8 
 # VM Zabbix
@@ -51,6 +97,7 @@ DBPassword=password
 DBHost=IP to MySQL
 DBName=zabbix
 DBUser=zabbix
+DBPort=3306
 
 # 9
 # Start Zabbix server and agent processes and make it start at system boot.

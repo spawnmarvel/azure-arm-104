@@ -15,7 +15,7 @@ $sub = Get-AzSubscription
 Write-Host "Vnet info: "
 $vnet = "vnet004799"
 # subnet used shall be avaliable
-$subnetDeployTmp = "vm-vnet"
+$subnetDeployTmp = "vm-subnet"
 # vnet rg shall be avaliable and created before
 $resourceGrVnetName = "testit-vnet2"
 Write-Host "Get VNET info: "
