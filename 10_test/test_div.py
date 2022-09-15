@@ -11,4 +11,6 @@ new_v = {"key4":99999}
 dict.update(new_v)
 print(dict)
 
+# new clone
+
   
