@@ -60,7 +60,11 @@ Write-Host "Connect VM : " $customPrefixTmp " to subnet: " $subnetDeployTmp " : 
 Write-Host "Continue..." -ForegroundColor Green
 # construct the virtualNetworkId from the vnet rg, not the vm rg (is has been removed from the downloaded paramter file)
 # $vnetId = "/subscriptions/" + $sub.Id + "/resourceGroups/" + $resourceGrVnet.ResourceGroupName + "/providers/Microsoft.Network/virtualNetworks/" + $vnet
-$vnetId = "/subscriptions/" + $sub.Id + "/resourceGroups/" + $resourceGrVnetName + "/providers/Microsoft.Network/virtualNetworks/" + $vnet
+
+# 15.11.2022 was loged in to sandox so this returned two differnt ids vm-subnet references wrong subscription. Write-Host $sub.Id[0]
+Write-Host $sub.Id[0]
+#
+$vnetId = "/subscriptions/" + $sub.Id[0] + "/resourceGroups/" + $resourceGrVnetName + "/providers/Microsoft.Network/virtualNetworks/" + $vnet
 Write-Host $vnetId
 # template file
 $templateFile = ".\vm_template.json"
@@ -82,7 +86,7 @@ New-AzResourceGroupDeployment -Name $deployName `
   -ResourceGroupName $resourceGrVM.ResourceGroupName `
   -virtualNetworkId $vnetId `
   -TemplateFile $templateFile -TemplateParameterFile $paramterFile -adminUsername $userName -adminPassword $passWordSecure -Verbose
-# verbose or debug for actually deploying it, wwhatif for test template
+# verbose or debug for actually deploying it, whatif for test template
 
 # Test success 16.01.2022 1, changed vnet id URL
 
