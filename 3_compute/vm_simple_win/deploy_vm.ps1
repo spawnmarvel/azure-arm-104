@@ -62,9 +62,23 @@ Write-Host "Continue..." -ForegroundColor Green
 # $vnetId = "/subscriptions/" + $sub.Id + "/resourceGroups/" + $resourceGrVnet.ResourceGroupName + "/providers/Microsoft.Network/virtualNetworks/" + $vnet
 
 # 15.11.2022 was loged in to sandox so this returned two differnt ids vm-subnet references wrong subscription. Write-Host $sub.Id[0]
-Write-Host $sub.Id[0]
+$main_subscriptions = $sub.Id
+Write-Host $main_subscriptions
+
+if ($main_subscriptions.Length -le 36)  {
+  # Azure subscriptions: What is MS Graph "subscription id" property max length? In examples length of id is 36 characters
+  Write-Host "Main sub: " $main_subscriptions
+
+}
+else {
+  # we have multiple subscriptions, proabably ms learn sandbox
+  $main_subscriptions = $sub.Id[0]
+  Write-Host "Seletected Main sub: " $main_subscriptions
+}
+
+
 #
-$vnetId = "/subscriptions/" + $sub.Id[0] + "/resourceGroups/" + $resourceGrVnetName + "/providers/Microsoft.Network/virtualNetworks/" + $vnet
+$vnetId = "/subscriptions/" + $main_subscriptions + "/resourceGroups/" + $resourceGrVnetName + "/providers/Microsoft.Network/virtualNetworks/" + $vnet
 Write-Host $vnetId
 # template file
 $templateFile = ".\vm_template.json"
