@@ -89,7 +89,7 @@ https://github.com/spawnmarvel/azure-arm
 * Plus exercises from MS Learn
 3. Compute
 4. Storage
-5. Network
+5. Network ([follow-elo-vnet] https://follow-e-lo.com/2022/11/25/az-104-configure-and-manage-virtual-networks-for-azure-administrators/)
 6. Security
 7. Powershell
 8. Extra_Tutorials Python SDK and azure general
