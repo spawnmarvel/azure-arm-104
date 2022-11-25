@@ -70,11 +70,11 @@ $ ssh-keygen -p -f ~/.ssh/id_ed25519
 > Your identification has been saved with the new passphrase.
 ```
 
-## Stuff about Azure, ARM, Powershell and more. Continued from 
+## Stuff about Azure, ARM, Powershell and more. Continued from:
 
 https://github.com/spawnmarvel/azure-arm
 
-## JSON, Powershell, ARM template, Bash (Wireshark, TCP viewer, Beartail).
+## JSON, Powershell, ARM template, Bash (Wireshark, TCP viewer, Beartail and what not).
 
 [Azure Powershell] https://docs.microsoft.com/en-us/powershell/azure/?view=azps-6.3.0&viewFallbackFrom=azps-5.2.0
 
