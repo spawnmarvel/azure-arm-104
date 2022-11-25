@@ -88,12 +88,15 @@ https://github.com/spawnmarvel/azure-arm
 
 * Plus exercises from MS Learn
 3. Compute
-4. Storage: 8_Extra_Tutorials (python Fileshare and Queues) and wordpress
+4. Storage
 5. Network
 6. Security
 7. Powershell
-8. [More-labs] https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/
-9. Test
+8. Extra_Tutorials Python SDK and azure general
+9. MS labs ([Content-directory] https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/)
+10. Test
+11. Bicep
+
 
 
 #### MS Learn 
