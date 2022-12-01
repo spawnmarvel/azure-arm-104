@@ -1,2 +1,2 @@
-Set-AzDefault -ResourceGroupName testit2rg
+Set-AzDefault -ResourceGroupName test-it4
 New-AzResourceGroupDeployment -TemplateFile main.bicep
