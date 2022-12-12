@@ -15,3 +15,12 @@ $da = Get-Date
 Add-Content "C:\OP\Zabbix Agent 6 arc\Ims_oc_logger.txt" "$da Run done"
 
 
+# https://blog.netwrix.com/2018/07/03/how-to-automate-powershell-scripts-with-task-scheduler/
+
+# To schedule the PowerShell script, specify the following parameters:
+# Action: Start a program
+# Program\script: powershell
+# Add arguments (optional): -File [Specify the file path to the script here]
+
+# Powershell
+# -File "C:\OP\Zabbix Agent 6 arc\Ims_oc_monitor-st-account.ps1"
