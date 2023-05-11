@@ -8,7 +8,7 @@ Write-Host $rv.TcpTestSucceeded
 $stacc = "staaccname.file.core.windows.net"
 $rv = Test-NetConnection -ComputerName $stacc -Port 445 | select TcpTestSucceeded
 # status
-Start-Process -NoNewWindow -FilePath "C:\OP\Zabbix Agent 6 arc\zabbix_agent-6.0.0-windows-amd64-openssl\bin\zabbix_sender.exe" -ArgumentList "-z ip -p 10051 -s EWEQWAPA1PET01 -k Pings288weqassaa1p2 -o $rv"
+Start-Process -NoNewWindow -FilePath "C:\OP\Zabbix Agent 6 arc\zabbix_agent-6.0.0-windows-amd64-openssl\bin\zabbix_sender.exe" -ArgumentList "-z ip -p 10051 -s server -k staccount -o $rv"
 
 $da = Get-Date
 
